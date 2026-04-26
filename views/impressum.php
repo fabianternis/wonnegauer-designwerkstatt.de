@@ -9,10 +9,20 @@
             Plenzer 6<br>
             67592 Flörsheim-Dalsheim<br>
             <br>
-            Telefon: <a href="tel:+496243564">06243 / 56 49</a><br>
-            E-Mail: <a href="mailto:lettre-bwm@t-online.de">lettre-bwm@t-online.de</a><br>
+            Telefon: <a href="tel:+4962435649" class="obf-tel">06243 / 56 49</a><br>
+            
+            E-Mail: <a href="mailto:wdw&#64;xpsystems&#46;de" class="obf-mail">wdw&#64;xpsystems&#46;de</a><br>
+            
             Web: <a href="https://www.wonnegauer-designwerkstatt.de" target="_blank" rel="noopener noreferrer">www.wonnegauer-designwerkstatt.de</a>
         </address>
+    </section>
+
+    <section>
+        <h2>Webdesign & Technik</h2>
+        <p>
+            <strong>Webdesign und Webentwicklung:</strong> <a href="https://xpsystems.de" target="_blank" rel="noopener noreferrer">xpsystems.eu / .de</a><br>
+            <strong>Domain management:</strong> <a href="https://dnbx.de" target="_blank" rel="noopener noreferrer">dnbx.de</a> (bereitgestellt durch xpsystems.de)
+        </p>
     </section>
 
     <section>
@@ -33,7 +43,7 @@
             Wonnegauer Designwerkstatt<br>
             Plenzer 6<br>
             67592 Flörsheim-Dalsheim<br>
-            E-Mail: <a href="mailto:lettre-bwm@t-online.de">lettre-bwm@t-online.de</a>
+            E-Mail: <a href="mailto:wdw&#64;xpsystems&#46;de">wdw&#64;xpsystems&#46;de</a>
         </address>
 
         <h3>Ihre Betroffenenrechte (Art. 15–21 DSGVO)</h3>
@@ -66,5 +76,17 @@
         <h3>Aktualität dieser Erklärung</h3>
         <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, um sie stets den aktuellen rechtlichen Anforderungen zu entsprechen. Es gilt jeweils die zum Zeitpunkt Ihres Besuchs aktuelle Fassung.</p>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var emailLinks = document.querySelectorAll('.obf-mail');
+            emailLinks.forEach(function(link) {
+                // Verhindert, dass Bots die Mail im Klartext im href-Attribut finden
+                link.addEventListener('mouseover', function() {
+                    this.href = "mailto:" + "wdw" + "@" + "xpsystems.de";
+                });
+            });
+        });
+    </script>
 
 </article>

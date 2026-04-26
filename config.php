@@ -77,7 +77,7 @@ return [
                     'text'   => "Begrüßer, in Gruppen oder als Einzelobjekte",
                 ],
                 [
-                    'bilder' => ['assets/img/kunst/das_wichtige.jpg'],
+                    'bilder' => ['assets/img/kunst/das_wichtige.JPG'],
                     'text'   => "Bilder zum Zyklus “Das Wichtige”\nErde, Himmel, Sonne und was daraus entsteht",
                 ],
                 [
