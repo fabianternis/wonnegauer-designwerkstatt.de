@@ -1,31 +1,47 @@
 <div class="page-index">
-    <header class="page-header">
-        <h1>Inspiration & Handwerk</h1>
-    </header>
 
-    <section class="section">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
-            <div>
-                <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Atelier" style="border: 1px solid var(--clr-border);">
+    <section class="home-section">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center;">
+            <div class="img-card-container">
+                <div class="img-card">
+                    <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt">
+                </div>
             </div>
-            <div class="compact-feature">
-                <h2>Willkommen</h2>
-                <p>Wir, Brigitte und Wolfgang Ternis, laden Sie ein in die Wonnegauer Designwerkstatt.</p>
-                <p>An unserem Standort in Flörsheim-Dalsheim verbinden wir Design, Kunst und Kultur mit der Leidenschaft für unsere Region.</p>
+            <div>
+                <h2>Willkommen in der Designwerkstatt</h2>
+                <p>Wir, Brigitte und Wolfgang Ternis, laden Sie ein, die Verbindung von Design, Kunst und Kultur in der malerischen Kulisse von Flörsheim-Dalsheim zu entdecken.</p>
+                <p>An unserem Standort im Wonnegau fördern wir Kreativität und Lebensqualität durch eigenes Schaffen und inspirierende Begegnungen.</p>
+                <a href="<?= url('wir') ?>" class="cta-link">Mehr über uns &rarr;</a>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
-            <div class="compact-feature">
-                <h2>Erleben Sie Rheinhessen</h2>
-                <p>Entdecken Sie die Schönheit des Wonnegaus bei unseren Gästeführungen und Radwanderungen.</p>
-                <a href="<?= url('termine') ?>" style="text-decoration: underline; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Aktuelle Termine &rarr;</a>
+    <section class="home-section">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center;">
+            <div style="order: 2;">
+                <div class="img-card-container">
+                    <div class="img-card">
+                        <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen">
+                    </div>
+                </div>
             </div>
-            <div>
-                <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen" style="border: 1px solid var(--clr-border);">
+            <div style="order: 1;">
+                <h2>Gästeführungen & Radwanderungen</h2>
+                <p>Entdecken Sie die Schönheit Rheinhessens und des Wonnegaus auf ganz besondere Weise. Wir bieten fachkundige Führungen zu Fuß oder mit dem Rad an.</p>
+                <a href="<?= url('termine') ?>" class="cta-link">Termine & Führungen &rarr;</a>
             </div>
         </div>
     </section>
+
+    <section class="home-section" style="text-align: center;">
+        <div class="container" style="max-width: 800px;">
+            <h2>Aktuelles & Termine</h2>
+            <p>Bleiben Sie informiert über unsere neuesten Ausstellungen, Veranstaltungen und geführten Touren durch die Region.</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="<?= url('aktuell') ?>" class="cta-link">Aktuelles &rarr;</a>
+                <a href="<?= url('termine') ?>" class="cta-link">Alle Termine &rarr;</a>
+            </div>
+        </div>
+    </section>
+
 </div>

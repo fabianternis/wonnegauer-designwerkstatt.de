@@ -1,19 +1,17 @@
 <div class="page-design">
-    <header class="page-header">
-        <h1>Design</h1>
-    </header>
-
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: start;">
+                    <div class="img-card-container">
                         <?php foreach ($item['bilder'] as $bild): ?>
-                            <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
+                            <div class="img-card">
+                                <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
+                            </div>
                         <?php endforeach; ?>
                     </div>
                     <div>
-                        <p style="font-family: var(--font-heading); font-size: 1.25rem; font-style: italic;">
+                        <p style="font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4;">
                             <?= nl2br(htmlspecialchars($item['text'])) ?>
                         </p>
                     </div>
