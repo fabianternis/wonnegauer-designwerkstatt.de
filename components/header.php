@@ -1,13 +1,19 @@
 <header class="site-header">
     <div class="container site-header__inner">
-        <div class="site-header__brand">
-            <a class="site-header__logo" href="<?= url() ?>">
-                <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>">
-            </a>
+        <a class="site-header__brand" href="<?= url() ?>">
+            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>" class="site-header__logo">
             <span class="site-header__title"><?= htmlspecialchars($config['site_name']) ?></span>
-        </div>
+        </a>
 
-        <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <button class="nav-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+    </div>
+
+    <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <div class="container">
             <ul class="main-nav__list">
                 <li class="main-nav__item">
                     <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active' : '' ?>">Start</a>
@@ -24,14 +30,8 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
-        </nav>
-
-        <button class="nav-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
-            <span class="nav-toggle__bar"></span>
-            <span class="nav-toggle__bar"></span>
-            <span class="nav-toggle__bar"></span>
-        </button>
-    </div>
+        </div>
+    </nav>
 </header>
 
 <?php
