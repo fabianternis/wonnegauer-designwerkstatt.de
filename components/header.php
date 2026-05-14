@@ -1,11 +1,13 @@
 <header class="site-header">
-    <div class="container">
-        <a class="site-header__logo" href="<?= url() ?>">
-            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>">
+    <div class="container site-header__inner">
+        <div class="site-header__brand">
+            <a class="site-header__logo" href="<?= url() ?>">
+                <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>">
+            </a>
             <span class="site-header__title"><?= htmlspecialchars($config['site_name']) ?></span>
-        </a>
+        </div>
 
-        <nav class="main-nav" aria-label="Hauptnavigation">
+        <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
             <ul class="main-nav__list">
                 <li class="main-nav__item">
                     <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active' : '' ?>">Start</a>
@@ -23,6 +25,12 @@
                 <?php endforeach; ?>
             </ul>
         </nav>
+
+        <button class="nav-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
     </div>
 </header>
 
@@ -31,7 +39,10 @@
     $bannerSrc  = file_exists($bannerFile) ? url("assets/img/banners/{$page['slug']}.jpg") : url('assets/img/banners/DEFAULT.jpg');
 ?>
 <section class="hero">
-    <div class="container">
+    <div class="container hero__container">
         <img class="hero__image" src="<?= htmlspecialchars($bannerSrc) ?>" alt="" role="presentation">
+        <div class="hero__overlay">
+            <h1 class="hero__title"><?= htmlspecialchars($page['title'] ?? '') ?></h1>
+        </div>
     </div>
 </section>
