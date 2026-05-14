@@ -19,7 +19,7 @@
         <?php include __DIR__ . '/../components/header.php'; ?>
 
         <main class="site-main">
-            <?php render_view($page['view'], $page, $config); ?>
+            <?php render_view($page['view'], $page); ?>
         </main>
 
         <?php include __DIR__ . '/../components/footer.php'; ?>
