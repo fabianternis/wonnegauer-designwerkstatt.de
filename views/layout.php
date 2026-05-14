@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
 </head>
 <body>
+    <div id="page-loader" class="loader-overlay">
+        <div class="loader-spinner"></div>
+    </div>
+
     <?php include dirname(__DIR__) . '/components/header.php'; ?>
 
     <main class="site-main">
