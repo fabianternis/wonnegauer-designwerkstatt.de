@@ -1,14 +1,34 @@
 (function () {
-    // ── Page Loader ───────────────────────────────────────────
+    // ── Page Loader & Transition ──────────────────────────────
     const loader = document.getElementById('page-loader');
     if (loader) {
         window.addEventListener('load', () => {
             loader.style.opacity = '0';
             setTimeout(() => {
                 loader.style.display = 'none';
-            }, 500);
+            }, 600);
         });
     }
+
+    // Smooth internal page transitions
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && 
+            link.href && 
+            link.href.startsWith(window.location.origin) && 
+            !link.getAttribute('target') && 
+            !link.href.includes('#')) {
+            
+            e.preventDefault();
+            const targetUrl = link.href;
+            
+            document.body.classList.add('is-exiting');
+            
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 400);
+        }
+    });
 
     // ── Navigation ────────────────────────────────────────────
     const toggle = document.querySelector('.nav-toggle');
@@ -48,7 +68,6 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('SW registered', reg))
                 .catch(err => console.log('SW registration failed', err));
         });
     }

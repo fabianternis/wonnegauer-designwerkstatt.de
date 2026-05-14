@@ -8,8 +8,11 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <!-- New Fonts: Playfair Display for headings, Montserrat for a unique body feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
+    <link rel="icon" type="image/jpeg" href="<?= url('assets/img/logo1.jpg') ?>">
 </head>
 <body>
     <div id="page-loader" class="loader-overlay">
