@@ -11,18 +11,23 @@
             – <?= htmlspecialchars($page['title']) ?>
         <?php endif; ?>
     </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
     <link rel="icon" type="image/jpeg" href="<?= url('assets/img/logo1.jpg') ?>">
 </head>
 <body>
     <div class="site-body"<?php if (!empty($page['background_color'])): ?> style="--page-bg: <?= htmlspecialchars($page['background_color']) ?>"<?php endif; ?>>
-        <?php include __DIR__ . '/../components/header.php'; ?>
+        <?php include dirname(__DIR__) . '/components/header.php'; ?>
 
         <main class="site-main">
-            <?php render_view($page['view'], $page); ?>
+            <div class="container">
+                <?php render_view($page['view'], $page); ?>
+            </div>
         </main>
 
-        <?php include __DIR__ . '/../components/footer.php'; ?>
+        <?php include dirname(__DIR__) . '/components/footer.php'; ?>
     </div>
     <script src="<?= url('assets/nav.js') ?>"></script>
 </body>
