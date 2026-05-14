@@ -1,11 +1,22 @@
+<?php
+    $bannerFile = dirname(__DIR__) . "/public/assets/img/banners/{$page['slug']}.jpg";
+    $bannerSrc  = file_exists($bannerFile) ? url("assets/img/banners/{$page['slug']}.jpg") : url('assets/img/banners/DEFAULT.jpg');
+?>
+<section class="hero">
+    <div class="container hero__container">
+        <img class="hero__image" src="<?= htmlspecialchars($bannerSrc) ?>" alt="" role="presentation">
+        <div class="hero__overlay">
+            <h1 class="hero__title"><?= htmlspecialchars($page['title'] ?? '') ?></h1>
+        </div>
+    </div>
+</section>
+
 <header class="site-header">
     <div class="container site-header__inner">
-        <div class="site-header__brand">
-            <a class="site-header__logo" href="<?= url() ?>">
-                <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>">
-            </a>
+        <a class="site-header__brand" href="<?= url() ?>">
+            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>" class="site-header__logo">
             <span class="site-header__title"><?= htmlspecialchars($config['site_name']) ?></span>
-        </div>
+        </a>
 
         <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
             <ul class="main-nav__list">
@@ -33,16 +44,3 @@
         </button>
     </div>
 </header>
-
-<?php
-    $bannerFile = dirname(__DIR__) . "/public/assets/img/banners/{$page['slug']}.jpg";
-    $bannerSrc  = file_exists($bannerFile) ? url("assets/img/banners/{$page['slug']}.jpg") : url('assets/img/banners/DEFAULT.jpg');
-?>
-<section class="hero">
-    <div class="container hero__container">
-        <img class="hero__image" src="<?= htmlspecialchars($bannerSrc) ?>" alt="" role="presentation">
-        <div class="hero__overlay">
-            <h1 class="hero__title"><?= htmlspecialchars($page['title'] ?? '') ?></h1>
-        </div>
-    </div>
-</section>
