@@ -7,7 +7,15 @@ use App\Core\App;
  */
 function url(string $path = ''): string {
     $base = rtrim(App::getInstance()->config()->get('base_url', ''), '/');
-    return $base . '/' . ltrim($path, '/');
+    $fullPath = $base . '/' . ltrim($path, '/');
+    
+    $filePath = dirname(__DIR__) . '/public/' . ltrim($path, '/');
+    if (file_exists($filePath)) {
+        $version = filemtime($filePath);
+        $fullPath .= '?v=' . $version;
+    }
+    
+    return $fullPath;
 }
 
 /**

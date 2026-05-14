@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= htmlspecialchars($page['description'] ?? '') ?>">
     <meta name="keywords" content="Wonnegauer Designwerkstatt, Ternis, Designwerkstatt Ternis, Designwerkstatt, Brigitte Ternis, Wolfgang Ternis, Design Flörsheim-Dalsheim, Kunst Flörsheim-Dalsheim, Kultur Flörsheim-Dalsheim, Tourismus Flörsheim-Dalsheim, Gästeführung Flörsheim-Dalsheim, Atelier, Atelier Ternis, Kunst in Rheinhessen, Kunst im Wonnegau, Rheinhessen, Wonnegau, VG Monsheim, Rheinland-Pfalz">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= url($page['slug']) ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($config['site_name']) ?><?= !empty($page['title']) ? ' – ' . htmlspecialchars($page['title']) : '' ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($page['description'] ?? '') ?>">
+    <meta property="og:image" content="<?= url('assets/img/logo1.jpg') ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= url($page['slug']) ?>">
+    <meta property="twitter:title" content="<?= htmlspecialchars($config['site_name']) ?><?= !empty($page['title']) ? ' – ' . htmlspecialchars($page['title']) : '' ?>">
+    <meta property="twitter:description" content="<?= htmlspecialchars($page['description'] ?? '') ?>">
+    <meta property="twitter:image" content="<?= url('assets/img/logo1.jpg') ?>">
+
     <title>
         <?= htmlspecialchars($config['site_name']) ?>
         <?php if (!empty($page['title'])): ?>
