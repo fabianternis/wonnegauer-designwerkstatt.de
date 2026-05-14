@@ -1,25 +1,29 @@
 <?php
 
+use App\Core\App;
+
 /**
  * Returns the base URL with an optional path appended.
  */
 function url(string $path = ''): string {
-    global $config;
-    $base = rtrim($config['base_url'] ?? '', '/');
-    return $base . '/' . ltrim($path, '/');
+    $base = rtrim(App::getInstance()->config()->get('base_url', ''), '/');
+    $fullPath = $base . '/' . ltrim($path, '/');
+    
+    $filePath = dirname(__DIR__) . '/public/' . ltrim($path, '/');
+    if (file_exists($filePath)) {
+        $version = filemtime($filePath);
+        $fullPath .= '?v=' . $version;
+    }
+    
+    return $fullPath;
 }
 
 /**
  * Renders a view file from the /views directory.
  * Passes $page and $config into scope.
  */
-function render_view(string $view, array $page, array $config): void {
-    $file = __DIR__ . '/views/' . $view . '.php';
-    if (file_exists($file)) {
-        include $file;
-    } else {
-        echo '<p>View "' . htmlspecialchars($view) . '" nicht gefunden.</p>';
-    }
+function render_view(string $view, array $page): void {
+    App::getInstance()->view()->render($view, $page);
 }
 
 /**
@@ -32,17 +36,7 @@ function is_active(string $slug): bool {
 
 /**
  * Access a value from the global $config array using dot notation.
- * e.g. config('site_name'), config('pages.index.title')
  */
 function config(string $key, mixed $default = null): mixed {
-    global $config;
-    $keys  = explode('.', $key);
-    $value = $config;
-    foreach ($keys as $k) {
-        if (!is_array($value) || !array_key_exists($k, $value)) {
-            return $default;
-        }
-        $value = $value[$k];
-    }
-    return $value;
+    return App::getInstance()->config()->get($key, $default);
 }
