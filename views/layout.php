@@ -16,7 +16,10 @@
 </head>
 <body>
     <div id="page-loader" class="loader-overlay">
-        <div class="loader-spinner"></div>
+        <div class="loader-content">
+            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="Wonnegauer Designwerkstatt" class="loader-logo">
+            <div class="loader-spinner"></div>
+        </div>
     </div>
 
     <?php include dirname(__DIR__) . '/components/header.php'; ?>

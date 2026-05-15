@@ -2,11 +2,19 @@
     // ── Page Loader & Transition ──────────────────────────────
     const loader = document.getElementById('page-loader');
     if (loader) {
+        const startTime = Date.now();
+        const minDuration = 1200; // Minimum 1.2 seconds for branding visibility
+
         window.addEventListener('load', () => {
-            loader.style.opacity = '0';
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minDuration - elapsedTime);
+
             setTimeout(() => {
-                loader.style.display = 'none';
-            }, 600);
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, remainingTime);
         });
     }
 
