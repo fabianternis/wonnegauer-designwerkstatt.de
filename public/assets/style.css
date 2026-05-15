@@ -1,10 +1,10 @@
 :root {
     /* Simple Editorial Palette */
     --clr-bg: #ffffff;
-    --clr-text: #1a1a1a;
-    --clr-muted: #666666;
-    --clr-accent: #333333;
-    --clr-border: #e0e0e0;
+    --clr-text: #111111;
+    --clr-muted: #555555;
+    --clr-accent: #222222;
+    --clr-border: #e8e8e8;
     
     /* Compact Spacing */
     --space-sm: 1rem;
@@ -14,10 +14,10 @@
 
     /* Typography */
     --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-body: 'Montserrat', sans-serif; /* New, cleaner but unique body font */
     
-    --radius: 4px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 2px;
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -32,14 +32,33 @@ body {
     font-family: var(--font-body);
     color: var(--clr-text);
     background-color: var(--clr-bg);
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+body.is-exiting {
+    opacity: 0;
 }
 
 a {
     color: inherit;
     text-decoration: none;
     transition: var(--transition);
+    cursor: default; /* Reset for general use */
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+/* Ensure all clickable elements have pointer */
+button, 
+.main-nav__link, 
+.cta-link, 
+.site-header__brand {
+    cursor: pointer !important;
 }
 
 img {
@@ -57,16 +76,32 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.loader-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-logo {
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+    z-index: 2;
 }
 
 .loader-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid var(--clr-text);
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #f0f0f0;
+    border-top: 1px solid var(--clr-text);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    z-index: 1;
 }
 
 @keyframes spin {
@@ -78,22 +113,22 @@ img {
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.1;
     margin-bottom: var(--space-md);
     color: var(--clr-text);
 }
 
-h1 { font-size: 3.5rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 1.75rem; }
+h1 { font-size: 3.8rem; }
+h2 { font-size: 2.8rem; }
+h3 { font-size: 1.8rem; }
 
 p { margin-bottom: 1.5rem; }
 
 /* ── Layout ───────────────────────────────────────────────── */
 .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
 }
 
 .site-main {
@@ -115,9 +150,9 @@ p { margin-bottom: 1.5rem; }
 .hero__image {
     width: 100%;
     height: auto;
-    max-height: 50vh;
+    max-height: 55vh;
     object-fit: cover;
-    background: #f5f5f5;
+    background: #f9f9f9;
 }
 
 .hero__overlay {
@@ -126,14 +161,14 @@ p { margin-bottom: 1.5rem; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .hero__title {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(3rem, 10vw, 6rem);
     color: #fff;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     margin: 0;
     font-style: italic;
     text-align: center;
@@ -147,39 +182,44 @@ p { margin-bottom: 1.5rem; }
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
 .site-header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 80px;
+    gap: 3rem; /* Prevents overlap */
 }
 
 .site-header__brand {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
-    text-decoration: none;
-    color: var(--clr-text);
-    padding: 0.5rem 0;
+    gap: 1.5rem;
+    flex-shrink: 0; /* Ensures brand doesn't shrink */
+    width: fit-content;
+    margin-right: -23px;
 }
 
 .site-header__logo {
-    height: 48px;
+    height: 52px;
     width: auto;
-    border-radius: var(--radius);
 }
 
 .site-header__title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     white-space: nowrap;
 }
 
-/* ── Navigation Links Rework ──────────────────────────────── */
+/* ── Navigation ───────────────────────────────────────────── */
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .main-nav__list {
     display: flex;
     align-items: center;
@@ -188,19 +228,18 @@ p { margin-bottom: 1.5rem; }
 }
 
 .main-nav__link {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     color: var(--clr-muted);
     font-weight: 600;
-    padding: 0.6rem 1rem;
-    border-radius: 20px;
-    background: transparent;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
 }
 
 .main-nav__link:hover {
     color: var(--clr-text);
-    background: #f5f5f5;
+    background: #f9f9f9;
 }
 
 .main-nav__link--active {
@@ -208,27 +247,49 @@ p { margin-bottom: 1.5rem; }
     background: var(--clr-text);
 }
 
+/* ── Mobile Nav Toggle ────────────────────────────────────── */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    flex-shrink: 0;
+}
+
+.nav-toggle__bar {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--clr-text);
+    transition: var(--transition);
+}
+
 /* ── Image "Cards" Styles ─────────────────────────────────── */
 .img-card {
     background: #fff;
-    padding: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 12px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
     border: 1px solid var(--clr-border);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
     position: relative;
     z-index: 1;
+    width: fit-content;
 }
 
 .img-card:hover {
-    transform: scale(1.02) rotate(0deg) !important;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transform: scale(1.03) rotate(0deg) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     z-index: 2;
 }
 
 /* Random rotations using child selectors */
-.img-card-container > *:nth-child(odd) .img-card { transform: rotate(-1.5deg); }
-.img-card-container > *:nth-child(even) .img-card { transform: rotate(1.5deg); }
-.img-card-container > *:nth-child(3n) .img-card { transform: rotate(2deg); }
+.img-card-container > *:nth-child(odd) .img-card { transform: rotate(-2deg); }
+.img-card-container > *:nth-child(even) .img-card { transform: rotate(2deg); }
+.img-card-container > *:nth-child(3n) .img-card { transform: rotate(1.5deg); }
 .img-card-container > *:nth-child(4n) .img-card { transform: rotate(-2.5deg); }
 
 /* ── Home Page Sections & CTAs ────────────────────────────── */
@@ -242,63 +303,72 @@ p { margin-bottom: 1.5rem; }
 .cta-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 1rem 2rem;
+    letter-spacing: 2px;
+    padding: 1.1rem 2.5rem;
     background: var(--clr-text);
     color: #fff;
-    border-radius: 30px;
+    border-radius: 4px;
     margin-top: 1.5rem;
 }
 
-.cta-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.cta-link span {
+    transition: transform 0.3s ease;
+}
+
+.cta-link:hover span {
+    transform: translateX(8px); /* Horizontal move as requested */
 }
 
 /* ── Grid Layouts ─────────────────────────────────────────── */
 .img-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
     padding: 1rem;
 }
 
 /* ── Footer ───────────────────────────────────────────────── */
 .site-footer {
-    padding: var(--space-xl) 0; /* Significantly higher */
-    background: #fafafa;
+    padding: var(--space-xl) 0;
+    background: #fcfcfc;
     border-top: 1px solid var(--clr-border);
     text-align: center;
     color: var(--clr-muted);
     font-size: 0.95rem;
-    line-height: 2;
+    line-height: 2.2;
 }
 
 .footer-nav {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
 }
 
 .footer-nav ul {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 4rem;
     list-style: none;
 }
 
 .site-footer__copy {
-    margin-top: 3rem;
-    font-size: 0.8rem;
-    opacity: 0.6;
-    letter-spacing: 1px;
+    margin-top: 4rem;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 /* ── Mobile Responsive ────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+    .site-header__title { font-size: 1.3rem; }
+    .site-header__inner { gap: 1.5rem; }
+}
+
+@media (max-width: 850px) {
     .site-header__title { display: none; }
 }
 
@@ -314,11 +384,14 @@ p { margin-bottom: 1.5rem; }
         justify-content: center;
         align-items: center;
         transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         z-index: 1050;
     }
 
     .main-nav--open { transform: translateX(0); }
-    .main-nav__list { flex-direction: column; gap: 1.5rem; }
-    .main-nav__link { font-size: 1.1rem; padding: 0.8rem 2rem; }
+    .main-nav__list { flex-direction: column; gap: 2rem; }
+    .main-nav__link { font-size: 1.3rem; padding: 1rem 3rem; }
+
+    .img-card-container { gap: 2rem; }
+    h1 { font-size: 2.8rem; }
 }

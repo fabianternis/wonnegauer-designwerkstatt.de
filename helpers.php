@@ -4,12 +4,15 @@ use App\Core\App;
 
 /**
  * Returns the base URL with an optional path appended.
+ * Includes automatic cache busting.
  */
 function url(string $path = ''): string {
     $base = rtrim(App::getInstance()->config()->get('base_url', ''), '/');
     $fullPath = $base . '/' . ltrim($path, '/');
     
-    $filePath = dirname(__DIR__) . '/public/' . ltrim($path, '/');
+    // Fix: Use __DIR__ to point to the correct public directory
+    $filePath = __DIR__ . '/public/' . ltrim($path, '/');
+    
     if (file_exists($filePath)) {
         $version = filemtime($filePath);
         $fullPath .= '?v=' . $version;
@@ -20,7 +23,7 @@ function url(string $path = ''): string {
 
 /**
  * Renders a view file from the /views directory.
- * Passes $page and $config into scope.
+ * Passes $page into scope.
  */
 function render_view(string $view, array $page): void {
     App::getInstance()->view()->render($view, $page);

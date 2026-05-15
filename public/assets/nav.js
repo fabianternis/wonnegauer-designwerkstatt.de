@@ -1,14 +1,42 @@
 (function () {
-    // ── Page Loader ───────────────────────────────────────────
+    // ── Page Loader & Transition ──────────────────────────────
     const loader = document.getElementById('page-loader');
     if (loader) {
+        const startTime = Date.now();
+        const minDuration = 1200; // Minimum 1.2 seconds for branding visibility
+
         window.addEventListener('load', () => {
-            loader.style.opacity = '0';
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minDuration - elapsedTime);
+
             setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, remainingTime);
         });
     }
+
+    // Smooth internal page transitions
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && 
+            link.href && 
+            link.href.startsWith(window.location.origin) && 
+            !link.getAttribute('target') && 
+            !link.href.includes('#')) {
+            
+            e.preventDefault();
+            const targetUrl = link.href;
+            
+            document.body.classList.add('is-exiting');
+            
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 400);
+        }
+    });
 
     // ── Navigation ────────────────────────────────────────────
     const toggle = document.querySelector('.nav-toggle');
@@ -48,7 +76,6 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('SW registered', reg))
                 .catch(err => console.log('SW registration failed', err));
         });
     }

@@ -11,7 +11,7 @@
                 <h2>Willkommen in der Designwerkstatt</h2>
                 <p>Wir, Brigitte und Wolfgang Ternis, laden Sie ein, die Verbindung von Design, Kunst und Kultur in der malerischen Kulisse von Flörsheim-Dalsheim zu entdecken.</p>
                 <p>An unserem Standort im Wonnegau fördern wir Kreativität und Lebensqualität durch eigenes Schaffen und inspirierende Begegnungen.</p>
-                <a href="<?= url('wir') ?>" class="cta-link">Mehr über uns &rarr;</a>
+                <a href="<?= url('wir') ?>" class="cta-link">Mehr über uns <span>&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -28,7 +28,7 @@
             <div style="order: 1;">
                 <h2>Gästeführungen & Radwanderungen</h2>
                 <p>Entdecken Sie die Schönheit Rheinhessens und des Wonnegaus auf ganz besondere Weise. Wir bieten fachkundige Führungen zu Fuß oder mit dem Rad an.</p>
-                <a href="<?= url('termine') ?>" class="cta-link">Termine & Führungen &rarr;</a>
+                <a href="<?= url('termine') ?>" class="cta-link">Termine & Führungen <span>&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -38,8 +38,8 @@
             <h2>Aktuelles & Termine</h2>
             <p>Bleiben Sie informiert über unsere neuesten Ausstellungen, Veranstaltungen und geführten Touren durch die Region.</p>
             <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <a href="<?= url('aktuell') ?>" class="cta-link">Aktuelles &rarr;</a>
-                <a href="<?= url('termine') ?>" class="cta-link">Alle Termine &rarr;</a>
+                <a href="<?= url('aktuell') ?>" class="cta-link">Aktuelles <span>&rarr;</span></a>
+                <a href="<?= url('termine') ?>" class="cta-link">Alle Termine <span>&rarr;</span></a>
             </div>
         </div>
     </section>
