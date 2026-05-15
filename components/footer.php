@@ -12,8 +12,9 @@
         
         <p class="site-footer__copy">&copy; <?= date('Y') ?> <?= htmlspecialchars($config['site_name']) ?></p>
 
-        <div style="margin-top: 2rem; text-align: center;">
-            <img src="<?= url('assets/img/banners/TOP.jpg') ?>" alt="Wonnegauer Designwerkstatt" style="max-width: 100%; height: auto;">
-        </div>
+    </div>
+
+    <div style="margin-top: 2rem; width: 100%;">
+        <img src="<?= url('assets/img/banners/TOP.jpg') ?>" alt="Wonnegauer Designwerkstatt" style="width: 100%; display: block; object-fit: cover;">
     </div>
 </footer>
