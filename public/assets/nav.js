@@ -79,4 +79,57 @@
                 .catch(err => console.log('SW registration failed', err));
         });
     }
+
+    // ── Cookie Banner ──────────────────────────────────────────
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptBtn   = document.getElementById('cookie-accept');
+    const declineBtn  = document.getElementById('cookie-decline');
+    const settingsBtn = document.getElementById('open-cookie-settings');
+
+    const setConsent = (status) => {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
+        document.cookie = `cookie_consent=${status};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+        
+        if (cookieBanner) {
+            cookieBanner.style.opacity = '0';
+            cookieBanner.style.transform = 'translateY(20px)';
+            document.body.classList.remove('has-cookie-banner');
+            
+            setTimeout(() => {
+                cookieBanner.remove();
+                window.location.reload(); // Reload always to apply/remove fonts
+            }, 400);
+        }
+    };
+
+    if (acceptBtn) acceptBtn.addEventListener('click', () => setConsent('accepted'));
+    if (declineBtn) declineBtn.addEventListener('click', () => setConsent('declined'));
+
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.cookie = "cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax";
+            window.location.reload();
+        });
+    }
+
+    // ── Scroll to Top ──────────────────────────────────────────
+    const scrollTopBtn = document.getElementById('scroll-top');
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('scroll-top--visible');
+            } else {
+                scrollTopBtn.classList.remove('scroll-top--visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 })();

@@ -6,15 +6,16 @@
     <meta name="description" content="<?= htmlspecialchars($page['description'] ?? '') ?>">
     <title><?= htmlspecialchars($config['site_name']) ?><?= !empty($page['title']) ? ' – ' . htmlspecialchars($page['title']) : '' ?></title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- New Fonts: Playfair Display for headings, Montserrat for a unique body feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <?php if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] === 'accepted'): ?>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <?php endif; ?>
     
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
     <link rel="icon" type="image/jpeg" href="<?= url('assets/img/logo1.jpg') ?>">
 </head>
-<body>
+<body class="<?= !isset($_COOKIE['cookie_consent']) ? 'has-cookie-banner' : '' ?>">
     <div id="page-loader" class="loader-overlay">
         <div class="loader-content">
             <img src="<?= url('assets/img/logo1.jpg') ?>" alt="Wonnegauer Designwerkstatt" class="loader-logo">
@@ -31,6 +32,30 @@
     </main>
 
     <?php include dirname(__DIR__) . '/components/footer.php'; ?>
+
+    <?php if (!isset($_COOKIE['cookie_consent'])): ?>
+        <div id="cookie-banner" class="cookie-banner">
+            <div class="container cookie-banner__inner">
+                <div class="cookie-banner__content">
+                    <p>
+                        Wir verwenden Google Fonts, um die Gestaltung unserer Website zu verbessern. Mit Ihrer Zustimmung laden wir diese Schriften extern nach. 
+                        Weitere Informationen finden Sie in unserer <a href="<?= url('impressum') ?>#datenschutz" class="cookie-banner__link">Datenschutzerklärung</a>.
+                    </p>
+                </div>
+                <div class="cookie-banner__actions">
+                    <button id="cookie-accept" class="btn btn--primary">Akzeptieren</button>
+                    <button id="cookie-decline" class="btn btn--primary">Ablehnen</button>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <button id="scroll-top" class="scroll-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
     <script src="<?= url('assets/nav.js') ?>"></script>
 </body>
 </html>

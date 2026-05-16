@@ -13,7 +13,7 @@ function url(string $path = ''): string {
     // Fix: Use __DIR__ to point to the correct public directory
     $filePath = __DIR__ . '/public/' . ltrim($path, '/');
     
-    if (file_exists($filePath)) {
+    if (!empty($path) && file_exists($filePath) && !is_dir($filePath)) {
         $version = filemtime($filePath);
         $fullPath .= '?v=' . $version;
     }
