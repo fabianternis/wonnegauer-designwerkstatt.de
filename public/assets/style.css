@@ -27,6 +27,7 @@ html {
     font-size: 15px;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 80px; /* Offset for sticky header */
 }
 
 body {
@@ -37,7 +38,7 @@ body {
     -webkit-font-smoothing: antialiased;
     opacity: 1;
     transition: opacity 0.4s ease;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */ /* Removing this as it can break sticky on some browsers */
 }
 
 body.is-exiting {
