@@ -8,16 +8,23 @@
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <?php 
                 $domain = parse_url($item['url'], PHP_URL_HOST);
-                $faviconUrl = "https://www.google.com/s2/favicons?domain={$domain}&sz=128&default_icon=404";
+                $localFavicon = "assets/img/favicons/{$domain}.png";
+                $faviconExists = file_exists(dirname(__DIR__) . "/public/" . $localFavicon);
             ?>
             <article class="link-item">
                 <a href="<?= htmlspecialchars($item['url']) ?>" target="_blank" rel="noopener noreferrer" class="link-item__card img-card">
                     <div class="link-item__content">
                         <div class="link-item__icon">
-                            <img src="<?= $faviconUrl ?>" 
-                                 alt="" 
-                                 onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\' width=\'32\' height=\'32\' stroke=\'currentColor\' stroke-width=\'1.5\' fill=\'none\'><path d=\'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\'></path><path d=\'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\'></path></svg>';"
-                                 style="width: 48px; height: 48px; object-fit: contain;">
+                            <?php if ($faviconExists): ?>
+                                <img src="<?= url($localFavicon) ?>" 
+                                     alt="" 
+                                     style="width: 48px; height: 48px; object-fit: contain;">
+                            <?php else: ?>
+                                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            <?php endif; ?>
                         </div>
                         <div class="link-item__text">
                             <h3 class="link-item__title"><?= htmlspecialchars($item['titel'] ?? 'Link') ?></h3>
