@@ -40,7 +40,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section id="datenschutz" class="section">
         <div class="card">
             <h2>Datenschutzerklärung</h2>
             <p>Wir verarbeiten personenbezogene Daten ausschließlich zu den in dieser Erklärung genannten Zwecken. Eine Weitergabe an Dritte erfolgt nicht, es sei denn, dies ist zur Vertragserfüllung, aufgrund gesetzlicher Verpflichtung oder mit Ihrer ausdrücklichen Einwilligung erforderlich.</p>

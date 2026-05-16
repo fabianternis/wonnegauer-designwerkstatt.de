@@ -272,6 +272,16 @@ p { margin-bottom: 1.5rem; }
     transition: var(--transition);
 }
 
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
 /* ── Image "Cards" Styles ─────────────────────────────────── */
 .img-card {
     background: #fff;
@@ -464,6 +474,10 @@ p { margin-bottom: 1.5rem; }
     color: var(--clr-text);
     text-decoration: underline;
     font-weight: 600;
+}
+
+.cookie-banner__link:hover {
+    color: var(--clr-muted);
 }
 
 .cookie-banner__actions {
