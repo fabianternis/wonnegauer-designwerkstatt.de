@@ -40,12 +40,26 @@
         </div>
     </section>
 
-    <section class="section">
+    <section id="datenschutz" class="section">
         <div class="card">
             <h2>Datenschutzerklärung</h2>
-            <p>Wir verarbeiten personenbezogene Daten ausschließlich zu den in dieser Erklärung genannten Zwecken. Eine Weitergabe an Dritte erfolgt nicht, es sei denn, dies ist zur Vertragserfüllung, aufgrund gesetzlicher Verpflichtung oder mit Ihrer ausdrücklichen Einwilligung erforderlich.</p>
-            <p>Diese Website verwendet keine Tracking-Cookies und keine Analyse- oder Werbedienste Dritter (z. B. Google Analytics).</p>
-            <a href="#" style="color: var(--clr-secondary); font-weight: bold;">Vollständige Datenschutzerklärung lesen</a>
+            <h3 style="font-size: 1.25rem;">1. Datenschutz auf einen Blick</h3>
+            <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            
+            <h3 style="font-size: 1.25rem; margin-top: var(--space-lg);">2. Datenerfassung auf unserer Website</h3>
+            <p><strong>Server-Log-Dateien:</strong> Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+            
+            <h3 style="font-size: 1.25rem; margin-top: var(--space-lg);">3. Externe Dienste (Google Fonts)</h3>
+            <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts von Google. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Web Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen.</p>
+            <p><strong>Hinweis:</strong> Die Nutzung von Google Fonts erfolgt nur, wenn Sie über unseren Cookie-Banner ausdrücklich zugestimmt haben. Durch die Zustimmung wird eine Verbindung zu den Servern von Google hergestellt. Dabei kann Google erfahren, dass über Ihre IP-Adresse unsere Website aufgerufen wurde.</p>
+            <p>Wenn Sie der Nutzung nicht zustimmen, werden Standard-Schriftarten Ihres Computers verwendet, um Ihre Privatsphäre zu schützen.</p>
+
+            <h3 style="font-size: 1.25rem; margin-top: var(--space-lg);">4. Ihre Rechte</h3>
+            <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.</p>
+            
+            <div style="margin-top: var(--space-lg);">
+                <button onclick="document.getElementById('open-cookie-settings').click()" class="btn btn--secondary" style="font-size: 0.8rem;">Cookie-Einstellungen ändern</button>
+            </div>
         </div>
     </section>
 </div>
