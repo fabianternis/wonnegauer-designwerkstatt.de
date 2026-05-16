@@ -1,17 +1,17 @@
-const CACHE_NAME = 'wonnegauer-cache-v1';
-const ASSETS_TO_CACHE = [
-    '/',
+const CACHE_NAME = 'wdw-cache-v2';
+const STATIC_ASSETS = [
     '/assets/style.css',
     '/assets/nav.js',
     '/assets/img/logo1.jpg',
-    'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap'
+    '/assets/img/banners/DEFAULT.jpg'
 ];
 
-// Install event: cache assets
+// Install event: cache static assets
 self.addEventListener('install', (event) => {
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(ASSETS_TO_CACHE);
+            return cache.addAll(STATIC_ASSETS);
         })
     );
 });
@@ -31,12 +31,35 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch event: serve from cache or network
+// Fetch event: 
+// - Network First for HTML/Documents (ensures cookie consent is respected)
+// - Cache First for static assets
 self.addEventListener('fetch', (event) => {
+    const request = event.request;
+
+    // Network First for page requests
+    if (request.mode === 'navigate' || (request.method === 'GET' && request.headers.get('accept').includes('text/html'))) {
+        event.respondWith(
+            fetch(request)
+                .then((response) => {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+                    return response;
+                })
+                .catch(() => caches.match(request))
+        );
+        return;
+    }
+
+    // Cache First for static assets
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request).then((fetchResponse) => {
-                // Optionally cache new requests here
+        caches.match(request).then((response) => {
+            return response || fetch(request).then((fetchResponse) => {
+                // Optionally cache images or other assets on the fly
+                if (request.url.includes('/assets/img/')) {
+                    const copy = fetchResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+                }
                 return fetchResponse;
             });
         })

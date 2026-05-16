@@ -107,7 +107,16 @@
         }
 
         if (reload) {
-            window.location.reload();
+            // Clear SW cache and reload to ensure fresh state
+            if ('caches' in window) {
+                caches.keys().then((names) => {
+                    Promise.all(names.map(name => caches.delete(name))).then(() => {
+                        window.location.reload();
+                    });
+                });
+            } else {
+                window.location.reload();
+            }
         }
     };
 
