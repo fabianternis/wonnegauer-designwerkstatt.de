@@ -82,16 +82,19 @@
 
     // ── Cookie Management ─────────────────────────────────────
     const cookieBanner = document.getElementById('cookie-banner');
+    const bannerClose  = document.getElementById('cookie-banner-close');
     const cookieModal  = document.getElementById('cookie-modal');
     const acceptBtn    = document.getElementById('cookie-accept');
     const declineBtn   = document.getElementById('cookie-decline');
+    const openSettings = document.getElementById('cookie-open-settings');
     const settingsBtn  = document.getElementById('open-cookie-settings');
     const saveBtn      = document.getElementById('save-cookie-settings');
+    const resetBtn     = document.getElementById('reset-cookie-settings');
     const closeModal   = document.querySelector('.modal__close');
     const modalOverlay = document.querySelector('.modal__overlay');
     const fontToggle   = document.getElementById('toggle-google-fonts');
 
-    const setConsent = (status) => {
+    const setConsent = (status, reload = true) => {
         const expires = new Date();
         expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
         document.cookie = `cookie_consent=${status};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
@@ -103,7 +106,9 @@
             setTimeout(() => cookieBanner.remove(), 400);
         }
 
-        window.location.reload();
+        if (reload) {
+            window.location.reload();
+        }
     };
 
     const openModal = () => {
@@ -118,6 +123,13 @@
 
     if (acceptBtn) acceptBtn.addEventListener('click', () => setConsent('accepted'));
     if (declineBtn) declineBtn.addEventListener('click', () => setConsent('declined'));
+    if (openSettings) openSettings.addEventListener('click', openModal);
+    
+    if (bannerClose) {
+        bannerClose.addEventListener('click', () => {
+            setConsent('dismissed', false);
+        });
+    }
 
     if (settingsBtn) {
         settingsBtn.addEventListener('click', (e) => {
@@ -132,6 +144,13 @@
     if (saveBtn && fontToggle) {
         saveBtn.addEventListener('click', () => {
             setConsent(fontToggle.checked ? 'accepted' : 'declined');
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            document.cookie = "cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax";
+            window.location.reload();
         });
     }
 

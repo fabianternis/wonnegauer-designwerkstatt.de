@@ -35,6 +35,7 @@
 
     <?php if (!isset($_COOKIE['cookie_consent'])): ?>
         <div id="cookie-banner" class="cookie-banner">
+            <button id="cookie-banner-close" class="cookie-banner__close" aria-label="Banner schließen">&times;</button>
             <div class="container cookie-banner__inner">
                 <div class="cookie-banner__content">
                     <p>
@@ -45,6 +46,7 @@
                 <div class="cookie-banner__actions">
                     <button id="cookie-accept" class="btn btn--primary">Akzeptieren</button>
                     <button id="cookie-decline" class="btn btn--primary">Ablehnen</button>
+                    <button id="cookie-open-settings" class="btn btn--secondary">Einstellungen</button>
                 </div>
             </div>
         </div>
@@ -84,6 +86,7 @@
                 </div>
             </div>
             <div class="modal__footer">
+                <button id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Einstellungen zurücksetzen</button>
                 <button id="save-cookie-settings" class="btn btn--primary">Einstellungen speichern</button>
             </div>
         </div>

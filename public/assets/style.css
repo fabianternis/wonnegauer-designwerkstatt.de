@@ -452,9 +452,22 @@ p { margin-bottom: 1.5rem; }
     right: 0;
     background: #fff;
     border-top: 1px solid var(--clr-border);
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     z-index: 2000;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+}
+
+.cookie-banner__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--clr-muted);
+    padding: 0.5rem;
+    line-height: 1;
 }
 
 .cookie-banner__inner {
