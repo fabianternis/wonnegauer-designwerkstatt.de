@@ -27,6 +27,7 @@ html {
     font-size: 15px;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 80px; /* Offset for sticky header */
 }
 
 body {
@@ -37,7 +38,7 @@ body {
     -webkit-font-smoothing: antialiased;
     opacity: 1;
     transition: opacity 0.4s ease;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */ /* Removing this as it can break sticky on some browsers */
 }
 
 body.is-exiting {
@@ -463,11 +464,17 @@ p { margin-bottom: 1.5rem; }
     right: 1rem;
     background: none;
     border: none;
-    font-size: 1.5rem;
     cursor: pointer;
     color: var(--clr-muted);
     padding: 0.5rem;
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.cookie-banner__close:hover {
+    color: var(--clr-text);
 }
 
 .cookie-banner__inner {
@@ -622,6 +629,70 @@ body.has-cookie-banner .scroll-top {
     border-top: 1px solid var(--clr-border);
     display: flex;
     justify-content: flex-end;
+    gap: 1rem; /* Added gap between buttons */
+}
+
+/* Link Items UI/UX */
+.link-item {
+    display: block;
+    width: 100%;
+}
+
+.link-item__card {
+    display: block;
+    width: 100% !important;
+    padding: 1.5rem !important;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-item__content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.link-item__icon {
+    width: 56px;
+    height: 56px;
+    background: #fcfcfc;
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.link-item__text {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.link-item__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.link-item__url {
+    font-size: 0.85rem;
+    color: var(--clr-muted);
+    font-weight: 600;
+}
+
+.link-item__arrow {
+    color: var(--clr-border);
+    transition: var(--transition);
+}
+
+.link-item__card:hover .link-item__arrow {
+    color: var(--clr-text);
+    transform: translate(3px, -3px);
 }
 
 /* Cookie Options in Modal */

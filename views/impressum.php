@@ -12,20 +12,26 @@
                 Plenzer 6<br>
                 67592 Flörsheim-Dalsheim<br>
                 <br>
-                Telefon: <a href="tel:+4962435649" style="color: var(--clr-secondary);">06243 / 56 49</a><br>
-                E-Mail: <a href="mailto:wdw@xpsystems.de" style="color: var(--clr-secondary);">wdw@xpsystems.de</a><br>
-                Web: <a href="https://www.wonnegauer-designwerkstatt.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary);">www.wonnegauer-designwerkstatt.de</a>
+                Telefon: <a href="tel:+4962435649" style="color: var(--clr-secondary); font-weight: 600;">06243 / 56 49</a><br>
+                E-Mail: <a href="mailto:wdw@xpsystems.de" style="color: var(--clr-secondary); font-weight: 600;">wdw@xpsystems.de</a><br>
+                Legal-Kontakt: <a href="mailto:rechliches@ternismail.de" style="color: var(--clr-secondary); font-weight: 600;">rechliches@ternismail.de</a><br>
+                Web: <a href="https://www.wonnegauer-designwerkstatt.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary); font-weight: 600;">www.wonnegauer-designwerkstatt.de</a>
             </address>
         </section>
 
         <section class="card">
             <h2>Webdesign & Technik</h2>
-            <p style="line-height: 1.8;">
-                <strong>Webdesign und Webentwicklung:</strong><br>
-                <a href="https://xpsystems.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary);">xpsystems.eu / .de</a><br>
-                <strong>Domain management:</strong><br>
-                <a href="https://dnbx.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary);">dnbx.de</a>
-            </p>
+            <div style="line-height: 1.8;">
+                <p>
+                    <strong>Webdesign und Webentwicklung:</strong><br>
+                    <a href="https://xpsystems.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary); font-weight: 600;">xpsystems.eu</a> & 
+                    <a href="https://ternis-edv.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary); font-weight: 600;">ternis-edv.de</a>
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Domain management:</strong><br>
+                    <a href="https://dnbx.de" target="_blank" rel="noopener noreferrer" style="color: var(--clr-secondary); font-weight: 600;">dnbx.de</a> by ternis-edv.de
+                </p>
+            </div>
         </section>
     </div>
 

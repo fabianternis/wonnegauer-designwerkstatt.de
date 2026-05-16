@@ -35,7 +35,12 @@
 
     <?php if (!isset($_COOKIE['cookie_consent'])): ?>
         <div id="cookie-banner" class="cookie-banner">
-            <button id="cookie-banner-close" class="cookie-banner__close" aria-label="Banner schließen">&times;</button>
+            <button id="cookie-banner-close" class="cookie-banner__close" aria-label="Banner schließen">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
             <div class="container cookie-banner__inner">
                 <div class="cookie-banner__content">
                     <p>
@@ -64,7 +69,12 @@
         <div class="modal__content">
             <div class="modal__header">
                 <h2>Cookie-Einstellungen</h2>
-                <button class="modal__close" aria-label="Schließen">&times;</button>
+                <button class="modal__close" aria-label="Schließen">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
             <div class="modal__body">
                 <p>Hier können Sie festlegen, welche externen Dienste Sie auf dieser Website zulassen möchten.</p>
