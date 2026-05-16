@@ -56,6 +56,39 @@
         </svg>
     </button>
 
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-modal" class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Cookie-Einstellungen</h2>
+                <button class="modal__close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="modal__body">
+                <p>Hier können Sie festlegen, welche externen Dienste Sie auf dieser Website zulassen möchten.</p>
+                <div class="cookie-option">
+                    <div class="cookie-option__info">
+                        <strong>Essenziell (Immer aktiv)</strong>
+                        <p>Diese Cookies sind für den technischen Betrieb der Website notwendig (z.B. Speicherung Ihrer Cookie-Einstellungen).</p>
+                    </div>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option__info">
+                        <strong>Google Fonts (Optional)</strong>
+                        <p>Ermöglicht das Laden von Schriftarten von Google-Servern für ein schöneres Design. Bei Deaktivierung werden Standard-Schriftarten verwendet.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-google-fonts" <?= (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] === 'accepted') ? 'checked' : '' ?>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <button id="save-cookie-settings" class="btn btn--primary">Einstellungen speichern</button>
+            </div>
+        </div>
+    </div>
+
     <script src="<?= url('assets/nav.js') ?>"></script>
 </body>
 </html>
