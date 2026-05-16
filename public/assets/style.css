@@ -333,7 +333,7 @@ p { margin-bottom: 1.5rem; }
 
 /* ── Footer ───────────────────────────────────────────────── */
 .site-footer {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 0 0;
     background: #fcfcfc;
     border-top: 1px solid var(--clr-border);
     text-align: center;
