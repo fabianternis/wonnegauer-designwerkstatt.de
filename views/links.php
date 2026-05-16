@@ -8,7 +8,7 @@
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <?php 
                 $domain = parse_url($item['url'], PHP_URL_HOST);
-                $faviconUrl = "https://www.google.com/s2/favicons?domain={$domain}&sz=128";
+                $faviconUrl = "https://www.google.com/s2/favicons?domain={$domain}&sz=128&default_icon=404";
             ?>
             <article class="link-item">
                 <a href="<?= htmlspecialchars($item['url']) ?>" target="_blank" rel="noopener noreferrer" class="link-item__card img-card">
