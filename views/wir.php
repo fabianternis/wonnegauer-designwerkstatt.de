@@ -10,7 +10,7 @@
             </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="grid">
             <div style="border-left: 2px solid var(--clr-text); padding-left: 1.5rem;">
                 <h2 style="font-style: italic; font-size: 1.75rem;">Brigitte</h2>
                 <p style="font-size: 0.95rem;">Nach fundierter kaufmännischer und betriebswirtschaftlicher Ausbildung entwickelte sich das Interesse an Kunst und Architektur sowie eigenem gestalterischem Schaffen immer stärker.</p>

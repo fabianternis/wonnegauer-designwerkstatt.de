@@ -1,7 +1,7 @@
 <div class="page-index">
 
     <section class="home-section">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center;">
+        <div class="responsive-grid" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
                     <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt">
@@ -17,7 +17,7 @@
     </section>
 
     <section class="home-section">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center;">
+        <div class="responsive-grid" style="align-items: center;">
             <div style="order: 2;">
                 <div class="img-card-container">
                     <div class="img-card">
