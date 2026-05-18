@@ -2,7 +2,7 @@
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: start;">
+                <div class="responsive-grid">
                     <div class="img-card-container">
                         <?php foreach ($item['bilder'] as $bild): ?>
                             <div class="img-card">
