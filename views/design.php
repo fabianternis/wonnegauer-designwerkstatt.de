@@ -11,7 +11,7 @@
                         <?php endforeach; ?>
                     </div>
                     <div>
-                        <p style="font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4;">
+                        <p class="quote-text">
                             <?= nl2br(htmlspecialchars($item['text'])) ?>
                         </p>
                     </div>

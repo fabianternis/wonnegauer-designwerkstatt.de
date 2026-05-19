@@ -6,7 +6,11 @@
     --clr-accent: #222222;
     --clr-border: #e8e8e8;
     
+    --clr-secondary: #0070f3; /* Assuming a default secondary color, check other files or set to something reasonable */
+    --clr-text-muted: #666666;
+
     /* Compact Spacing */
+    --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
     --space-lg: 3rem;
@@ -14,6 +18,7 @@
 
     /* Typography */
     --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --fw-medium: 500;
     --font-body: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     
     --radius: 2px;
@@ -827,3 +832,87 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+/* ── Modular Components ───────────────────────────────────── */
+
+/* General Utilities (avoiding pure Tailwind, focusing on semantic where possible or scoped helpers) */
+.text-center { text-align: center; }
+.text-muted { color: var(--clr-text-muted); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-1rem { margin-top: 1rem; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+
+/* Grid specific */
+.responsive-grid--centered { align-items: center; }
+.grid-item--order-1 { order: 1; }
+.grid-item--order-2 { order: 2; }
+
+/* Home */
+.home-section--centered { text-align: center; }
+.container--narrow { max-width: 800px; }
+.home-actions { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+
+/* Page Header */
+.page-header--centered { text-align: center; margin-bottom: var(--space-xl); }
+.page-header__title--large { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 0.5rem; }
+.page-header__subtitle { font-size: 1.1rem; color: var(--clr-muted); }
+
+/* Link Items */
+.link-item__favicon { width: 48px; height: 48px; object-fit: contain; }
+
+/* Termine */
+.termin-card__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-md); }
+.termin-card__title { font-size: 1.5rem; margin-bottom: 0; }
+.termin-card__date { color: var(--clr-secondary); font-weight: bold; }
+.termin-card__desc { color: var(--clr-text-muted); margin-bottom: var(--space-md); }
+.termin-card__meta { font-size: 0.9rem; font-weight: var(--fw-medium); }
+.termin-card__icon { display: inline; vertical-align: middle; margin-right: var(--space-xs); }
+.termin-empty { text-align: center; color: var(--clr-text-muted); }
+
+/* Team / Wir */
+.compact-feature--centered { text-align: center; max-width: 800px; margin: 0 auto var(--space-lg); }
+.compact-feature__text { font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0; }
+.team-member { border-left: 2px solid var(--clr-text); padding-left: 1.5rem; }
+.team-member__name { font-style: italic; font-size: 1.75rem; }
+.team-member__desc { font-size: 0.95rem; }
+
+/* Quotes */
+.quote-text { font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4; }
+
+/* Aktuell */
+.aktuell-lead { font-size: 1.1rem; margin-bottom: var(--space-md); }
+.aktuell-date { color: var(--clr-secondary); font-weight: bold; }
+
+/* Kontakt */
+.contact-title { font-size: 1.5rem; }
+.contact-address { font-style: normal; line-height: 2; }
+.contact-text { line-height: 2; }
+.contact-link { color: var(--clr-secondary); }
+
+/* Impressum */
+.impressum-address { font-style: normal; line-height: 1.8; }
+.impressum-link { color: var(--clr-secondary); font-weight: 600; }
+.impressum-text { line-height: 1.8; }
+.impressum-mt { margin-top: 1rem; }
+.impressum-section { margin-top: var(--space-xl); }
+.impressum-subtitle { font-size: 1.25rem; }
+.impressum-subtitle--spaced { font-size: 1.25rem; margin-top: var(--space-lg); }
+.impressum-actions { margin-top: var(--space-lg); }
+
+/* Buttons */
+.btn--small { font-size: 0.8rem; }
+.btn--reset { margin-right: auto; }
+
+/* Footer */
+.footer-credits { margin-top: 1rem; }
+.footer-link { text-decoration: underline; }
+.footer-banner { margin-top: 2rem; width: 100%; }
+.footer-banner__img { width: 100%; display: block; object-fit: cover; }
