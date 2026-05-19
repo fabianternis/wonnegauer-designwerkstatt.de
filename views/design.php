@@ -2,7 +2,7 @@
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: start;">
+                <div class="grid-editorial">
                     <div class="img-card-container">
                         <?php foreach ($item['bilder'] as $bild): ?>
                             <div class="img-card">
@@ -11,7 +11,7 @@
                         <?php endforeach; ?>
                     </div>
                     <div>
-                        <p style="font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4;">
+                        <p class="font-heading text-3xl font-italic lh-14">
                             <?= nl2br(htmlspecialchars($item['text'])) ?>
                         </p>
                     </div>
