@@ -1,0 +1,61 @@
+[Tue May 19 20:44:13 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Tue May 19 20:45:13 2026] [::1]:36800 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36800 [200]: GET /
+[Tue May 19 20:45:13 2026] [::1]:36800 Closing
+[Tue May 19 20:45:13 2026] [::1]:36814 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36830 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36836 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36814 [200]: GET /assets/style.css?v=1779223062
+[Tue May 19 20:45:13 2026] [::1]:36830 [200]: GET /assets/img/logo1.jpg?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36814 Closing
+[Tue May 19 20:45:13 2026] [::1]:36830 Closing
+[Tue May 19 20:45:13 2026] [::1]:36836 [200]: GET /assets/img/banners/index.jpg?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36836 Closing
+[Tue May 19 20:45:13 2026] [::1]:36842 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36842 [200]: GET /assets/img/index/1.jpg?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36842 Closing
+[Tue May 19 20:45:13 2026] [::1]:36850 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36850 [200]: GET /assets/img/index/lyon.JPG?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36850 Closing
+[Tue May 19 20:45:13 2026] [::1]:36866 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36870 Accepted
+[Tue May 19 20:45:13 2026] [::1]:36866 [200]: GET /assets/nav.js?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36870 [200]: GET /assets/img/banners/TOP.jpg?v=1779222745
+[Tue May 19 20:45:13 2026] [::1]:36866 Closing
+[Tue May 19 20:45:13 2026] [::1]:36870 Closing
+[Tue May 19 20:45:14 2026] [::1]:36884 Accepted
+[Tue May 19 20:45:14 2026] [::1]:36884 [200]: GET /sw.js
+[Tue May 19 20:45:14 2026] [::1]:36884 Closing
+[Tue May 19 20:45:14 2026] [::1]:36890 Accepted
+[Tue May 19 20:45:14 2026] [::1]:36890 [200]: GET /assets/style.css
+[Tue May 19 20:45:14 2026] [::1]:36890 Closing
+[Tue May 19 20:45:14 2026] [::1]:36902 Accepted
+[Tue May 19 20:45:14 2026] [::1]:36904 Accepted
+[Tue May 19 20:45:14 2026] [::1]:36902 [200]: GET /assets/nav.js
+[Tue May 19 20:45:14 2026] [::1]:36902 Closing
+[Tue May 19 20:45:14 2026] [::1]:36904 [200]: GET /assets/img/logo1.jpg
+[Tue May 19 20:45:14 2026] [::1]:36904 Closing
+[Tue May 19 20:45:14 2026] [::1]:36918 Accepted
+[Tue May 19 20:45:14 2026] [::1]:36918 [200]: GET /assets/img/banners/DEFAULT.jpg
+[Tue May 19 20:45:14 2026] [::1]:36918 Closing
+[Tue May 19 20:45:15 2026] [::1]:36920 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36920 [200]: GET /termine
+[Tue May 19 20:45:15 2026] [::1]:36920 Closing
+[Tue May 19 20:45:15 2026] [::1]:36928 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36938 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36940 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36928 [200]: GET /assets/style.css?v=1779223062
+[Tue May 19 20:45:15 2026] [::1]:36928 Closing
+[Tue May 19 20:45:15 2026] [::1]:36938 [200]: GET /assets/img/banners/DEFAULT.jpg?v=1779222745
+[Tue May 19 20:45:15 2026] [::1]:36938 Closing
+[Tue May 19 20:45:15 2026] [::1]:36940 [200]: GET /assets/img/logo1.jpg?v=1779222745
+[Tue May 19 20:45:15 2026] [::1]:36940 Closing
+[Tue May 19 20:45:15 2026] [::1]:36944 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36946 Accepted
+[Tue May 19 20:45:15 2026] [::1]:36944 [200]: GET /assets/img/banners/TOP.jpg?v=1779222745
+[Tue May 19 20:45:15 2026] [::1]:36944 Closing
+[Tue May 19 20:45:15 2026] [::1]:36946 [200]: GET /assets/nav.js?v=1779222745
+[Tue May 19 20:45:15 2026] [::1]:36946 Closing
+[Tue May 19 20:45:17 2026] [::1]:52976 Accepted
+[Tue May 19 20:45:17 2026] [::1]:52976 [200]: GET /sw.js
+[Tue May 19 20:45:17 2026] [::1]:52976 Closing

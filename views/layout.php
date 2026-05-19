@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="modal__footer">
-                <button id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Einstellungen zurücksetzen</button>
+                <button id="reset-cookie-settings" class="btn btn--secondary btn--reset">Einstellungen zurücksetzen</button>
                 <button id="save-cookie-settings" class="btn btn--primary">Einstellungen speichern</button>
             </div>
         </div>

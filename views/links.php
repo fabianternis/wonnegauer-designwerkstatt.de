@@ -1,7 +1,7 @@
 <div class="page-links">
-    <header class="page-header" style="text-align: center; margin-bottom: var(--space-xl);">
-        <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 0.5rem;">Links</h1>
-        <p style="font-size: 1.1rem; color: var(--clr-muted);">Interessante Seiten, Kooperationen und Empfehlungen aus der Region und darüber hinaus.</p>
+    <header class="page-header page-header--centered">
+        <h1 class="page-header__title--large">Links</h1>
+        <p class="page-header__subtitle">Interessante Seiten, Kooperationen und Empfehlungen aus der Region und darüber hinaus.</p>
     </header>
 
     <div class="img-card-container">
@@ -18,7 +18,7 @@
                             <?php if ($faviconExists): ?>
                                 <img src="<?= url($localFavicon) ?>" 
                                      alt="" 
-                                     style="width: 48px; height: 48px; object-fit: contain;">
+                                     class="link-item__favicon">
                             <?php else: ?>
                                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none">
                                     <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
