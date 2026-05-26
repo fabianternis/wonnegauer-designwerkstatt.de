@@ -257,8 +257,10 @@ p { margin-bottom: 1.5rem; }
 
 .main-nav__link--active,
 .main-nav__link.active {
-    color: #fff;
-    background: var(--clr-text);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: var(--clr-text);
 }
 
 /* ── Mobile Nav Toggle ────────────────────────────────────── */
@@ -317,7 +319,7 @@ p { margin-bottom: 1.5rem; }
 }
 
 .img-card:hover {
-    transform: scale(1.03) rotate(0deg) !important;
+    transform: scale(1.05) rotate(0deg) !important;
     box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     z-index: 2;
 }
@@ -418,6 +420,24 @@ p { margin-bottom: 1.5rem; }
     font-style: italic;
 }
 
+.aktuell-card-text {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+    color: var(--clr-text);
+}
+
+.aktuell-card-link {
+    color: var(--clr-secondary);
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.aktuell-card-link:hover {
+    text-decoration: underline;
+    color: var(--clr-text);
+}
+
 /* ── Card Component ───────────────────────────────────────── */
 .card {
     background: #fff;
@@ -467,7 +487,6 @@ p { margin-bottom: 1.5rem; }
 
 /* ── Mobile Responsive ────────────────────────────────────── */
 @media (max-width: 1024px) {
-    .site-header__title { font-size: 1.3rem; }
     .site-header__inner { gap: 1.5rem; }
 
     .nav-toggle {
@@ -517,7 +536,7 @@ p { margin-bottom: 1.5rem; }
     .main-nav__link { font-size: 1.3rem; padding: 1rem 3rem; }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1481px) {
     .site-header__title { display: none; }
 }
 
@@ -898,7 +917,8 @@ input:checked + .slider:before {
 }
 
 .kultur-img {
-    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     height: auto;
     object-fit: cover;
     aspect-ratio: auto;
@@ -920,11 +940,11 @@ input:checked + .slider:before {
     border-bottom: none;
 }
 
-.editorial-item:nth-child(even) .kunst-split {
+.editorial-item:nth-child(even) .editorial-split {
     flex-direction: row-reverse;
 }
 
-.kunst-description p {
+.editorial-description p {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-style: italic;
