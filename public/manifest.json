@@ -1,0 +1,21 @@
+{
+  "name": "Wonnegauer Designwerkstatt",
+  "short_name": "Designwerkstatt",
+  "description": "Wonnegauer Designwerkstatt \u2013 Brigitte und Wolfgang Ternis aus Fl\u00f6rsheim-Dalsheim. Kunst, Kultur, Design und G\u00e4stef\u00fchrungen in Rheinhessen.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/assets/img/logo1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/assets/img/logo1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

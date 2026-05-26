@@ -21,14 +21,14 @@
         <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
             <ul class="main-nav__list">
                 <li class="main-nav__item">
-                    <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active' : '' ?>">Start</a>
+                    <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active active' : '' ?>">Start</a>
                 </li>
                 <?php foreach ($config['nav'] as $slug): ?>
                     <?php $navPage = $config['pages'][$slug] ?? null; ?>
                     <?php if ($navPage): ?>
                         <li class="main-nav__item">
                             <a href="<?= url($slug) ?>"
-                               class="main-nav__link<?= is_active($slug) ? ' main-nav__link--active' : '' ?>">
+                               class="main-nav__link<?= is_active($slug) ? ' main-nav__link--active active' : '' ?>">
                                 <?= htmlspecialchars($navPage['title']) ?>
                             </a>
                         </li>
