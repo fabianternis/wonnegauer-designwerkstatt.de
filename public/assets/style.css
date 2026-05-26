@@ -184,7 +184,7 @@ p { margin-bottom: 1.5rem; }
     border-bottom: 1px solid var(--clr-border);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1100;
 }
 
 .site-header__inner {
@@ -410,13 +410,7 @@ p { margin-bottom: 1.5rem; }
 @media (max-width: 1024px) {
     .site-header__title { font-size: 1.3rem; }
     .site-header__inner { gap: 1.5rem; }
-}
 
-@media (max-width: 850px) {
-    .site-header__title { display: none; }
-}
-
-@media (max-width: 768px) {
     .nav-toggle {
         display: flex;
         position: fixed;
@@ -441,12 +435,9 @@ p { margin-bottom: 1.5rem; }
         bottom: 7rem;
     }
 
-    /* Move scroll-top slightly above FAB if both visible */
+    /* Remove scroll-top on mobile/tablet to avoid overlapping and clutter */
     .scroll-top {
-        bottom: 6.5rem;
-    }
-    body.has-cookie-banner .scroll-top {
-        bottom: 11.5rem;
+        display: none !important;
     }
 
     .main-nav {
@@ -465,9 +456,20 @@ p { margin-bottom: 1.5rem; }
     .main-nav--open { transform: translateX(0); }
     .main-nav__list { flex-direction: column; gap: 2rem; }
     .main-nav__link { font-size: 1.3rem; padding: 1rem 3rem; }
+}
 
+@media (max-width: 1150px) {
+    .site-header__title { display: none; }
+}
+
+@media (max-width: 768px) {
     .img-card-container { gap: 2rem; }
     h1 { font-size: 2.8rem; }
+
+    .footer-nav ul {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
 }
 
 /* ── UI Components ───────────────────────────────────────── */
@@ -599,7 +601,7 @@ p { margin-bottom: 1.5rem; }
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
-    z-index: 1000;
+    z-index: 990;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
