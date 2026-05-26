@@ -1,12 +1,10 @@
 <div class="page-kultur">
 
     <article class="page-content content-split">
-        <div class="page-content__images img-card-container">
+        <div class="page-content__images kultur-gallery">
             <?php for ($i = 1; $i <= 5; $i++): ?>
-                <div class="img-card">
-                    <img src="<?= url("assets/img/kultur/{$i}.jpg") ?>"
-                         alt="Tandemfahrt nach Garons – Bild <?= $i ?>">
-                </div>
+                <img src="<?= url("assets/img/kultur/{$i}.jpg") ?>"
+                     alt="Tandemfahrt nach Garons – Bild <?= $i ?>" class="kultur-img">
             <?php endfor; ?>
         </div>
         <div class="page-content__text">
@@ -26,11 +24,9 @@
     </article>
 
     <article class="page-content content-split">
-        <div class="page-content__images img-card-container">
-            <div class="img-card">
-                <img src="<?= url('assets/img/kultur/garons_fd.jpg') ?>"
-                     alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim">
-            </div>
+        <div class="page-content__images kultur-gallery">
+            <img src="<?= url('assets/img/kultur/garons_fd.jpg') ?>"
+                 alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim" class="kultur-img">
         </div>
         <div class="page-content__text">
             <h2>Das Partnerschaftsbild</h2>

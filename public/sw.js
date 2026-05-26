@@ -1,5 +1,6 @@
 const CACHE_NAME = 'wdw-cache-v2';
 const STATIC_ASSETS = [
+    '/manifest.json',
     '/assets/style.css',
     '/assets/nav.js',
     '/assets/img/logo1.jpg',

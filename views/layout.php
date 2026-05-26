@@ -9,11 +9,14 @@
     <?php if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] === 'accepted'): ?>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" as="style">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <?php endif; ?>
     
+    <link rel="preload" href="<?= url('assets/style.css') ?>" as="style">
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
     <link rel="icon" type="image/jpeg" href="<?= url('assets/img/logo1.jpg') ?>">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body class="<?= !isset($_COOKIE['cookie_consent']) ? 'has-cookie-banner' : '' ?>">
     <div id="page-loader" class="loader-overlay">
