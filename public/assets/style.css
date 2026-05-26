@@ -435,12 +435,9 @@ p { margin-bottom: 1.5rem; }
         bottom: 7rem;
     }
 
-    /* Move scroll-top slightly above FAB if both visible */
+    /* Remove scroll-top on mobile/tablet to avoid overlapping and clutter */
     .scroll-top {
-        bottom: 6.5rem;
-    }
-    body.has-cookie-banner .scroll-top {
-        bottom: 11.5rem;
+        display: none !important;
     }
 
     .main-nav {
@@ -461,13 +458,18 @@ p { margin-bottom: 1.5rem; }
     .main-nav__link { font-size: 1.3rem; padding: 1rem 3rem; }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1150px) {
     .site-header__title { display: none; }
 }
 
 @media (max-width: 768px) {
     .img-card-container { gap: 2rem; }
     h1 { font-size: 2.8rem; }
+
+    .footer-nav ul {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
 }
 
 /* ── UI Components ───────────────────────────────────────── */
