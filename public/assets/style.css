@@ -354,7 +354,7 @@ p { margin-bottom: 1.5rem; }
 
 .img-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    grid-template-columns: 1fr;
     gap: 4rem;
     padding: 1rem;
 }
