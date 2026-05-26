@@ -2,7 +2,7 @@
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div class="content-split">
+                <div class="content-split kunst-split">
                     <div class="img-card-container">
                         <?php foreach ($item['bilder'] as $bild): ?>
                             <div class="img-card">
@@ -10,8 +10,8 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <div>
-                        <p style="font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4;">
+                    <div class="kunst-description">
+                        <p>
                             <?= nl2br(htmlspecialchars($item['text'])) ?>
                         </p>
                     </div>
