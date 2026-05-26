@@ -2,19 +2,11 @@
     // ── Page Loader & Transition ──────────────────────────────
     const loader = document.getElementById('page-loader');
     if (loader) {
-        const startTime = Date.now();
-        const minDuration = 1200; // Minimum 1.2 seconds for branding visibility
-
         window.addEventListener('load', () => {
-            const elapsedTime = Date.now() - startTime;
-            const remainingTime = Math.max(0, minDuration - elapsedTime);
-
+            loader.style.opacity = '0';
             setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 800);
-            }, remainingTime);
+                loader.style.display = 'none';
+            }, 800);
         });
     }
 
@@ -25,7 +17,8 @@
             link.href && 
             link.href.startsWith(window.location.origin) && 
             !link.getAttribute('target') && 
-            !link.href.includes('#')) {
+            !link.href.includes('#') &&
+            e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
             
             e.preventDefault();
             const targetUrl = link.href;
@@ -77,89 +70,6 @@
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
                 .catch(err => console.log('SW registration failed', err));
-        });
-    }
-
-    // ── Cookie Management ─────────────────────────────────────
-    const cookieBanner = document.getElementById('cookie-banner');
-    const bannerClose  = document.getElementById('cookie-banner-close');
-    const cookieModal  = document.getElementById('cookie-modal');
-    const acceptBtn    = document.getElementById('cookie-accept');
-    const declineBtn   = document.getElementById('cookie-decline');
-    const openSettings = document.getElementById('cookie-open-settings');
-    const settingsBtn  = document.getElementById('open-cookie-settings');
-    const saveBtn      = document.getElementById('save-cookie-settings');
-    const resetBtn     = document.getElementById('reset-cookie-settings');
-    const closeModal   = document.querySelector('.modal__close');
-    const modalOverlay = document.querySelector('.modal__overlay');
-    const fontToggle   = document.getElementById('toggle-google-fonts');
-
-    const setConsent = (status, reload = true) => {
-        const expires = new Date();
-        expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000));
-        document.cookie = `cookie_consent=${status};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
-        
-        if (cookieBanner) {
-            cookieBanner.style.opacity = '0';
-            cookieBanner.style.transform = 'translateY(20px)';
-            document.body.classList.remove('has-cookie-banner');
-            setTimeout(() => cookieBanner.remove(), 400);
-        }
-
-        if (reload) {
-            // Clear SW cache and reload to ensure fresh state
-            if ('caches' in window) {
-                caches.keys().then((names) => {
-                    Promise.all(names.map(name => caches.delete(name))).then(() => {
-                        window.location.reload();
-                    });
-                });
-            } else {
-                window.location.reload();
-            }
-        }
-    };
-
-    const openModal = () => {
-        cookieModal.classList.add('modal--open');
-        document.body.style.overflow = 'hidden';
-    };
-
-    const hideModal = () => {
-        cookieModal.classList.remove('modal--open');
-        document.body.style.overflow = '';
-    };
-
-    if (acceptBtn) acceptBtn.addEventListener('click', () => setConsent('accepted'));
-    if (declineBtn) declineBtn.addEventListener('click', () => setConsent('declined'));
-    if (openSettings) openSettings.addEventListener('click', openModal);
-    
-    if (bannerClose) {
-        bannerClose.addEventListener('click', () => {
-            setConsent('dismissed', false);
-        });
-    }
-
-    if (settingsBtn) {
-        settingsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
-    }
-
-    if (closeModal) closeModal.addEventListener('click', hideModal);
-    if (modalOverlay) modalOverlay.addEventListener('click', hideModal);
-
-    if (saveBtn && fontToggle) {
-        saveBtn.addEventListener('click', () => {
-            setConsent(fontToggle.checked ? 'accepted' : 'declined');
-        });
-    }
-
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            document.cookie = "cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax";
-            window.location.reload();
         });
     }
 

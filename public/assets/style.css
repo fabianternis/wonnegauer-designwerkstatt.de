@@ -1,3 +1,27 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     /* Simple Editorial Palette */
     --clr-bg: #ffffff;
@@ -28,11 +52,6 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     scroll-padding-top: 80px; /* Offset for sticky header */
-    scrollbar-width: none; /* Firefox */
-}
-
-html::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
 }
 
 body {
@@ -43,12 +62,7 @@ body {
     -webkit-font-smoothing: antialiased;
     opacity: 1;
     transition: opacity 0.4s ease;
-    scrollbar-width: none; /* Firefox */
     /* overflow-x: hidden; */ /* Removing this as it can break sticky on some browsers */
-}
-
-body::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
 }
 
 body.is-exiting {
@@ -319,7 +333,7 @@ p { margin-bottom: 1.5rem; }
 }
 
 .img-card:hover {
-    transform: scale(1.05) rotate(0deg) !important;
+    transform: scale(1.05) rotate(0deg);
     box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     z-index: 2;
 }
@@ -536,10 +550,6 @@ p { margin-bottom: 1.5rem; }
     .main-nav__link { font-size: 1.3rem; padding: 1rem 3rem; }
 }
 
-@media (max-width: 1481px) {
-    .site-header__title { display: none; }
-}
-
 @media (max-width: 768px) {
     .img-card-container { gap: 2rem; }
     h1 { font-size: 2.8rem; }
@@ -549,6 +559,18 @@ p { margin-bottom: 1.5rem; }
         gap: 1.5rem;
     }
 }
+
+/* ── Utility Classes ─────────────────────────────────────── */
+.align-center { align-items: center; }
+.text-center { text-align: center; }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.max-w-800 { max-width: 800px; margin: 0 auto; }
+.flex-center-gap { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.mt-1 { margin-top: 1rem; }
+.underline { text-decoration: underline; }
+.footer-banner-container { margin-top: 2rem; width: 100%; }
+.footer-banner-img { width: 100%; display: block; object-fit: cover; }
 
 /* ── UI Components ───────────────────────────────────────── */
 .btn {
