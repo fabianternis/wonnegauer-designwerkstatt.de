@@ -1,7 +1,7 @@
 <div class="page-index">
 
     <section class="home-section">
-        <div class="responsive-grid" style="align-items: center;">
+        <div class="content-split" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
                     <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt">
@@ -17,7 +17,7 @@
     </section>
 
     <section class="home-section">
-        <div class="responsive-grid" style="align-items: center;">
+        <div class="content-split" style="align-items: center;">
             <div style="order: 2;">
                 <div class="img-card-container">
                     <div class="img-card">
