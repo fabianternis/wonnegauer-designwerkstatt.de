@@ -2,7 +2,7 @@
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div class="responsive-grid">
+                <div class="content-split">
                     <div class="img-card-container">
                         <?php foreach ($item['bilder'] as $bild): ?>
                             <div class="img-card">

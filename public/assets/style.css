@@ -352,11 +352,35 @@ p { margin-bottom: 1.5rem; }
     align-items: start;
 }
 
+.content-split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: start;
+}
+
+.content-split > * {
+    flex: 1 1 320px;
+}
+
+.content-split > .img-card-container,
+.content-split > div:has(.img-card-container) {
+    flex: 0 1 max-content;
+}
+
 .img-card-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4rem;
+    grid-template-rows: 1fr;
+    gap: 0;
     padding: 1rem;
+    aspect-ratio: 1 / 1;
+    width: fit-content;
+}
+
+.img-card-container > * {
+    grid-column: 1;
+    grid-row: 1;
 }
 
 /* ── Card Component ───────────────────────────────────────── */
