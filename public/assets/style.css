@@ -729,6 +729,7 @@ body.has-cookie-banner .scroll-top {
 .link-item__card {
     display: block;
     width: 100% !important;
+    aspect-ratio: auto !important;
     padding: 1.5rem !important;
     text-decoration: none;
     color: inherit;
