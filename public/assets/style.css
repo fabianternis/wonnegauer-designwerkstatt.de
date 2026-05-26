@@ -386,6 +386,27 @@ p { margin-bottom: 1.5rem; }
     padding: 1rem;
 }
 
+/* ── Wir Page Styles ──────────────────────────────────────── */
+.zwei-spalten {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    gap: 4rem;
+    margin: var(--space-lg) 0;
+}
+
+.page-wir .intro {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    line-height: 1.5;
+    margin-bottom: var(--space-lg);
+    max-width: 900px;
+}
+
+.spalte h3 {
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+}
+
 /* ── Card Component ───────────────────────────────────────── */
 .card {
     background: #fff;
