@@ -1,6 +1,6 @@
 <div class="page-kultur">
 
-    <article class="page-content responsive-grid">
+    <article class="page-content content-split">
         <div class="page-content__images img-card-container">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <div class="img-card">
@@ -25,7 +25,7 @@
         </div>
     </article>
 
-    <article class="page-content responsive-grid">
+    <article class="page-content content-split">
         <div class="page-content__images img-card-container">
             <div class="img-card">
                 <img src="<?= url('assets/img/kultur/garons_fd.jpg') ?>"
