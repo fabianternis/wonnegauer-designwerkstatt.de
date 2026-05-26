@@ -292,7 +292,17 @@ p { margin-bottom: 1.5rem; }
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
     position: relative;
     z-index: 1;
-    width: fit-content;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .img-card:hover {
@@ -339,18 +349,6 @@ p { margin-bottom: 1.5rem; }
 }
 
 /* ── Grid Layouts ─────────────────────────────────────────── */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 2rem;
-}
-
-.responsive-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: 4rem;
-    align-items: start;
-}
 
 .content-split {
     display: flex;
@@ -368,19 +366,24 @@ p { margin-bottom: 1.5rem; }
     flex: 0 1 max-content;
 }
 
-.img-card-container {
+.grid {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0;
-    padding: 1rem;
-    aspect-ratio: 1 / 1;
-    width: fit-content;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 2rem;
 }
 
-.img-card-container > * {
-    grid-column: 1;
-    grid-row: 1;
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 4rem;
+    align-items: start;
+}
+
+.img-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    padding: 1rem;
 }
 
 /* ── Card Component ───────────────────────────────────────── */
