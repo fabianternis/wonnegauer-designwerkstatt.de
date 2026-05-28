@@ -181,4 +181,63 @@
             });
         });
     }
+
+    // ── Lightbox ──────────────────────────────────────────────
+    const initLightbox = () => {
+        const triggers = document.querySelectorAll('.img-card img, .kultur-img, .lightbox-trigger');
+        if (triggers.length === 0) return;
+
+        // Create lightbox elements if they don't exist
+        let lightbox = document.querySelector('.lightbox');
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox__content">
+                    <button class="lightbox__close" aria-label="Schließen">&times;</button>
+                    <img src="" alt="" class="lightbox__img">
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+        }
+
+        const lightboxImg = lightbox.querySelector('.lightbox__img');
+        const closeBtn = lightbox.querySelector('.lightbox__close');
+
+        const openLightbox = (src) => {
+            lightboxImg.src = src;
+            lightbox.classList.add('lightbox--open');
+            document.body.classList.add('lightbox-open');
+        };
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('lightbox--open');
+            document.body.classList.remove('lightbox-open');
+            setTimeout(() => {
+                lightboxImg.src = '';
+            }, 300);
+        };
+
+        triggers.forEach(trigger => {
+            trigger.classList.add('has-lightbox');
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                openLightbox(trigger.src);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('lightbox--open')) {
+                closeLightbox();
+            }
+        });
+    };
+
+    initLightbox();
 })();
+

@@ -257,10 +257,14 @@ p { margin-bottom: 1.5rem; }
 
 .main-nav__link--active,
 .main-nav__link.active {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    color: var(--clr-text);
+    background-color: var(--clr-accent);
+    color: #fff;
+}
+
+.main-nav__link--active:hover,
+.main-nav__link.active:hover {
+    color: #fff;
+    background-color: var(--clr-accent);
 }
 
 /* ── Mobile Nav Toggle ────────────────────────────────────── */
@@ -914,11 +918,11 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    flex: 0 1 400px; /* Reduced base size and prevented excessive growth */
 }
 
 .kultur-img {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 100%;
     height: auto;
     object-fit: cover;
     aspect-ratio: auto;
@@ -944,9 +948,95 @@ input:checked + .slider:before {
     flex-direction: row-reverse;
 }
 
+.editorial-split--three-col {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .editorial-split--three-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.editorial-split--three-col .img-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .editorial-description p {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-style: italic;
     line-height: 1.4;
 }
+
+/* ── Lightbox ────────────────────────────────────────────── */
+.has-lightbox {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.lightbox--open {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox__content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox__img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    background-color: #000;
+}
+
+.lightbox__close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.lightbox__close:hover {
+    transform: scale(1.1);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+

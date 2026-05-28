@@ -2,19 +2,37 @@
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
             <article class="editorial-item">
-                <div class="content-split editorial-split">
-                    <div class="img-card-container">
-                        <?php foreach ($item['bilder'] as $bild): ?>
-                            <div class="img-card">
-                                <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="editorial-description">
-                        <p>
-                            <?= nl2br(htmlspecialchars($item['text'])) ?>
-                        </p>
-                    </div>
+                <?php
+                    $bilderCount = count($item['bilder'] ?? []);
+                    $isThreeCol = ($bilderCount === 2);
+                ?>
+                <div class="content-split editorial-split <?= $isThreeCol ? 'editorial-split--three-col' : '' ?>">
+                    <?php if ($isThreeCol): ?>
+                        <div class="img-card">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][0])) ?>" alt="">
+                        </div>
+                        <div class="editorial-description">
+                            <p>
+                                <?= nl2br(htmlspecialchars($item['text'])) ?>
+                            </p>
+                        </div>
+                        <div class="img-card">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][1])) ?>" alt="">
+                        </div>
+                    <?php else: ?>
+                        <div class="img-card-container">
+                            <?php foreach ($item['bilder'] as $bild): ?>
+                                <div class="img-card">
+                                    <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="editorial-description">
+                            <p>
+                                <?= nl2br(htmlspecialchars($item['text'])) ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </article>
         <?php endforeach; ?>
