@@ -184,8 +184,11 @@
 
     // ── Lightbox ──────────────────────────────────────────────
     const initLightbox = () => {
-        const triggers = document.querySelectorAll('.img-card img, .kultur-img, .lightbox-trigger');
+        const triggers = document.querySelectorAll('[data-lightbox="true"]');
         if (triggers.length === 0) return;
+
+        let currentGroup = [];
+        let currentIndex = 0;
 
         // Create lightbox elements if they don't exist
         let lightbox = document.querySelector('.lightbox');
@@ -194,8 +197,15 @@
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <div class="lightbox__content">
-                    <button class="lightbox__close" aria-label="Schließen">&times;</button>
+                    <button class="lightbox__close" aria-label="Schließen">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button class="lightbox__nav lightbox__prev" aria-label="Vorheriges Bild">&lsaquo;</button>
                     <img src="" alt="" class="lightbox__img">
+                    <button class="lightbox__nav lightbox__next" aria-label="Nächstes Bild">&rsaquo;</button>
                 </div>
             `;
             document.body.appendChild(lightbox);
@@ -203,9 +213,34 @@
 
         const lightboxImg = lightbox.querySelector('.lightbox__img');
         const closeBtn = lightbox.querySelector('.lightbox__close');
+        const prevBtn = lightbox.querySelector('.lightbox__prev');
+        const nextBtn = lightbox.querySelector('.lightbox__next');
 
-        const openLightbox = (src) => {
-            lightboxImg.src = src;
+        const updateLightboxImage = () => {
+            const item = currentGroup[currentIndex];
+            lightboxImg.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImg.src = item.src;
+                lightboxImg.alt = item.alt || '';
+                lightboxImg.style.opacity = '1';
+            }, 200);
+
+            // Show/hide nav buttons based on group size
+            const hasMany = currentGroup.length > 1;
+            prevBtn.style.display = hasMany ? 'block' : 'none';
+            nextBtn.style.display = hasMany ? 'block' : 'none';
+        };
+
+        const openLightbox = (trigger) => {
+            const groupName = trigger.dataset.lightboxGroup;
+            if (groupName) {
+                currentGroup = Array.from(document.querySelectorAll(`[data-lightbox-group="${groupName}"]`));
+            } else {
+                currentGroup = [trigger];
+            }
+            currentIndex = currentGroup.indexOf(trigger);
+
+            updateLightboxImage();
             lightbox.classList.add('lightbox--open');
             document.body.classList.add('lightbox-open');
         };
@@ -218,26 +253,44 @@
             }, 300);
         };
 
+        const nextImage = () => {
+            currentIndex = (currentIndex + 1) % currentGroup.length;
+            updateLightboxImage();
+        };
+
+        const prevImage = () => {
+            currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+            updateLightboxImage();
+        };
+
         triggers.forEach(trigger => {
             trigger.classList.add('has-lightbox');
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
-                openLightbox(trigger.src);
+                openLightbox(trigger);
             });
         });
 
         closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
+            if (e.target === lightbox || e.target.classList.contains('lightbox__content')) {
+                closeLightbox();
+            }
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('lightbox--open')) {
-                closeLightbox();
-            }
+            if (!lightbox.classList.contains('lightbox--open')) return;
+            
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
         });
     };
 
     initLightbox();
 })();
+
 

@@ -9,7 +9,7 @@
                 <div class="content-split editorial-split <?= $isThreeCol ? 'editorial-split--three-col' : '' ?>">
                     <?php if ($isThreeCol): ?>
                         <div class="img-card">
-                            <img src="<?= htmlspecialchars(url($item['bilder'][0])) ?>" alt="">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][0])) ?>" alt="" data-lightbox="true" data-lightbox-group="kunst">
                         </div>
                         <div class="editorial-description">
                             <p>
@@ -17,13 +17,13 @@
                             </p>
                         </div>
                         <div class="img-card">
-                            <img src="<?= htmlspecialchars(url($item['bilder'][1])) ?>" alt="">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][1])) ?>" alt="" data-lightbox="true" data-lightbox-group="kunst">
                         </div>
                     <?php else: ?>
                         <div class="img-card-container">
                             <?php foreach ($item['bilder'] as $bild): ?>
                                 <div class="img-card">
-                                    <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
+                                    <img src="<?= htmlspecialchars(url($bild)) ?>" alt="" data-lightbox="true" data-lightbox-group="kunst">
                                 </div>
                             <?php endforeach; ?>
                         </div>

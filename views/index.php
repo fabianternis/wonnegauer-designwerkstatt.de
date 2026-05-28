@@ -4,7 +4,7 @@
         <div class="content-split" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
-                    <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt">
+                    <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt" data-lightbox="true" data-lightbox-group="home">
                 </div>
             </div>
             <div>
@@ -21,7 +21,7 @@
             <div style="order: 2;">
                 <div class="img-card-container">
                     <div class="img-card">
-                        <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen">
+                        <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen" data-lightbox="true" data-lightbox-group="home">
                     </div>
                 </div>
             </div>
@@ -49,13 +49,13 @@
             <h2 style="text-align: center; margin-bottom: 3rem;">Einblicke in die Kunst</h2>
             <div class="grid">
                 <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Kunstwerk 1">
+                    <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Kunstwerk 1" data-lightbox="true" data-lightbox-group="home-kunst">
                 </div>
                 <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Kunstwerk 2">
+                    <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Kunstwerk 2" data-lightbox="true" data-lightbox-group="home-kunst">
                 </div>
                 <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Kunstwerk 3">
+                    <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Kunstwerk 3" data-lightbox="true" data-lightbox-group="home-kunst">
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
@@ -69,10 +69,10 @@
             <h2 style="text-align: center; margin-bottom: 3rem;">Designprojekte</h2>
             <div class="content-split" style="justify-content: center; gap: 4rem;">
                 <div class="img-card" style="flex: 0 1 400px;">
-                    <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Design Projekt 1">
+                    <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Design Projekt 1" data-lightbox="true" data-lightbox-group="home-design">
                 </div>
                 <div class="img-card" style="flex: 0 1 400px;">
-                    <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Design Projekt 2">
+                    <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Design Projekt 2" data-lightbox="true" data-lightbox-group="home-design">
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
@@ -85,7 +85,7 @@
         <div class="content-split" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
-                    <img src="<?= url('assets/img/kultur/1.jpg') ?>" alt="Kulturelles Engagement">
+                    <img src="<?= url('assets/img/kultur/1.jpg') ?>" alt="Kulturelles Engagement" data-lightbox="true" data-lightbox-group="home-kultur">
                 </div>
             </div>
             <div>

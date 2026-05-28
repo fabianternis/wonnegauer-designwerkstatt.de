@@ -1020,20 +1020,54 @@ input:checked + .slider:before {
 
 .lightbox__close {
     position: absolute;
-    top: -40px;
+    top: -50px;
     right: 0;
     background: none;
     border: none;
     color: #fff;
-    font-size: 2.5rem;
     cursor: pointer;
-    line-height: 1;
     padding: 10px;
     transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.lightbox__close:hover {
-    transform: scale(1.1);
+.lightbox__close svg {
+    width: 32px;
+    height: 32px;
+}
+
+.lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    padding: 20px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: background 0.2s ease;
+    z-index: 2010;
+}
+
+.lightbox__nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox__prev {
+    left: -80px;
+}
+
+.lightbox__next {
+    right: -80px;
+}
+
+@media (max-width: 1024px) {
+    .lightbox__prev { left: 0; }
+    .lightbox__next { right: 0; }
+    .lightbox__nav { background: rgba(0,0,0,0.3); }
 }
 
 body.lightbox-open {

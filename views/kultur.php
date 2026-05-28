@@ -4,7 +4,7 @@
         <div class="page-content__images kultur-gallery">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <img src="<?= url("assets/img/kultur/{$i}.jpg") ?>"
-                     alt="Tandemfahrt nach Garons – Bild <?= $i ?>" class="kultur-img">
+                     alt="Tandemfahrt nach Garons – Bild <?= $i ?>" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur">
             <?php endfor; ?>
         </div>
         <div class="page-content__text">
@@ -26,7 +26,7 @@
     <article class="page-content content-split">
         <div class="page-content__images kultur-gallery">
             <img src="<?= url('assets/img/kultur/garons_fd.jpg') ?>"
-                 alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim" class="kultur-img">
+                 alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur">
         </div>
         <div class="page-content__text">
             <h2>Das Partnerschaftsbild</h2>
