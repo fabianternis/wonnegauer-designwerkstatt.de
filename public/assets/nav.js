@@ -197,15 +197,26 @@
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <div class="lightbox__content">
+                    <div class="lightbox__loader"></div>
+                    <div class="lightbox__counter"></div>
                     <button class="lightbox__close" aria-label="Schließen">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
-                    <button class="lightbox__nav lightbox__prev" aria-label="Vorheriges Bild">&lsaquo;</button>
+                    <button class="lightbox__nav lightbox__prev" aria-label="Vorheriges Bild">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
                     <img src="" alt="" class="lightbox__img">
-                    <button class="lightbox__nav lightbox__next" aria-label="Nächstes Bild">&rsaquo;</button>
+                    <div class="lightbox__caption"></div>
+                    <button class="lightbox__nav lightbox__next" aria-label="Nächstes Bild">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             `;
             document.body.appendChild(lightbox);
@@ -215,20 +226,32 @@
         const closeBtn = lightbox.querySelector('.lightbox__close');
         const prevBtn = lightbox.querySelector('.lightbox__prev');
         const nextBtn = lightbox.querySelector('.lightbox__next');
+        const caption = lightbox.querySelector('.lightbox__caption');
+        const counter = lightbox.querySelector('.lightbox__counter');
 
         const updateLightboxImage = () => {
             const item = currentGroup[currentIndex];
+            
+            lightbox.classList.add('lightbox--loading');
             lightboxImg.style.opacity = '0';
-            setTimeout(() => {
+            lightboxImg.style.transform = 'scale(0.95)';
+
+            const tempImg = new Image();
+            tempImg.src = item.src;
+            tempImg.onload = () => {
                 lightboxImg.src = item.src;
                 lightboxImg.alt = item.alt || '';
+                caption.textContent = item.alt || '';
+                counter.textContent = currentGroup.length > 1 ? `${currentIndex + 1} / ${currentGroup.length}` : '';
+                
+                lightbox.classList.remove('lightbox--loading');
                 lightboxImg.style.opacity = '1';
-            }, 200);
+                lightboxImg.style.transform = 'scale(1)';
+            };
 
-            // Show/hide nav buttons based on group size
             const hasMany = currentGroup.length > 1;
-            prevBtn.style.display = hasMany ? 'block' : 'none';
-            nextBtn.style.display = hasMany ? 'block' : 'none';
+            prevBtn.style.visibility = hasMany ? 'visible' : 'hidden';
+            nextBtn.style.visibility = hasMany ? 'visible' : 'hidden';
         };
 
         const openLightbox = (trigger) => {
@@ -250,15 +273,19 @@
             document.body.classList.remove('lightbox-open');
             setTimeout(() => {
                 lightboxImg.src = '';
-            }, 300);
+                lightboxImg.style.opacity = '0';
+                lightboxImg.style.transform = 'scale(0.95)';
+            }, 400);
         };
 
         const nextImage = () => {
+            if (currentGroup.length <= 1) return;
             currentIndex = (currentIndex + 1) % currentGroup.length;
             updateLightboxImage();
         };
 
         const prevImage = () => {
+            if (currentGroup.length <= 1) return;
             currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
             updateLightboxImage();
         };
@@ -271,9 +298,20 @@
             });
         });
 
-        closeBtn.addEventListener('click', closeLightbox);
-        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
-        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
+        });
+        
+        prevBtn.addEventListener('click', (e) => { 
+            e.stopPropagation(); 
+            prevImage(); 
+        });
+        
+        nextBtn.addEventListener('click', (e) => { 
+            e.stopPropagation(); 
+            nextImage(); 
+        });
         
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target.classList.contains('lightbox__content')) {
@@ -292,5 +330,6 @@
 
     initLightbox();
 })();
+
 
 
