@@ -163,16 +163,29 @@
         });
     }
 
-    // ── Scroll to Top ──────────────────────────────────────────
+    // ── Scroll to Top & Header ─────────────────────────────────
     const scrollTopBtn = document.getElementById('scroll-top');
-    if (scrollTopBtn) {
-        window.addEventListener('scroll', () => {
+    const siteHeader = document.querySelector('.site-header');
+
+    window.addEventListener('scroll', () => {
+        if (siteHeader) {
+            if (window.scrollY > 0) {
+                siteHeader.classList.add('active');
+            } else {
+                siteHeader.classList.remove('active');
+            }
+        }
+
+        if (scrollTopBtn) {
             if (window.scrollY > 400) {
                 scrollTopBtn.classList.add('scroll-top--visible');
             } else {
                 scrollTopBtn.classList.remove('scroll-top--visible');
             }
-        });
+        }
+    });
+
+    if (scrollTopBtn) {
 
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
