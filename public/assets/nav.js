@@ -329,7 +329,13 @@
     };
 
     initLightbox();
+
+    // ── Print Functionality ───────────────────────────────────
+    const printBtn = document.getElementById('print-page-btn');
+    if (printBtn) {
+        printBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.print();
+        });
+    }
 })();
-
-
-
