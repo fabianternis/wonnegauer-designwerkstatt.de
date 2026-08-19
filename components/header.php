@@ -15,7 +15,10 @@
     <div class="container site-header__inner">
         <a class="site-header__brand" href="<?= url() ?>">
             <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>" class="site-header__logo">
-            <span class="site-header__title"><?= htmlspecialchars($config['site_name']) ?></span>
+            <span class="site-header__title">
+                <span class="site-header__title-part">Wonnegauer</span>
+                <span class="site-header__title-part">Designwerkstatt</span>
+            </span>
         </a>
 
         <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
