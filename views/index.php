@@ -34,10 +34,10 @@
     </section>
 
     <section class="home-section" style="text-align: center;">
-        <div class="container" style="max-width: 800px;">
+        <div style="max-width: 800px; margin: 0 auto;">
             <h2>Aktuelles & Termine</h2>
             <p>Bleiben Sie informiert über unsere neuesten Ausstellungen, Veranstaltungen und geführten Touren durch die Region.</p>
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
                 <a href="<?= url('aktuell') ?>" class="cta-link">Aktuelles <span>&rarr;</span></a>
                 <a href="<?= url('termine') ?>" class="cta-link">Alle Termine <span>&rarr;</span></a>
             </div>
@@ -45,39 +45,35 @@
     </section>
 
     <section class="home-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Einblicke in die Kunst</h2>
-            <div class="grid">
-                <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Kunstwerk 1" data-lightbox="true" data-lightbox-group="home-kunst">
-                </div>
-                <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Kunstwerk 2" data-lightbox="true" data-lightbox-group="home-kunst">
-                </div>
-                <div class="img-card">
-                    <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Kunstwerk 3" data-lightbox="true" data-lightbox-group="home-kunst">
-                </div>
+        <h2 style="text-align: center; margin-bottom: 3rem;">Einblicke in die Kunst</h2>
+        <div class="grid">
+            <div class="img-card">
+                <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Kunstwerk 1" data-lightbox="true" data-lightbox-group="home-kunst">
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="<?= url('kunst') ?>" class="cta-link">Mehr Kunstwerke ansehen <span>&rarr;</span></a>
+            <div class="img-card">
+                <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Kunstwerk 2" data-lightbox="true" data-lightbox-group="home-kunst">
             </div>
+            <div class="img-card">
+                <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Kunstwerk 3" data-lightbox="true" data-lightbox-group="home-kunst">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="<?= url('kunst') ?>" class="cta-link">Mehr Kunstwerke ansehen <span>&rarr;</span></a>
         </div>
     </section>
 
-    <section class="home-section" style="background-color: #f9f9f9; padding: 6rem 0;">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Designprojekte</h2>
-            <div class="content-split" style="justify-content: center; gap: 4rem;">
-                <div class="img-card" style="flex: 0 1 400px;">
-                    <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Design Projekt 1" data-lightbox="true" data-lightbox-group="home-design">
-                </div>
-                <div class="img-card" style="flex: 0 1 400px;">
-                    <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Design Projekt 2" data-lightbox="true" data-lightbox-group="home-design">
-                </div>
+    <section class="home-section" style="background-color: #f9f9f9; padding: clamp(3rem, 6vw, 6rem) 1rem; border-radius: 4px;">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Designprojekte</h2>
+        <div class="content-split" style="justify-content: center; gap: clamp(2rem, 4vw, 4rem);">
+            <div class="img-card" style="flex: 0 1 400px; max-width: 100%;">
+                <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Design Projekt 1" data-lightbox="true" data-lightbox-group="home-design">
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="<?= url('design') ?>" class="cta-link">Zu den Designprojekten <span>&rarr;</span></a>
+            <div class="img-card" style="flex: 0 1 400px; max-width: 100%;">
+                <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Design Projekt 2" data-lightbox="true" data-lightbox-group="home-design">
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="<?= url('design') ?>" class="cta-link">Zu den Designprojekten <span>&rarr;</span></a>
         </div>
     </section>
 

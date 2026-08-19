@@ -21,7 +21,12 @@
 }
 
 /* ── Reset & Base ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    overflow-wrap: break-word;
+}
 
 :focus-visible {
     outline: 2px solid var(--clr-text);
@@ -31,9 +36,10 @@
 html {
     font-size: 15px;
     scroll-behavior: smooth;
-    overflow-x: hidden;
     scroll-padding-top: 85px; /* Offset for sticky header */
     scrollbar-width: none; /* Firefox */
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 html::-webkit-scrollbar {
@@ -49,6 +55,14 @@ body {
     opacity: 1;
     transition: opacity 0.4s ease;
     scrollbar-width: none; /* Firefox */
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+    html, body {
+        overflow-x: hidden;
+    }
 }
 
 body.nav-open {
@@ -138,19 +152,30 @@ h1, h2, h3, h4 {
     line-height: 1.1;
     margin-bottom: var(--space-md);
     color: var(--clr-text);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
-h1 { font-size: 3.8rem; }
-h2 { font-size: 2.8rem; }
-h3 { font-size: 1.8rem; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.7rem, 4.5vw, 2.8rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.8rem); }
 
-p { margin-bottom: 1.5rem; }
+p { 
+    margin-bottom: 1.5rem; 
+    overflow-wrap: break-word;
+}
 
 /* ── Layout ───────────────────────────────────────────────── */
 .container {
+    width: 100%;
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+.container .container {
+    padding: 0;
+    max-width: 100%;
 }
 
 .site-main {
@@ -359,34 +384,48 @@ p { margin-bottom: 1.5rem; }
     position: relative;
     z-index: 1;
     width: 100%;
+    max-width: 100%;
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .img-card img {
     width: 100%;
     height: 100%;
+    max-width: 100%;
     object-fit: cover;
 }
 
 .img-card:hover {
-    transform: scale(1.05) rotate(0deg) !important;
+    transform: scale(1.03) rotate(0deg) !important;
     box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     z-index: 2;
 }
 
-/* Random rotations using child selectors */
-.img-card-container > *:nth-child(odd) .img-card { transform: rotate(-2deg); }
-.img-card-container > *:nth-child(even) .img-card { transform: rotate(2deg); }
-.img-card-container > *:nth-child(3n) .img-card { transform: rotate(1.5deg); }
-.img-card-container > *:nth-child(4n) .img-card { transform: rotate(-2.5deg); }
+/* Subtle rotations using child selectors */
+.img-card-container > *:nth-child(odd) .img-card { transform: rotate(-1.5deg); }
+.img-card-container > *:nth-child(even) .img-card { transform: rotate(1.5deg); }
+.img-card-container > *:nth-child(3n) .img-card { transform: rotate(1deg); }
+.img-card-container > *:nth-child(4n) .img-card { transform: rotate(-1.5deg); }
+
+@media (max-width: 600px) {
+    .img-card-container > *:nth-child(odd) .img-card,
+    .img-card-container > *:nth-child(even) .img-card,
+    .img-card-container > *:nth-child(3n) .img-card,
+    .img-card-container > *:nth-child(4n) .img-card {
+        transform: none !important;
+    }
+}
 
 /* ── Home Page Sections & CTAs ────────────────────────────── */
 .home-section {
     padding: var(--space-xl) 0;
     border-bottom: 1px solid var(--clr-border);
+    width: 100%;
+    max-width: 100%;
 }
 
 .home-section:last-child { border-bottom: none; }
@@ -394,16 +433,19 @@ p { margin-bottom: 1.5rem; }
 .cta-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 1.1rem 2.5rem;
+    padding: 1.1rem clamp(1.5rem, 4vw, 2.5rem);
     background: var(--clr-text);
     color: #fff;
     border-radius: 4px;
     margin-top: 1.5rem;
+    max-width: 100%;
+    text-align: center;
 }
 
 .cta-link span {
@@ -411,7 +453,7 @@ p { margin-bottom: 1.5rem; }
 }
 
 .cta-link:hover span {
-    transform: translateX(8px); /* Horizontal move as requested */
+    transform: translateX(8px);
 }
 
 /* ── Grid Layouts ─────────────────────────────────────────── */
@@ -419,45 +461,58 @@ p { margin-bottom: 1.5rem; }
 .content-split {
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
+    width: 100%;
+    max-width: 100%;
 }
 
 .content-split > * {
-    flex: 1 1 320px;
+    flex: 1 1 min(100%, 300px);
+    min-width: 0;
+    max-width: 100%;
 }
 
 .content-split > .img-card-container,
 .content-split > div:has(.img-card-container) {
     flex: 0 1 max-content;
+    max-width: 100%;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    width: 100%;
+    max-width: 100%;
 }
 
 .responsive-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
+    width: 100%;
+    max-width: 100%;
 }
 
 .img-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(1.5rem, 3vw, 4rem);
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* ── Wir Page Styles ──────────────────────────────────────── */
 .zwei-spalten {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(2rem, 4vw, 4rem);
     margin: var(--space-lg) 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .page-wir .intro {
@@ -998,6 +1053,9 @@ body.has-cookie-banner .scroll-top {
     background: #fff;
     width: 90%;
     max-width: 500px;
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     transform: translateY(20px);
@@ -1039,7 +1097,8 @@ body.has-cookie-banner .scroll-top {
     border-top: 1px solid var(--clr-border);
     display: flex;
     justify-content: flex-end;
-    gap: 1rem; /* Added gap between buttons */
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 /* Link Items UI/UX */
@@ -1051,6 +1110,7 @@ body.has-cookie-banner .scroll-top {
 .link-item__card {
     display: block;
     width: 100% !important;
+    max-width: 100% !important;
     aspect-ratio: auto !important;
     padding: 1.5rem !important;
     text-decoration: none;
@@ -1062,6 +1122,7 @@ body.has-cookie-banner .scroll-top {
     align-items: center;
     gap: 1.5rem;
     position: relative;
+    min-width: 0;
 }
 
 .link-item__icon {
@@ -1094,6 +1155,10 @@ body.has-cookie-banner .scroll-top {
     font-size: 0.85rem;
     color: var(--clr-muted);
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .link-item__arrow {
@@ -1185,10 +1250,12 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    flex: 0 1 400px; /* Reduced base size and prevented excessive growth */
+    flex: 0 1 400px;
+    max-width: 100%;
 }
 
 .kultur-img {
+    width: 100%;
     max-width: 400px;
     margin: 0 auto;
     height: auto;
@@ -1223,11 +1290,13 @@ input:checked + .slider:before {
 .editorial-split--three-col {
     display: grid !important;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 4rem;
+    gap: clamp(1.5rem, 3vw, 4rem);
     align-items: center;
+    width: 100%;
+    max-width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
     .editorial-split--three-col {
         grid-template-columns: 1fr;
         gap: 2rem;
