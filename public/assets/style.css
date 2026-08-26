@@ -1087,15 +1087,30 @@ p {
     }
 }
 
-/* Scroll Top */
-.scroll-top {
-    position: fixed;
+/* ── Site Wrapper & Sticky Scroll Top ─────────────────────── */
+.site-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-top-tracker {
+    position: absolute;
+    top: 0;
     bottom: 2rem;
-    right: 2rem;
-    width: 45px;
-    height: 45px;
+    right: max(2rem, calc(env(safe-area-inset-right) + 1.5rem));
+    width: 48px;
+    pointer-events: none;
+    z-index: 990;
+}
+
+.scroll-top {
+    position: sticky;
+    top: calc(100vh - 5.5rem);
+    top: calc(100dvh - 5.5rem);
+    width: 48px;
+    height: 48px;
     background: var(--clr-text);
-    color: #fff;
+    color: #ffffff;
     border: none;
     border-radius: 50%;
     display: flex;
@@ -1104,9 +1119,9 @@ p {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
-    z-index: 990;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+    pointer-events: auto;
 }
 
 .scroll-top--visible {
@@ -1115,12 +1130,13 @@ p {
 }
 
 .scroll-top:hover {
-    transform: translateY(-5px);
-    background: #333;
+    transform: translateY(-4px);
+    background: #333333;
 }
 
 body.has-cookie-banner .scroll-top {
-    bottom: 7rem; /* Lift it above the banner */
+    top: calc(100vh - 9.5rem);
+    top: calc(100dvh - 9.5rem);
 }
 
 /* ── Modals ──────────────────────────────────────────────── */

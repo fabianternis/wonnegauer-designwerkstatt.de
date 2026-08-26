@@ -150,13 +150,24 @@
         </div>
     </div>
 
-    <?php include dirname(__DIR__) . '/components/header.php'; ?>
+    <!-- Site Wrapper containing header and content (stops sticky elements above footer) -->
+    <div class="site-wrapper">
+        <?php include dirname(__DIR__) . '/components/header.php'; ?>
 
-    <main id="main-content" class="site-main">
-        <div class="container">
-            <?php render_view($page['view'], $page); ?>
+        <main id="main-content" class="site-main">
+            <div class="container">
+                <?php render_view($page['view'], $page); ?>
+            </div>
+        </main>
+
+        <div class="scroll-top-tracker" aria-hidden="true">
+            <button type="button" id="scroll-top" class="scroll-top" aria-label="Nach oben scrollen">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+            </button>
         </div>
-    </main>
+    </div>
 
     <?php include dirname(__DIR__) . '/components/footer.php'; ?>
 
@@ -183,12 +194,6 @@
             </div>
         </section>
     <?php endif; ?>
-
-    <button type="button" id="scroll-top" class="scroll-top" aria-label="Nach oben scrollen">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
 
     <!-- Cookie Settings Modal -->
     <div id="cookie-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title" aria-hidden="true">
