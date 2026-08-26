@@ -8,17 +8,41 @@ use App\Core\App;
  */
 function url(string $path = ''): string {
     $base = rtrim(App::getInstance()->config()->get('base_url', ''), '/');
-    $fullPath = $base . '/' . ltrim($path, '/');
+    $cleanPath = ltrim($path, '/');
     
-    // Fix: Use __DIR__ to point to the correct public directory
-    $filePath = __DIR__ . '/public/' . ltrim($path, '/');
+    if ($cleanPath === '') {
+        return $base !== '' ? $base : '/';
+    }
     
-    if (!empty($path) && file_exists($filePath) && !is_dir($filePath)) {
+    $fullPath = ($base !== '' ? $base : '') . '/' . $cleanPath;
+    
+    $filePath = __DIR__ . '/public/' . $cleanPath;
+    
+    if (file_exists($filePath) && !is_dir($filePath)) {
         $version = filemtime($filePath);
         $fullPath .= '?v=' . $version;
     }
     
     return $fullPath;
+}
+
+/**
+ * Returns the canonical absolute URL for a given path or page slug.
+ */
+function canonical_url(string $slug = ''): string {
+    $canonicalDomain = rtrim(App::getInstance()->config()->get('canonical_domain', 'https://www.wonnegauer-designwerkstatt.de'), '/');
+    $clean = trim($slug, '/');
+    if ($clean === '' || $clean === 'index') {
+        return $canonicalDomain . '/';
+    }
+    return $canonicalDomain . '/' . $clean;
+}
+
+/**
+ * Safe HTML escaping helper.
+ */
+function e(?string $value): string {
+    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
 }
 
 /**

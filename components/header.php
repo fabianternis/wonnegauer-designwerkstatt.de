@@ -1,20 +1,22 @@
 <?php
-    $bannerFile = dirname(__DIR__) . "/public/assets/img/banners/{$page['slug']}.jpg";
-    $bannerSrc  = file_exists($bannerFile) ? url("assets/img/banners/{$page['slug']}.jpg") : url('assets/img/banners/DEFAULT.jpg');
+    $slug = $page['slug'] ?? 'index';
+    $bannerFile = dirname(__DIR__) . "/public/assets/img/banners/{$slug}.jpg";
+    $bannerSrc  = file_exists($bannerFile) ? url("assets/img/banners/{$slug}.jpg") : url('assets/img/banners/DEFAULT.jpg');
+    $pageTitle  = $page['title'] ?? 'Wonnegauer Designwerkstatt';
 ?>
-<section class="hero">
+<section class="hero" aria-label="Seiten-Banner">
     <div class="container hero__container">
-        <img class="hero__image" src="<?= htmlspecialchars($bannerSrc) ?>" alt="" role="presentation">
+        <img class="hero__image" src="<?= htmlspecialchars($bannerSrc) ?>" alt="<?= htmlspecialchars($pageTitle) ?>" width="1920" height="600" fetchpriority="high">
         <div class="hero__overlay">
-            <h1 class="hero__title"><?= htmlspecialchars($page['title'] ?? '') ?></h1>
+            <h1 class="hero__title"><?= htmlspecialchars($pageTitle) ?></h1>
         </div>
     </div>
 </section>
 
 <header class="site-header">
     <div class="container site-header__inner">
-        <a class="site-header__brand" href="<?= url() ?>">
-            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>" class="site-header__logo">
+        <a class="site-header__brand" href="<?= url() ?>" aria-label="Wonnegauer Designwerkstatt Startseite">
+            <img src="<?= url('assets/img/logo1.jpg') ?>" alt="<?= htmlspecialchars($config['site_name']) ?>" class="site-header__logo" width="52" height="52">
             <span class="site-header__title">
                 <span class="site-header__title-part">Wonnegauer</span>
                 <span class="site-header__title-part">Designwerkstatt</span>
@@ -26,12 +28,12 @@
                 <li class="main-nav__item">
                     <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active active' : '' ?>">Start</a>
                 </li>
-                <?php foreach ($config['nav'] as $slug): ?>
-                    <?php $navPage = $config['pages'][$slug] ?? null; ?>
+                <?php foreach ($config['nav'] as $navSlug): ?>
+                    <?php $navPage = $config['pages'][$navSlug] ?? null; ?>
                     <?php if ($navPage): ?>
                         <li class="main-nav__item">
-                            <a href="<?= url($slug) ?>"
-                               class="main-nav__link<?= is_active($slug) ? ' main-nav__link--active active' : '' ?>">
+                            <a href="<?= url($navSlug) ?>"
+                               class="main-nav__link<?= is_active($navSlug) ? ' main-nav__link--active active' : '' ?>">
                                 <?= htmlspecialchars($navPage['title']) ?>
                             </a>
                         </li>
@@ -40,7 +42,7 @@
             </ul>
         </nav>
 
-        <button class="nav-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+        <button type="button" class="nav-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>

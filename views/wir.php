@@ -1,5 +1,5 @@
 <article class="page-wir">
-    <h1>Wir</h1>
+    <h2>Über uns</h2>
     <p class="intro">
         Wir, Brigitte und Wolfgang Ternis, haben mit der Wonnegauer Designwerkstatt eine Möglichkeit geschaffen,
         unseren Interessen ein Forum zu geben. Unser Studium zum Dipl.Designer (FH) absolvierten wir in Mainz,
@@ -9,7 +9,7 @@
 
     <div class="zwei-spalten">
         <div class="spalte">
-            <h3>Brigitte</h3>
+            <h3>Brigitte Ternis</h3>
             <p>
                 Nach fundierter kaufmännischer und betriebswirtschaftlicher Ausbildung und Berufstätigkeit
                 entwickelte sich das Interesse an Kunst und Architektur sowie eigenem gestalterischem Schaffen
@@ -18,11 +18,11 @@
                 Möbelhäusern. Durch familiäre- und berufliche Entwicklungen kam ich in Kontakt mit alternativen
                 Heil- und Lebensansätzen. Verschiedene Ausbildungen in NLP, Theta-Healing u.v. mehr waren die
                 logische Folge. Mit der Arbeit als Gästeführerin ergab sich auch die Ausbildung zur Kultur- und
-                Weinbotschafterin und ganz neu die Ausbildung zur Fahrrad-Gästeführerin.
+                Weinbotschafterin und die Ausbildung zur Fahrrad-Gästeführerin.
             </p>
         </div>
         <div class="spalte">
-            <h3>Wolfgang</h3>
+            <h3>Wolfgang Ternis</h3>
             <p>
                 Schon in früher Jugend war für mich die „Räumlichkeit" ein faszinierendes Betätigungsfeld.
                 Später entstanden Plastiken und Produkte aus unterschiedlichen Materialien. Die Teilnahme an
@@ -35,5 +35,5 @@
         </div>
     </div>
 
-    <p>Mit der Eröffnung unseres Ateliers am 04. August 2013 sind etliche der Werke zugänglich.</p>
+    <p style="font-weight: 500;">Mit der Eröffnung unseres Ateliers am 04. August 2013 sind etliche der Werke der Öffentlichkeit zugänglich.</p>
 </article>

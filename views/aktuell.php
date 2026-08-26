@@ -1,12 +1,12 @@
 <div class="page-aktuell">
     <header class="page-header">
-        <h1>Aktuell</h1>
-        <p>Neuigkeiten und aktuelle Informationen aus der Wonnegauer Designwerkstatt.</p>
+        <h2>Aktuelle Mitteilungen</h2>
+        <p>Neuigkeiten, Ausstellungen und Öffnungszeiten aus der Wonnegauer Designwerkstatt.</p>
     </header>
 
     <div class="grid">
         <?php foreach ($page['items'] ?? [] as $item): ?>
-            <div class="card">
+            <article class="card">
                 <p class="aktuell-card-text">
                     <?= nl2br(htmlspecialchars($item['text'])) ?>
                 </p>
@@ -18,7 +18,7 @@
                         <?= htmlspecialchars($item['link']['label']) ?> &rarr;
                     </a>
                 <?php endif; ?>
-            </div>
+            </article>
         <?php endforeach; ?>
     </div>
 </div>

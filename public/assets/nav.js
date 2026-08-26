@@ -1,11 +1,13 @@
 (function () {
+    'use strict';
+
     // ── Page Loader & Transition ──────────────────────────────
     const loader = document.getElementById('page-loader');
     if (loader) {
         const startTime = Date.now();
-        const minDuration = 1200; // Minimum 1.2 seconds for branding visibility
+        const minDuration = 800; // Refined duration for quick, elegant branding
 
-        window.addEventListener('load', () => {
+        const hideLoader = () => {
             const elapsedTime = Date.now() - startTime;
             const remainingTime = Math.max(0, minDuration - elapsedTime);
 
@@ -13,32 +15,51 @@
                 loader.style.opacity = '0';
                 setTimeout(() => {
                     loader.style.display = 'none';
-                }, 800);
+                }, 400);
             }, remainingTime);
-        });
+        };
+
+        if (document.readyState === 'complete') {
+            hideLoader();
+        } else {
+            window.addEventListener('load', hideLoader);
+        }
     }
 
     // Smooth internal page transitions
     document.addEventListener('click', (e) => {
+        // Ignore if modifier key was pressed or not primary mouse button
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
         const link = e.target.closest('a');
-        if (link && 
-            link.href && 
-            link.href.startsWith(window.location.origin) && 
-            !link.getAttribute('target') && 
-            !link.href.includes('#')) {
-            
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Skip anchors, javascript links, tel/mailto, downloads, and target="_blank"
+        if (href.startsWith('#') || 
+            href.startsWith('javascript:') || 
+            href.startsWith('mailto:') || 
+            href.startsWith('tel:') || 
+            link.getAttribute('target') === '_blank' ||
+            link.hasAttribute('download')) {
+            return;
+        }
+
+        // Only transition for same-origin links
+        if (link.origin === window.location.origin && link.pathname !== window.location.pathname) {
             e.preventDefault();
             const targetUrl = link.href;
-            
             document.body.classList.add('is-exiting');
-            
+
             setTimeout(() => {
                 window.location.href = targetUrl;
-            }, 400);
+            }, 250);
         }
     });
 
-    // ── Navigation ────────────────────────────────────────────
+    // ── Mobile Navigation ─────────────────────────────────────
     const toggle = document.querySelector('.nav-toggle');
     const nav    = document.getElementById('main-nav');
 
@@ -57,7 +78,8 @@
             document.body.classList.remove('nav-open');
         }
 
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             toggle.getAttribute('aria-expanded') === 'true' ? closeNav() : openNav();
         });
 
@@ -91,26 +113,27 @@
     }
 
     // ── Service Worker Registration ───────────────────────────
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('/sw.js')
-                .catch(err => console.log('SW registration failed', err));
+                .catch(err => console.debug('SW registration notice:', err));
         });
     }
 
-    // ── Cookie Management ─────────────────────────────────────
-    const cookieBanner = document.getElementById('cookie-banner');
-    const bannerClose  = document.getElementById('cookie-banner-close');
-    const cookieModal  = document.getElementById('cookie-modal');
-    const acceptBtn    = document.getElementById('cookie-accept');
-    const declineBtn   = document.getElementById('cookie-decline');
-    const openSettings = document.getElementById('cookie-open-settings');
-    const settingsBtn  = document.getElementById('open-cookie-settings');
-    const saveBtn      = document.getElementById('save-cookie-settings');
-    const resetBtn     = document.getElementById('reset-cookie-settings');
-    const closeModal   = document.querySelector('.modal__close');
-    const modalOverlay = document.querySelector('.modal__overlay');
-    const fontToggle   = document.getElementById('toggle-google-fonts');
+    // ── Cookie Management & Modal ─────────────────────────────
+    const cookieBanner  = document.getElementById('cookie-banner');
+    const bannerClose   = document.getElementById('cookie-banner-close');
+    const cookieModal   = document.getElementById('cookie-modal');
+    const acceptBtn     = document.getElementById('cookie-accept');
+    const declineBtn    = document.getElementById('cookie-decline');
+    const openSettings  = document.getElementById('cookie-open-settings');
+    const footerSettings= document.getElementById('open-cookie-settings');
+    const impressumBtn  = document.getElementById('trigger-cookie-settings');
+    const saveBtn       = document.getElementById('save-cookie-settings');
+    const resetBtn      = document.getElementById('reset-cookie-settings');
+    const closeModalBtn = cookieModal ? cookieModal.querySelector('.modal__close') : null;
+    const modalOverlay  = cookieModal ? cookieModal.querySelector('.modal__overlay') : null;
+    const fontToggle    = document.getElementById('toggle-google-fonts');
 
     const setConsent = (status, reload = true) => {
         const expires = new Date();
@@ -125,13 +148,12 @@
         }
 
         if (reload) {
-            // Clear SW cache and reload to ensure fresh state
             if ('caches' in window) {
                 caches.keys().then((names) => {
                     Promise.all(names.map(name => caches.delete(name))).then(() => {
                         window.location.reload();
                     });
-                });
+                }).catch(() => window.location.reload());
             } else {
                 window.location.reload();
             }
@@ -139,33 +161,32 @@
     };
 
     const openModal = () => {
+        if (!cookieModal) return;
         cookieModal.classList.add('modal--open');
+        cookieModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     };
 
     const hideModal = () => {
+        if (!cookieModal) return;
         cookieModal.classList.remove('modal--open');
+        cookieModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
     if (acceptBtn) acceptBtn.addEventListener('click', () => setConsent('accepted'));
     if (declineBtn) declineBtn.addEventListener('click', () => setConsent('declined'));
     if (openSettings) openSettings.addEventListener('click', openModal);
-    
+    if (footerSettings) footerSettings.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    if (impressumBtn) impressumBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+
     if (bannerClose) {
         bannerClose.addEventListener('click', () => {
             setConsent('dismissed', false);
         });
     }
 
-    if (settingsBtn) {
-        settingsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
-    }
-
-    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', hideModal);
     if (modalOverlay) modalOverlay.addEventListener('click', hideModal);
 
     if (saveBtn && fontToggle) {
@@ -181,13 +202,19 @@
         });
     }
 
-    // ── Scroll to Top & Header ─────────────────────────────────
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cookieModal && cookieModal.classList.contains('modal--open')) {
+            hideModal();
+        }
+    });
+
+    // ── Scroll to Top & Header Effects ─────────────────────────
     const scrollTopBtn = document.getElementById('scroll-top');
-    const siteHeader = document.querySelector('.site-header');
+    const siteHeader   = document.querySelector('.site-header');
 
     window.addEventListener('scroll', () => {
         if (siteHeader) {
-            if (window.scrollY > 0) {
+            if (window.scrollY > 10) {
                 siteHeader.classList.add('active');
             } else {
                 siteHeader.classList.remove('active');
@@ -195,16 +222,15 @@
         }
 
         if (scrollTopBtn) {
-            if (window.scrollY > 400) {
+            if (window.scrollY > 350) {
                 scrollTopBtn.classList.add('scroll-top--visible');
             } else {
                 scrollTopBtn.classList.remove('scroll-top--visible');
             }
         }
-    });
+    }, { passive: true });
 
     if (scrollTopBtn) {
-
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -213,7 +239,7 @@
         });
     }
 
-    // ── Lightbox ──────────────────────────────────────────────
+    // ── Lightbox Component ────────────────────────────────────
     const initLightbox = () => {
         const triggers = document.querySelectorAll('[data-lightbox="true"]');
         if (triggers.length === 0) return;
@@ -221,30 +247,32 @@
         let currentGroup = [];
         let currentIndex = 0;
 
-        // Create lightbox elements if they don't exist
         let lightbox = document.querySelector('.lightbox');
         if (!lightbox) {
             lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
+            lightbox.setAttribute('role', 'dialog');
+            lightbox.setAttribute('aria-modal', 'true');
+            lightbox.setAttribute('aria-label', 'Bild vergrößert');
             lightbox.innerHTML = `
                 <div class="lightbox__content">
                     <div class="lightbox__loader"></div>
-                    <div class="lightbox__counter"></div>
-                    <button class="lightbox__close" aria-label="Schließen">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="lightbox__counter" aria-live="polite"></div>
+                    <button type="button" class="lightbox__close" aria-label="Schließen">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
-                    <button class="lightbox__nav lightbox__prev" aria-label="Vorheriges Bild">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button type="button" class="lightbox__nav lightbox__prev" aria-label="Vorheriges Bild">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polyline points="15 18 9 12 15 6"></polyline>
                         </svg>
                     </button>
                     <img src="" alt="" class="lightbox__img">
                     <div class="lightbox__caption"></div>
-                    <button class="lightbox__nav lightbox__next" aria-label="Nächstes Bild">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <button type="button" class="lightbox__nav lightbox__next" aria-label="Nächstes Bild">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
                     </button>
@@ -254,24 +282,25 @@
         }
 
         const lightboxImg = lightbox.querySelector('.lightbox__img');
-        const closeBtn = lightbox.querySelector('.lightbox__close');
-        const prevBtn = lightbox.querySelector('.lightbox__prev');
-        const nextBtn = lightbox.querySelector('.lightbox__next');
-        const caption = lightbox.querySelector('.lightbox__caption');
-        const counter = lightbox.querySelector('.lightbox__counter');
+        const closeBtn    = lightbox.querySelector('.lightbox__close');
+        const prevBtn     = lightbox.querySelector('.lightbox__prev');
+        const nextBtn     = lightbox.querySelector('.lightbox__next');
+        const caption     = lightbox.querySelector('.lightbox__caption');
+        const counter     = lightbox.querySelector('.lightbox__counter');
 
         const updateLightboxImage = () => {
             const item = currentGroup[currentIndex];
-            
+            if (!item) return;
+
             lightbox.classList.add('lightbox--loading');
             lightboxImg.style.opacity = '0';
-            lightboxImg.style.transform = 'scale(0.95)';
+            lightboxImg.style.transform = 'scale(0.96)';
 
             const tempImg = new Image();
             tempImg.src = item.src;
             tempImg.onload = () => {
                 lightboxImg.src = item.src;
-                lightboxImg.alt = item.alt || '';
+                lightboxImg.alt = item.alt || 'Großansicht';
                 caption.textContent = item.alt || '';
                 counter.textContent = currentGroup.length > 1 ? `${currentIndex + 1} / ${currentGroup.length}` : '';
                 
@@ -293,6 +322,7 @@
                 currentGroup = [trigger];
             }
             currentIndex = currentGroup.indexOf(trigger);
+            if (currentIndex === -1) currentIndex = 0;
 
             updateLightboxImage();
             lightbox.classList.add('lightbox--open');
@@ -305,8 +335,8 @@
             setTimeout(() => {
                 lightboxImg.src = '';
                 lightboxImg.style.opacity = '0';
-                lightboxImg.style.transform = 'scale(0.95)';
-            }, 400);
+                lightboxImg.style.transform = 'scale(0.96)';
+            }, 300);
         };
 
         const nextImage = () => {

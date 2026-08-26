@@ -4,7 +4,7 @@
         <div class="content-split" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
-                    <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt" data-lightbox="true" data-lightbox-group="home">
+                    <img src="<?= url('assets/img/index/1.jpg') ?>" alt="Wonnegauer Designwerkstatt – Atelier und Skulpturen in Flörsheim-Dalsheim" data-lightbox="true" data-lightbox-group="home">
                 </div>
             </div>
             <div>
@@ -21,21 +21,21 @@
             <div style="order: 2;">
                 <div class="img-card-container">
                     <div class="img-card">
-                        <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen" data-lightbox="true" data-lightbox-group="home">
+                        <img src="<?= url('assets/img/index/lyon.JPG') ?>" alt="Gästeführungen und Tandem-Radwanderungen durch Rheinhessen" data-lightbox="true" data-lightbox-group="home">
                     </div>
                 </div>
             </div>
             <div style="order: 1;">
-                <h2>Gästeführungen & Radwanderungen</h2>
+                <h2>Gästeführungen &amp; Radwanderungen</h2>
                 <p>Entdecken Sie die Schönheit Rheinhessens und des Wonnegaus auf ganz besondere Weise. Wir bieten fachkundige Führungen zu Fuß oder mit dem Rad an.</p>
-                <a href="<?= url('termine') ?>" class="cta-link">Termine & Führungen <span>&rarr;</span></a>
+                <a href="<?= url('termine') ?>" class="cta-link">Termine &amp; Führungen <span>&rarr;</span></a>
             </div>
         </div>
     </section>
 
     <section class="home-section" style="text-align: center;">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h2>Aktuelles & Termine</h2>
+            <h2>Aktuelles &amp; Termine</h2>
             <p>Bleiben Sie informiert über unsere neuesten Ausstellungen, Veranstaltungen und geführten Touren durch die Region.</p>
             <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
                 <a href="<?= url('aktuell') ?>" class="cta-link">Aktuelles <span>&rarr;</span></a>
@@ -48,13 +48,13 @@
         <h2 style="text-align: center; margin-bottom: 3rem;">Einblicke in die Kunst</h2>
         <div class="grid">
             <div class="img-card">
-                <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Kunstwerk 1" data-lightbox="true" data-lightbox-group="home-kunst">
+                <img src="<?= url('assets/img/kunst/kunst1.jpg') ?>" alt="Acrylbilder von Wolfgang Ternis – Das gelbe Dach, Gehen und Kommen" data-lightbox="true" data-lightbox-group="home-kunst">
             </div>
             <div class="img-card">
-                <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Kunstwerk 2" data-lightbox="true" data-lightbox-group="home-kunst">
+                <img src="<?= url('assets/img/kunst/unendlich.jpg') ?>" alt="Skulptur Einfach Unendlich – Holzplastik aus Fassdauben" data-lightbox="true" data-lightbox-group="home-kunst">
             </div>
             <div class="img-card">
-                <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Kunstwerk 3" data-lightbox="true" data-lightbox-group="home-kunst">
+                <img src="<?= url('assets/img/kunst/kunst2.jpg') ?>" alt="Acryl-Gemälde: Pure Energie und Jahreszeiten im Wandel" data-lightbox="true" data-lightbox-group="home-kunst">
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
@@ -66,10 +66,10 @@
         <h2 style="text-align: center; margin-bottom: 3rem;">Designprojekte</h2>
         <div class="content-split" style="justify-content: center; gap: clamp(2rem, 4vw, 4rem);">
             <div class="img-card" style="flex: 0 1 400px; max-width: 100%;">
-                <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Design Projekt 1" data-lightbox="true" data-lightbox-group="home-design">
+                <img src="<?= url('assets/img/design/einefueralle.jpg') ?>" alt="Designprojekt: Eine für Alle – 360° Rundum-Uhr" data-lightbox="true" data-lightbox-group="home-design">
             </div>
             <div class="img-card" style="flex: 0 1 400px; max-width: 100%;">
-                <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Design Projekt 2" data-lightbox="true" data-lightbox-group="home-design">
+                <img src="<?= url('assets/img/design/leuchte1.jpg') ?>" alt="Designprojekt: Stehleuchte mit Plexiglaszylinder" data-lightbox="true" data-lightbox-group="home-design">
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
@@ -81,7 +81,7 @@
         <div class="content-split" style="align-items: center;">
             <div class="img-card-container">
                 <div class="img-card">
-                    <img src="<?= url('assets/img/kultur/1.jpg') ?>" alt="Kulturelles Engagement" data-lightbox="true" data-lightbox-group="home-kultur">
+                    <img src="<?= url('assets/img/kultur/1.jpg') ?>" alt="Kulturelles Engagement: Tandem-Fahrt nach Garons" data-lightbox="true" data-lightbox-group="home-kultur">
                 </div>
             </div>
             <div>
@@ -94,4 +94,3 @@
     </section>
 
 </div>
-

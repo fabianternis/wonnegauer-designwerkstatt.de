@@ -4,6 +4,7 @@
     --clr-text: #111111;
     --clr-muted: #555555;
     --clr-accent: #222222;
+    --clr-secondary: #222222;
     --clr-border: #e8e8e8;
     
     /* Compact Spacing */
@@ -18,6 +19,28 @@
     
     --radius: 2px;
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ── Accessibility Skip Link ──────────────────────────────── */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--clr-text);
+    color: #ffffff !important;
+    padding: 0.75rem 1.5rem;
+    z-index: 99999;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: top 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skip-to-content:focus {
+    top: 1rem;
+    outline: 2px solid #ffffff;
 }
 
 /* ── Reset & Base ─────────────────────────────────────────── */
@@ -601,19 +624,29 @@ p {
     padding: 0 1rem;
 }
 
-.footer-nav a {
+.footer-nav a,
+.footer-nav__btn {
     display: inline-flex;
     align-items: center;
     padding: 0.4rem 0.6rem;
     min-height: 44px; /* Accessible touch target */
     transition: var(--transition);
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    line-height: inherit;
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover,
+.footer-nav__btn:hover {
     color: var(--clr-text);
 }
 
-.footer-nav a:focus-visible {
+.footer-nav a:focus-visible,
+.footer-nav__btn:focus-visible {
     outline: 2px solid var(--clr-text);
     outline-offset: 2px;
     border-radius: var(--radius);

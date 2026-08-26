@@ -4,7 +4,7 @@ namespace App\Core;
 
 class App
 {
-    private static App $instance;
+    private static ?App $instance = null;
     private Config $config;
     private Router $router;
     private View $view;
@@ -19,6 +19,9 @@ class App
 
     public static function getInstance(): App
     {
+        if (self::$instance === null) {
+            throw new \RuntimeException('App has not been initialized.');
+        }
         return self::$instance;
     }
 
@@ -34,10 +37,12 @@ class App
 
     private function handleError(\Throwable $e): void
     {
-        http_response_code(500);
+        if (!headers_sent()) {
+            http_response_code(500);
+        }
         $page = [
             'title'       => 'Serverfehler',
-            'description' => '',
+            'description' => 'Es ist ein interner Serverfehler aufgetreten.',
             'view'        => '500',
             'slug'        => '500',
         ];
