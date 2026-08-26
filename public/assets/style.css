@@ -667,6 +667,15 @@ p {
     transform: translateY(-2px);
 }
 
+/* Disable hover effects on legal and static informational cards */
+.page-impressum .card,
+.page-impressum .card:hover,
+.page-kontakt .card,
+.page-kontakt .card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
 /* ── Footer ───────────────────────────────────────────────── */
 .site-footer {
     padding: var(--space-xl) 0 0 0;

@@ -25,7 +25,7 @@
                 <p>
                     <strong>Webdesign und Webentwicklung:</strong><br>
                     <a href="https://xpsystems.eu" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">xpsystems.eu</a> &amp; 
-                    <a href="https://ternis-edv.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">ternis-edv.de</a>
+                    <a href="https://ternis-edv.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">ternis-edv.de</a> (<a href="https://ternis.dev" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">ternis.dev</a>)
                 </p>
                 <p style="margin-top: 1rem;">
                     <strong>Domain Management:</strong><br>

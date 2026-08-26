@@ -47,4 +47,4 @@
 - Öffnungszeiten: Nach Vereinbarung, oder spontan bei Anwesenheit („wenn wir da sind, sind wir für Sie da“).
 
 ## 7. Webmaster & Technische Umsetzung
-- Konzeption, Webdesign & Entwicklung: xpsystems.eu & ternis-edv.de (Fabian Ternis).
+- Konzeption, Webdesign & Entwicklung: xpsystems.eu & ternis-edv.de (ternis.dev / Fabian Ternis).
