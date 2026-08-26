@@ -22,8 +22,8 @@
             <p style="line-height: 2;">
                 <strong>Fabian Ternis</strong><br>
                 Webentwicklung<br>
-                <a href="https://www.fabianternis.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">www.fabianternis.de</a><br>
-                <a href="mailto:fabian@ternis.eu" style="text-decoration: underline; font-weight: 600;">fabian@ternis.eu</a>
+                <a href="https://ternis.dev" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">ternis.dev</a> / <a href="https://ternis-edv.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">ternis-edv.de</a> von <a href="https://www.fabianternis.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 600;">www.fabianternis.de</a><br>
+                <strong>E-Mail:</strong> <a href="mailto:fabian@ternismail.de" style="text-decoration: underline; font-weight: 600;">fabian@ternismail.de</a> / <a href="mailto:contact@ternis.dev" style="text-decoration: underline; font-weight: 600;">contact@ternis.dev</a>
             </p>
         </article>
     </div>
