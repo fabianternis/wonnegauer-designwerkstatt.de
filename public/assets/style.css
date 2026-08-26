@@ -1604,49 +1604,131 @@ body.lightbox-open {
     overflow: hidden;
 }
 
-/* ── Print Styles ────────────────────────────────────────── */
+/* ── Comprehensive Print Styles ──────────────────────────── */
 @media print {
+    @page {
+        margin: 1.5cm 1.2cm 1.5cm 1.2cm;
+        size: A4 portrait;
+    }
+
     *, *::before, *::after {
         background: transparent !important;
-        color: #000 !important;
+        color: #111111 !important;
         box-shadow: none !important;
         text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
-    body {
-        font-size: 11pt;
-        line-height: 1.6;
+    html, body {
+        font-size: 10.5pt;
+        line-height: 1.5;
+        font-family: var(--font-body), 'Helvetica Neue', Arial, sans-serif;
+        background: #ffffff !important;
+        color: #111111 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Hide UI Elements */
-    .hero, .main-nav, .nav-toggle, .scroll-top, .cookie-banner, .cookie-modal, .footer-nav, #print-page-btn {
+    /* ── Hide Interactive, Sticky, & Decorative UI ─────────── */
+    .skip-to-content,
+    #page-loader,
+    .loader-overlay,
+    .hero,
+    .main-nav,
+    .nav-toggle,
+    .scroll-top-tracker,
+    .scroll-top,
+    .cookie-banner,
+    #cookie-banner,
+    .modal,
+    #cookie-modal,
+    .footer-nav,
+    #print-page-btn,
+    .lightbox,
+    .link-item__arrow,
+    .cta-link__icon,
+    .site-footer > div:has(img),
+    .site-footer img,
+    button:not(.btn-print-keep) {
         display: none !important;
     }
 
-    /* Show Header/Footer selectively */
+    /* ── Header in Print ───────────────────────────────────── */
     .site-header {
-        border-bottom: 1px solid #000;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
+        position: static !important;
+        border-bottom: 2px solid #111111;
+        margin-bottom: 1.8rem;
+        padding-bottom: 0.8rem;
+        box-shadow: none !important;
+        background: transparent !important;
     }
 
-    .site-footer {
-        border-top: 1px solid #000;
-        margin-top: 2rem;
-        padding-top: 1rem;
+    .site-header__inner {
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 !important;
     }
 
-    /* Fix Layouts to stack */
-    .grid, .responsive-grid, .zwei-spalten, .img-card-container, .content-split, .editorial-split--three-col {
-        display: block !important;
-        width: 100% !important;
+    .site-header__brand {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        text-decoration: none !important;
     }
 
-    .card, .editorial-item, .img-card, .spalte {
-        page-break-inside: avoid;
-        margin-bottom: 2rem !important;
+    .site-header__logo {
+        height: 48px !important;
+        width: auto !important;
     }
 
+    .site-header__title {
+        font-family: var(--font-heading), Georgia, serif !important;
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+        color: #111111 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.35rem !important;
+    }
+
+    /* ── Typography & Headings ─────────────────────────────── */
+    h1, h2, h3, h4 {
+        font-family: var(--font-heading), Georgia, serif !important;
+        color: #111111 !important;
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    h1 {
+        font-size: 19pt !important;
+        margin-bottom: 10pt !important;
+    }
+
+    h2 {
+        font-size: 15pt !important;
+        margin-top: 14pt !important;
+        margin-bottom: 8pt !important;
+    }
+
+    h3 {
+        font-size: 12pt !important;
+        margin-top: 10pt !important;
+        margin-bottom: 6pt !important;
+    }
+
+    p {
+        margin-bottom: 10pt !important;
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* ── Layout & Containers ───────────────────────────────── */
+    .site-wrapper,
+    .site-main,
     .container {
         width: 100% !important;
         max-width: 100% !important;
@@ -1654,39 +1736,214 @@ body.lightbox-open {
         padding: 0 !important;
     }
 
-    /* Link formatting */
-    a, a:visited {
-        text-decoration: underline;
+    .home-section {
+        padding: 1.2rem 0 !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
-    /* Only expand URLs in the main content, not in header/footer to keep them clean */
-    main a[href^="http"]::after {
-        content: " (" attr(href) ")";
-        font-size: 0.85em;
-        word-break: break-all;
+    .page-header {
+        text-align: left !important;
+        margin-bottom: 1.5rem !important;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 0.75rem;
     }
 
-    a[href^="javascript:"]::after, a[href^="#"]::after {
-        content: "";
+    /* ── Grids & Two-Column Layouts ────────────────────────── */
+    .grid,
+    .responsive-grid,
+    .zwei-spalten {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+        width: 100% !important;
     }
 
-    .page-main, main, article {
-        margin: 0 !important;
+    .content-split {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+        align-items: flex-start !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .content-split > * {
+        flex: 1 1 50% !important;
+    }
+
+    /* ── Cards & Editorial Items ───────────────────────────── */
+    .card {
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        border-radius: 4px !important;
+        padding: 1rem !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 1.2rem !important;
+    }
+
+    .img-card-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+        gap: 1rem !important;
         padding: 0 !important;
     }
 
-    h1, h2, h3 {
-        page-break-after: avoid;
-    }
-
-    img {
+    .img-card {
+        background: #ffffff !important;
+        border: 1px solid #dddddd !important;
+        padding: 6px !important;
+        box-shadow: none !important;
+        transform: none !important;
+        aspect-ratio: auto !important;
         max-width: 100% !important;
         page-break-inside: avoid;
+        break-inside: avoid;
     }
 
-    p, h2, h3 {
-        orphans: 3;
-        widows: 3;
+    .img-card img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 240px !important;
+        object-fit: contain !important;
+        display: block !important;
+    }
+
+    .editorial-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 1.8rem !important;
+        padding-bottom: 1.2rem !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+    }
+
+    .editorial-split--three-col {
+        display: grid !important;
+        grid-template-columns: 1fr 1.4fr 1fr !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+
+    .editorial-description p {
+        font-size: 10.5pt !important;
+        font-style: italic !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── Kultur & Galleries ────────────────────────────────── */
+    .kultur-gallery {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+        max-width: 100% !important;
+    }
+
+    .kultur-img {
+        max-width: 100% !important;
+        height: auto !important;
+        border: 1px solid #e0e0e0 !important;
+    }
+
+    /* ── Link Directory ────────────────────────────────────── */
+    .link-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .link-item__card {
+        border: 1px solid #dddddd !important;
+        padding: 0.75rem !important;
+    }
+
+    .link-item__icon {
+        width: 32px !important;
+        height: 32px !important;
+        border: 1px solid #eeeeee !important;
+    }
+
+    .link-item__icon img {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .link-item__title {
+        font-size: 11pt !important;
+    }
+
+    .link-item__url {
+        font-size: 8.5pt !important;
+        color: #555555 !important;
+    }
+
+    /* ── Termine & Events ──────────────────────────────────── */
+    .termin-datum {
+        color: #111111 !important;
+        font-weight: 700 !important;
+    }
+
+    /* ── CTA Links & Buttons in Print ──────────────────────── */
+    .cta-link {
+        display: inline-block !important;
+        background: transparent !important;
+        color: #111111 !important;
+        border: 1px solid #111111 !important;
+        padding: 0.35rem 0.75rem !important;
+        font-size: 8.5pt !important;
+        text-transform: uppercase !important;
+        margin-top: 0.5rem !important;
+        border-radius: 2px !important;
+    }
+
+    /* ── Hyperlink Formatting ──────────────────────────────── */
+    a, a:visited {
+        text-decoration: underline !important;
+        color: #111111 !important;
+    }
+
+    /* Print URL after external links in content */
+    main a[href^="http"]:not([href*="wonnegauer-designwerkstatt.de"])::after {
+        content: " [" attr(href) "]";
+        font-size: 8pt;
+        font-weight: normal;
+        color: #444444;
+        word-break: break-all;
+    }
+
+    a[href^="tel:"]::after,
+    a[href^="mailto:"]::after,
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "" !important;
+    }
+
+    /* ── Footer in Print ───────────────────────────────────── */
+    .site-footer {
+        border-top: 2px solid #111111 !important;
+        margin-top: 2rem !important;
+        padding-top: 1rem !important;
+        text-align: left !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        color: #333333 !important;
+        font-size: 9pt !important;
+        line-height: 1.6 !important;
+        background: transparent !important;
+    }
+
+    .site-footer__contact {
+        font-weight: 600 !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    .site-footer__copy {
+        margin-top: 0.75rem !important;
+        font-size: 8pt !important;
+        opacity: 0.7 !important;
     }
 }
+
 
