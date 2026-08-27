@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div>
-                <h2>Willkommen in der Designwerkstatt</h2>
+                <h2>Willkommen bei der Wonnegauer Designwerkstatt</h2>
                 <p>Wir, Brigitte und Wolfgang Ternis, laden Sie ein, die Verbindung von Design, Kunst und Kultur in der malerischen Kulisse von Flörsheim-Dalsheim zu entdecken.</p>
                 <p>An unserem Standort im Wonnegau fördern wir Kreativität und Lebensqualität durch eigenes Schaffen und inspirierende Begegnungen.</p>
                 <a href="<?= url('wir') ?>" class="cta-link">
