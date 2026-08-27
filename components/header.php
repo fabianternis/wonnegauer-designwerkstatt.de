@@ -25,15 +25,15 @@
 
         <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
             <ul class="main-nav__list">
-                <li class="main-nav__item">
-                    <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active active' : '' ?>">Start</a>
+                <li class="main-nav__item<?= is_active('index') ? ' main-nav__item--active active' : '' ?>">
+                    <a href="<?= url() ?>" class="main-nav__link<?= is_active('index') ? ' main-nav__link--active active' : '' ?>"<?= is_active('index') ? ' aria-current="page"' : '' ?>>Start</a>
                 </li>
                 <?php foreach ($config['nav'] as $navSlug): ?>
                     <?php $navPage = $config['pages'][$navSlug] ?? null; ?>
                     <?php if ($navPage): ?>
-                        <li class="main-nav__item">
+                        <li class="main-nav__item<?= is_active($navSlug) ? ' main-nav__item--active active' : '' ?>">
                             <a href="<?= url($navSlug) ?>"
-                               class="main-nav__link<?= is_active($navSlug) ? ' main-nav__link--active active' : '' ?>">
+                               class="main-nav__link<?= is_active($navSlug) ? ' main-nav__link--active active' : '' ?>"<?= is_active($navSlug) ? ' aria-current="page"' : '' ?>>
                                 <?= htmlspecialchars($navPage['title']) ?>
                             </a>
                         </li>

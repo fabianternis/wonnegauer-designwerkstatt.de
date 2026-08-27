@@ -58,7 +58,15 @@ function render_view(string $view, array $page): void {
  */
 function is_active(string $slug): bool {
     global $page;
-    return ($page['slug'] ?? '') === $slug;
+    $currentSlug = $page['slug'] ?? '';
+    if ($currentSlug === '') {
+        try {
+            $currentSlug = App::getInstance()->getCurrentPage()['slug'] ?? '';
+        } catch (\Throwable) {
+            $currentSlug = '';
+        }
+    }
+    return $currentSlug === $slug;
 }
 
 /**

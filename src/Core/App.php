@@ -9,6 +9,8 @@ class App
     private Router $router;
     private View $view;
 
+    private ?array $currentPage = null;
+
     public function __construct(array $configData)
     {
         $this->config = new Config($configData);
@@ -28,8 +30,9 @@ class App
     public function run(): void
     {
         try {
-            $page = $this->router->resolve();
-            $this->view->renderLayout($page);
+            $this->currentPage = $this->router->resolve();
+            $GLOBALS['page'] = $this->currentPage;
+            $this->view->renderLayout($this->currentPage);
         } catch (\Throwable $e) {
             $this->handleError($e);
         }
@@ -57,5 +60,10 @@ class App
     public function view(): View
     {
         return $this->view;
+    }
+
+    public function getCurrentPage(): ?array
+    {
+        return $this->currentPage;
     }
 }

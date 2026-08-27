@@ -352,14 +352,18 @@ p {
 }
 
 .main-nav__link--active,
-.main-nav__link.active {
+.main-nav__link.active,
+.main-nav__item.active > .main-nav__link,
+.main-nav__item--active > .main-nav__link {
     background-color: var(--clr-text);
     color: var(--clr-bg);
     font-weight: 700;
 }
 
 .main-nav__link--active:hover,
-.main-nav__link.active:hover {
+.main-nav__link.active:hover,
+.main-nav__item.active > .main-nav__link:hover,
+.main-nav__item--active > .main-nav__link:hover {
     background-color: var(--clr-muted);
     color: var(--clr-bg);
 }
