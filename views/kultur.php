@@ -4,12 +4,12 @@
         <div class="page-content__images kultur-gallery">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <img src="<?= url("assets/img/kultur/{$i}.jpg") ?>"
-                     alt="Tandemfahrt nach Garons – Bild <?= $i ?>" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur">
+                     alt="Tandemfahrt nach Garons – Reiseimpression Teil <?= $i ?>" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur" loading="lazy">
             <?php endfor; ?>
         </div>
         <div class="page-content__text">
-            <h1>Ein Traum wurde wahr</h1>
-            <h2>Eine Tandemfahrt nach Garons</h2>
+            <h2>Ein Traum wurde wahr</h2>
+            <h3 style="font-size: 1.35rem; color: var(--clr-muted); margin-bottom: 1.5rem;">Eine Tandemfahrt nach Garons</h3>
             <p>Wir fahren seit einigen Jahren Tandem und haben schon etliche km hinter uns gebracht. Auch eine Fahrt nach Bodelsberg im Allgäu war eine schöne Herausforderung.</p>
             <p>Nun reifte aber die Idee, in unsere, damals noch zukünftige, Partnergemeinde Garons zu radeln. Zuerst war es ein ferner Traum, doch plötzlich schien sich alles zu fügen. Unsere Urlaubsplanung wurde zur Radtourenplanung. Wir suchten eine geeignete Streckenführung, besorgten extra leichte und kleine Schlafsäcke, Luftmatratzen, ein entsprechendes Zelt sowie die üblichen Reiseutensilien. Das Tandem wurde für die Reise vorbereitet und wir mußten noch die Rückreise organisieren. Der Zufall wollte es, daß Verwandte in der gleichen Zeit nach Frankreich wollten und unser Auto mitnehmen konnten.</p>
             <p>Also war alles vorbereitet und am 2.7.2011 ging es los. Zuerst fuhren wir in bekanntem Gebiet Richtung Rheinzabern, wo wir Mittagessen gingen. Es ging dann weiter nach Lauterbourg und bei Rastatt über den Rhein, um in Stollhofen auf dem Campingplatz zu schlafen.</p>
@@ -26,7 +26,7 @@
     <article class="page-content content-split">
         <div class="page-content__images kultur-gallery">
             <img src="<?= url('assets/img/kultur/garons_fd.jpg') ?>"
-                 alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur">
+                 alt="Partnerschaftsbild Garons – Flörsheim-Dalsheim" class="kultur-img" data-lightbox="true" data-lightbox-group="kultur" loading="lazy">
         </div>
         <div class="page-content__text">
             <h2>Das Partnerschaftsbild</h2>

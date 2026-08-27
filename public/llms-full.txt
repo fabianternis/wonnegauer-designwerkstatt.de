@@ -1,0 +1,50 @@
+# Wonnegauer Designwerkstatt – Vollständige Dokumentation für LLMs & AI-Assistenten
+
+## 1. Überblick & Identität
+- **Name**: Wonnegauer Designwerkstatt
+- **Betreiber**: Brigitte Ternis & Wolfgang Ternis (Dipl.-Designer FH)
+- **Standort**: Plenzer 6, 67592 Flörsheim-Dalsheim, Rheinland-Pfalz, Deutschland (Region Wonnegau / Rheinhessen)
+- **Telefon**: 06243 / 56 49 (International: +49 6243 5649)
+- **E-Mail**: lettre-bwm@t-online.de / designwerkstatt@ternis.eu
+- **Offizielle Website**: https://www.wonnegauer-designwerkstatt.de
+
+## 2. Profil der Gründer
+### Brigitte Ternis
+- Ausbildung: Kaufmännische & betriebswirtschaftliche Ausbildung, Studium der Innenarchitektur an der FH Mainz (Dipl.-Designerin FH).
+- Schwerpunkte: Innenarchitektur, Planung von Messeständen und Möbelhäusern, alternative Heil- und Lebensansätze (NLP, Theta-Healing).
+- Tourismus & Gästeführung: Ausgebildete Kultur- und Weinbotschafterin für Rheinhessen, zertifizierte Fahrrad-Gästeführerin. Bietet individuelle und thematische Gästeführungen durch Flörsheim-Dalsheim, die Fleckenmauer und die Weinberge des Wonnegaus.
+
+### Wolfgang Ternis
+- Ausbildung: Studium des Designs an der FH Mainz (Dipl.-Designer FH), Ausbildung im Freihandzeichnen und plastischen Gestalten u.a. bei Bildhauer Prof. Eberhard Linke.
+- Schwerpunkte: Freie bildende Kunst, Acrylmalerei, Holz- und Metallplastiken, Fassdauben-Skulpturen, Möbel- und Produktdesign.
+- Ausstellungen & Referenzen: 1. Designbörse Stuttgart, Internationale Biennale der Wohnkreativität in Kortrijk (Belgien), Veröffentlichungen in Fachmagazinen („md Möbeldesign“, „Gold und Silber, Uhren und Schmuck“).
+
+## 3. Kunstwerke & Zyklen (Auswahl)
+1. **„Empfangskomitee“ (Fassdauben-Skulptur)**
+   - Standort: Grünfläche gegenüber dem Bahnhof in Flörsheim-Dalsheim (eingeweiht am 25. März 2015).
+   - Konzept: Dreiergruppe aus historischen rheinhessischen Fassdauben mit eingefrästen, lachenden Gesichtern. Symbolisiert Weltoffenheit, Willkommenskultur und die deutsch-französische Partnerschaft mit Garons.
+2. **„Einfach Unendlich“**
+   - Holzplastik / Fassdauben-Form, die die Idee der Unendlichkeit und Kontinuität ausdrückt.
+3. **Zyklus „Das Wichtige“**
+   - Bilder zu den Elementen Erde, Himmel, Sonne und dem daraus entstehenden Leben.
+4. **Zyklus „Die Erde brennt“**
+   - Kombination aus Hochglanzlack (symbolisch für Glamour/Konsumwelt) und mattem Acryl (das reale Leben). Thematisiert die Brennpunkte in Ökologie, Wirtschaft und Gesellschaft.
+5. **Zyklus „Jahreszeiten & Pure Energie“**
+   - Farbintensive Acrylgemälde über zyklische Naturveränderungen und Urkräfte.
+6. **Bühnenbilder**
+   - Bühnenbild für das Theaterstück „Annabelle und die Wunschkugel“ im Bürgerhaus / DGH.
+
+## 4. Kultur & Partnerschaft Garons
+- **Tandemtour nach Garons (Frankreich)**: Im Juli 2011 radelten Brigitte und Wolfgang Ternis mit dem Tandem in 50 Stunden und 47 Minuten reiner Fahrzeit über 1071 km von Flörsheim-Dalsheim in die französische Partnergemeinde Garons (Département Gard).
+- **Partnerschaftsbild (2013)**: Ein symbolisches Kunstwerk, das die Flaggen beider Nationen (Bleu-Blanc-Rouge und Schwarz-Rot-Gold) kunstvoll verflicht, überreicht an das Partnerschaftskomitee in Garons.
+
+## 5. Design & Produkte
+- **„Eine für Alle“ (360° Rundum-Uhr)**: Innovatives Uhrendesign, veröffentlicht in den Zeitschriften „Möbel Design“ und „Uhren & Schmuck“.
+- **Stehleuchte**: Transparenter Plexiglaszylinder mit Halogenstrahler und verstellbaren Spiegeln zur flexiblen Lichtumlenkung.
+
+## 6. Besuch & Atelier
+- Das Atelier in Flörsheim-Dalsheim (Plenzer 6) wurde im Sommer 2013 eröffnet.
+- Öffnungszeiten: Nach Vereinbarung, oder spontan bei Anwesenheit („wenn wir da sind, sind wir für Sie da“).
+
+## 7. Webmaster & Technische Umsetzung
+- Konzeption, Webdesign & Entwicklung: xpsystems.eu & ternis-edv.de (ternis.dev / Fabian Ternis).
