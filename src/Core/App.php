@@ -4,10 +4,12 @@ namespace App\Core;
 
 class App
 {
-    private static App $instance;
+    private static ?App $instance = null;
     private Config $config;
     private Router $router;
     private View $view;
+
+    private ?array $currentPage = null;
 
     public function __construct(array $configData)
     {
@@ -19,14 +21,18 @@ class App
 
     public static function getInstance(): App
     {
+        if (self::$instance === null) {
+            throw new \RuntimeException('App has not been initialized.');
+        }
         return self::$instance;
     }
 
     public function run(): void
     {
         try {
-            $page = $this->router->resolve();
-            $this->view->renderLayout($page);
+            $this->currentPage = $this->router->resolve();
+            $GLOBALS['page'] = $this->currentPage;
+            $this->view->renderLayout($this->currentPage);
         } catch (\Throwable $e) {
             $this->handleError($e);
         }
@@ -34,10 +40,12 @@ class App
 
     private function handleError(\Throwable $e): void
     {
-        http_response_code(500);
+        if (!headers_sent()) {
+            http_response_code(500);
+        }
         $page = [
             'title'       => 'Serverfehler',
-            'description' => '',
+            'description' => 'Es ist ein interner Serverfehler aufgetreten.',
             'view'        => '500',
             'slug'        => '500',
         ];
@@ -52,5 +60,10 @@ class App
     public function view(): View
     {
         return $this->view;
+    }
+
+    public function getCurrentPage(): ?array
+    {
+        return $this->currentPage;
     }
 }

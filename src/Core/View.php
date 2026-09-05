@@ -30,6 +30,7 @@ class View
 
     public function renderLayout(array $page): void
     {
+        $GLOBALS['page'] = $page;
         $config = $this->config->all();
         include dirname(__DIR__, 2) . '/views/layout.php';
     }

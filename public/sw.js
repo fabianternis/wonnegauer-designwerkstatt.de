@@ -1,5 +1,7 @@
-const CACHE_NAME = 'wdw-cache-v2';
+const CACHE_NAME = 'wdw-cache-v3';
 const STATIC_ASSETS = [
+    '/',
+    '/manifest.json',
     '/assets/style.css',
     '/assets/nav.js',
     '/assets/img/logo1.jpg',
@@ -16,7 +18,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Activate event: cleanup old caches
+// Activate event: cleanup old caches and claim clients
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -27,36 +29,36 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        })
+        }).then(() => self.clients.claim())
     );
 });
 
-// Fetch event: 
-// - Network First for HTML/Documents (ensures cookie consent is respected)
-// - Cache First for static assets
+// Fetch event: Network-First for HTML/pages, Cache-First for static assets
 self.addEventListener('fetch', (event) => {
     const request = event.request;
+    if (request.method !== 'GET') return;
 
-    // Network First for page requests
-    if (request.mode === 'navigate' || (request.method === 'GET' && request.headers.get('accept').includes('text/html'))) {
+    // Network-First for page navigation to respect cookie consent state immediately
+    if (request.mode === 'navigate' || (request.headers.get('accept') && request.headers.get('accept').includes('text/html'))) {
         event.respondWith(
             fetch(request)
                 .then((response) => {
-                    const copy = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+                    if (response && response.status === 200) {
+                        const copy = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+                    }
                     return response;
                 })
-                .catch(() => caches.match(request))
+                .catch(() => caches.match(request).then((cached) => cached || caches.match('/')))
         );
         return;
     }
 
-    // Cache First for static assets
+    // Cache-First for static assets (CSS, JS, Images, Icons)
     event.respondWith(
         caches.match(request).then((response) => {
             return response || fetch(request).then((fetchResponse) => {
-                // Optionally cache images or other assets on the fly
-                if (request.url.includes('/assets/img/')) {
+                if (fetchResponse && fetchResponse.status === 200 && (request.url.includes('/assets/') || request.url.includes('/manifest.json'))) {
                     const copy = fetchResponse.clone();
                     caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
                 }

@@ -13,7 +13,8 @@ class Router
 
     public function resolve(): array
     {
-        $uri = strtok($_SERVER['REQUEST_URI'], '?');
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $uri = strtok($uri, '?');
         $uri = rtrim($uri, '/');
         $uri = $uri === '' ? '/' : $uri;
 
@@ -26,10 +27,12 @@ class Router
             return array_merge($pages[$slug], ['slug' => $slug]);
         }
 
-        http_response_code(404);
+        if (!headers_sent()) {
+            http_response_code(404);
+        }
         return [
             'title'       => 'Seite nicht gefunden',
-            'description' => '',
+            'description' => 'Die gesuchte Seite existiert leider nicht oder wurde verschoben.',
             'view'        => '404',
             'slug'        => '404',
         ];

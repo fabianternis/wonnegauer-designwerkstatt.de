@@ -1,20 +1,40 @@
 <div class="page-design">
     <div class="editorial-list">
         <?php foreach ($page['items'] ?? [] as $item): ?>
+            <?php
+                $itemText = $item['text'] ?? '';
+                $cleanAlt = !empty($itemText) ? mb_substr(trim(preg_replace('/\s+/', ' ', strip_tags($itemText))), 0, 120) : 'Designprojekt der Wonnegauer Designwerkstatt';
+                $bilderCount = count($item['bilder'] ?? []);
+                $isThreeCol = ($bilderCount === 2);
+            ?>
             <article class="editorial-item">
-                <div class="responsive-grid">
-                    <div class="img-card-container">
-                        <?php foreach ($item['bilder'] as $bild): ?>
-                            <div class="img-card">
-                                <img src="<?= htmlspecialchars(url($bild)) ?>" alt="">
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <div>
-                        <p style="font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; line-height: 1.4;">
-                            <?= nl2br(htmlspecialchars($item['text'])) ?>
-                        </p>
-                    </div>
+                <div class="content-split editorial-split <?= $isThreeCol ? 'editorial-split--three-col' : '' ?>">
+                    <?php if ($isThreeCol): ?>
+                        <div class="img-card">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][0])) ?>" alt="<?= htmlspecialchars($cleanAlt) ?> – Ansicht 1" data-lightbox="true" data-lightbox-group="design" loading="lazy">
+                        </div>
+                        <div class="editorial-description">
+                            <p>
+                                <?= nl2br(htmlspecialchars($itemText)) ?>
+                            </p>
+                        </div>
+                        <div class="img-card">
+                            <img src="<?= htmlspecialchars(url($item['bilder'][1])) ?>" alt="<?= htmlspecialchars($cleanAlt) ?> – Ansicht 2" data-lightbox="true" data-lightbox-group="design" loading="lazy">
+                        </div>
+                    <?php else: ?>
+                        <div class="img-card-container">
+                            <?php foreach ($item['bilder'] as $index => $bild): ?>
+                                <div class="img-card">
+                                    <img src="<?= htmlspecialchars(url($bild)) ?>" alt="<?= htmlspecialchars($cleanAlt . ($bilderCount > 1 ? ' (' . ($index + 1) . ')' : '')) ?>" data-lightbox="true" data-lightbox-group="design" loading="lazy">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="editorial-description">
+                            <p>
+                                <?= nl2br(htmlspecialchars($itemText)) ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </article>
         <?php endforeach; ?>
