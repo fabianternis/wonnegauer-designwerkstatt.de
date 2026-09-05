@@ -1,12 +1,14 @@
 <?php
 
 return [
-    'site_name' => 'Wonnegauer Designwerkstatt',
-    'base_url'  => '',
+    'site_name'        => env('SITE_NAME', 'Wonnegauer Designwerkstatt'),
+    'base_url'         => env('BASE_URL', ''),
+    'canonical_domain' => env('CANONICAL_DOMAIN', 'https://www.wonnegauer-designwerkstatt.de'),
 
     'turnstile' => [
-        'enabled'  => true,
-        'site_key' => '1x00000000000000000000AA', // Official Cloudflare Turnstile Always-Pass test key. Replace with production site key.
+        'enabled'    => (bool) env('TURNSTILE_ENABLED', true),
+        'site_key'   => (string) env('TURNSTILE_SITE_KEY', '1x00000000000000000000AA'),
+        'secret_key' => (string) env('TURNSTILE_SECRET_KEY', '1x0000000000000000000000000000000AA'),
     ],
 
     'pages' => [

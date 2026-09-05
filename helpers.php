@@ -3,6 +3,23 @@
 use App\Core\App;
 
 /**
+ * Gets an environment variable with fallback.
+ */
+function env(string $key, mixed $default = null): mixed {
+    $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
+    if ($value === false || $value === null) {
+        return $default;
+    }
+    return match (strtolower((string) $value)) {
+        'true', '(true)' => true,
+        'false', '(false)' => false,
+        'empty', '(empty)' => '',
+        'null', '(null)' => null,
+        default => $value,
+    };
+}
+
+/**
  * Returns the base URL with an optional path appended.
  * Includes automatic cache busting.
  */
