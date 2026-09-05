@@ -66,9 +66,11 @@
                 "description": "Wonnegauer Designwerkstatt – Brigitte und Wolfgang Ternis aus Flörsheim-Dalsheim. Kunst, Kultur, Design und Gästeführungen in Rheinhessen.",
                 "url": "https://www.wonnegauer-designwerkstatt.de",
                 "logo": "https://www.wonnegauer-designwerkstatt.de/assets/img/logo1.jpg",
-                "image": "https://www.wonnegauer-designwerkstatt.de/assets/img/banners/index.jpg",
-                "telephone": "+49 6243 5649",
-                "email": "lettre-bwm@t-online.de",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer service",
+                    "url": "https://www.wonnegauer-designwerkstatt.de/kontakt"
+                },
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Plenzer 6",
@@ -234,6 +236,9 @@
         </div>
     </div>
 
+    <?php if (turnstile_enabled() && ($page['slug'] ?? '') === 'kontakt'): ?>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <?php endif; ?>
     <script src="<?= url('assets/nav.js') ?>"></script>
 </body>
 </html>

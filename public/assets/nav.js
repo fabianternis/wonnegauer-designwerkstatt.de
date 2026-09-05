@@ -402,4 +402,115 @@
             window.print();
         });
     }
+
+    // ── Anti-Scraping Contact Hydration ─────────────────────────
+    const hydrateContact = (el) => {
+        if (!el || el.dataset.hydrated === 'true') return;
+
+        const type = el.dataset.type;
+        try {
+            if (type === 'email') {
+                const u = el.dataset.u ? atob(el.dataset.u) : '';
+                const d = el.dataset.d ? atob(el.dataset.d) : '';
+                if (u && d) {
+                    const email = `${u}@${d}`;
+                    el.href = `mailto:${email}`;
+                    const label = el.dataset.label ? atob(el.dataset.label) : email;
+                    el.textContent = label;
+                    el.dataset.hydrated = 'true';
+                }
+            } else if (type === 'phone') {
+                const tel = el.dataset.tel ? atob(el.dataset.tel) : '';
+                if (tel) {
+                    el.href = `tel:${tel}`;
+                    const label = el.dataset.label ? atob(el.dataset.label) : tel;
+                    el.textContent = label;
+                    el.dataset.hydrated = 'true';
+                }
+            }
+        } catch (e) {
+            console.error('Contact decode error', e);
+        }
+    };
+
+    const protectedContacts = document.querySelectorAll('.protected-contact');
+    protectedContacts.forEach((el) => {
+        el.addEventListener('pointerover', () => hydrateContact(el), { once: true });
+        el.addEventListener('focus', () => hydrateContact(el), { once: true });
+        el.addEventListener('touchstart', () => hydrateContact(el), { passive: true, once: true });
+        el.addEventListener('click', () => {
+            if (el.dataset.hydrated !== 'true') {
+                hydrateContact(el);
+            }
+        });
+    });
+
+    // Turnstile Callbacks (Global)
+    window.onTurnstileSuccess = (token) => {
+        const statusEl = document.getElementById('turnstile-status');
+        const card = document.getElementById('turnstile-verification');
+        if (statusEl) {
+            statusEl.innerHTML = '<span style="color: #2e7d32; font-weight: 600;">✓ Verifiziert: Menschlicher Besucher erkannt. Schutz aktiv.</span>';
+        }
+        if (card) {
+            card.classList.add('is-verified');
+        }
+        protectedContacts.forEach(hydrateContact);
+        window.dispatchEvent(new CustomEvent('turnstile-verified', { detail: { token } }));
+    };
+
+    window.onTurnstileFallback = () => {
+        const statusEl = document.getElementById('turnstile-status');
+        if (statusEl) {
+            statusEl.innerHTML = '<span style="color: var(--clr-muted);">Schutz bereitgestellt.</span>';
+        }
+        protectedContacts.forEach(hydrateContact);
+    };
+
+    // Fallback if Turnstile script is blocked by extensions/adblockers
+    setTimeout(() => {
+        const statusEl = document.getElementById('turnstile-status');
+        if (statusEl && !document.querySelector('.turnstile-card.is-verified')) {
+            window.onTurnstileFallback();
+        }
+    }, 3500);
+
+    // ── Quick Message Form Handling ────────────────────────────
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameEl = document.getElementById('form-name');
+            const emailEl = document.getElementById('form-email');
+            const msgEl = document.getElementById('form-message');
+            const feedback = document.getElementById('form-feedback');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const message = msgEl ? msgEl.value.trim() : '';
+
+            if (!name || !email || !message) {
+                if (feedback) {
+                    feedback.style.display = 'block';
+                    feedback.style.color = '#c62828';
+                    feedback.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+                }
+                return;
+            }
+
+            const recipient = atob('bGV0dHJlLWJ3bUB0LW9ubGluZS5kZQ=='); // lettre-bwm@t-online.de
+            const subject = encodeURIComponent(`Kontaktanfrage via Website von ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`);
+
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.style.color = '#2e7d32';
+                feedback.textContent = 'Vielen Dank! Ihr E-Mail-Programm wird geöffnet, um die Nachricht zu senden.';
+            }
+
+            setTimeout(() => {
+                window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            }, 600);
+        });
+    }
 })();

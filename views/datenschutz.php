@@ -13,9 +13,9 @@
                 Plenzer 6<br>
                 67592 Flörsheim-Dalsheim<br>
                 <br>
-                Telefon: <a href="tel:+4962435649" style="text-decoration: underline; font-weight: 600;">06243 / 56 49</a><br>
-                E-Mail: <a href="mailto:wdw@ternis.dev" style="text-decoration: underline; font-weight: 600;">wdw@ternis.dev</a><br>
-                Legal-Kontakt: <a href="mailto:rechtliches@ternismail.de" style="text-decoration: underline; font-weight: 600;">rechtliches@ternismail.de</a><br>
+                Telefon: <?= protected_phone('06243 / 56 49', '+4962435649', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
+                E-Mail: <?= protected_email('wdw@ternis.dev', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
+                Legal-Kontakt: <?= protected_email('rechtliches@ternismail.de', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
                 Web: <a href="https://www.wonnegauer-designwerkstatt.de" style="text-decoration: underline; font-weight: 600;">www.wonnegauer-designwerkstatt.de</a>
             </address>
         </section>
@@ -67,7 +67,17 @@
 
     <section class="section" style="margin-top: var(--space-xl);">
         <div class="card">
-            <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">5. Ihre Rechte</h3>
+            <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">5. Cloudflare Turnstile (Spam- und Bot-Schutz)</h3>
+            <p>Auf unserer Kontaktseite setzen wir den Dienst <strong>Cloudflare Turnstile</strong> ein, betrieben von der Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA.</p>
+            <p style="margin-top: 0.5rem;">Turnstile dient der Prüfung, ob Interaktionen auf unserer Website durch menschliche Besucher oder durch automatisierte Schadprogramme (Bots, Scraper) vorgenommen werden. Hierdurch schützen wir unsere Kontaktangaben (E-Mail und Telefon) sowie Übertragungen vor unerwünschtem Spam und automatisiertem Harvesting.</p>
+            <p style="margin-top: 0.5rem;">Hierzu analysiert Turnstile bestimmte technische Merkmale des Endgeräts (u.a. IP-Adresse, Header-Informationen und Interaktionssignale). Turnstile setzt dabei keine persistenten Werbe- oder Tracking-Cookies.</p>
+            <p style="margin-top: 0.5rem;">Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der Abwehr von Spam-Angriffen und dem Schutz unserer Kommunikationskanäle vor automatisiertem Auslesen.</p>
+        </div>
+    </section>
+
+    <section class="section" style="margin-top: var(--space-xl);">
+        <div class="card">
+            <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">6. Ihre Rechte</h3>
             <p>Sie haben als betroffene Person jederzeit im Rahmen der gesetzlichen Bestimmungen der DSGVO folgende Rechte:</p>
             <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.8;">
                 <li><strong>Auskunft (Art. 15 DSGVO):</strong> Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten.</li>
@@ -78,7 +88,7 @@
                 <li><strong>Widerruf (Art. 7 Abs. 3 DSGVO):</strong> Recht, eine erteilte Einwilligung zur Datenverarbeitung jederzeit für die Zukunft zu widerrufen.</li>
                 <li><strong>Beschwerderecht (Art. 77 DSGVO):</strong> Recht auf Beschwerde bei einer zuständigen Datenschutz-Aufsichtsbehörde.</li>
             </ul>
-            <p style="margin-top: 1rem;">Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an die oben angegebene Adresse oder an <a href="mailto:rechtliches@ternismail.de" style="text-decoration: underline; font-weight: 600;">rechtliches@ternismail.de</a> wenden.</p>
+            <p style="margin-top: 1rem;">Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an die oben angegebene Adresse oder an <?= protected_email('rechtliches@ternismail.de', null, '', 'text-decoration: underline; font-weight: 600;') ?> wenden.</p>
         </div>
     </section>
 </div>

@@ -12,9 +12,9 @@
                 Plenzer 6<br>
                 67592 Flörsheim-Dalsheim<br>
                 <br>
-                Telefon: <a href="tel:+4962435649" style="text-decoration: underline; font-weight: 600;">06243 / 56 49</a><br>
-                E-Mail: <a href="mailto:wdw@ternis.dev" style="text-decoration: underline; font-weight: 600;">wdw@ternis.dev</a><br>
-                Legal-Kontakt: <a href="mailto:rechtliches@ternismail.de" style="text-decoration: underline; font-weight: 600;">rechtliches@ternismail.de</a><br>
+                Telefon: <?= protected_phone('06243 / 56 49', '+4962435649', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
+                E-Mail: <?= protected_email('wdw@ternis.dev', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
+                Legal-Kontakt: <?= protected_email('rechtliches@ternismail.de', null, '', 'text-decoration: underline; font-weight: 600;') ?><br>
                 Web: <a href="https://www.wonnegauer-designwerkstatt.de" style="text-decoration: underline; font-weight: 600;">www.wonnegauer-designwerkstatt.de</a>
             </address>
         </section>

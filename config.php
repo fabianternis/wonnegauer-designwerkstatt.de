@@ -4,6 +4,11 @@ return [
     'site_name' => 'Wonnegauer Designwerkstatt',
     'base_url'  => '',
 
+    'turnstile' => [
+        'enabled'  => true,
+        'site_key' => '1x00000000000000000000AA', // Official Cloudflare Turnstile Always-Pass test key. Replace with production site key.
+    ],
+
     'pages' => [
         'index' => [
             'title'       => 'Willkommen',
