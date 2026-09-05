@@ -3,7 +3,7 @@
         <nav class="footer-nav" aria-label="Footer-Navigation">
             <ul>
                 <li><a href="<?= url('impressum') ?>">Impressum</a></li>
-                <li><a href="<?= url('impressum') ?>#datenschutz">Datenschutz</a></li>
+                <li><a href="<?= url('datenschutz') ?>">Datenschutz</a></li>
                 <li><a href="<?= url('kontakt') ?>">Kontakt</a></li>
                 <li><button type="button" id="open-cookie-settings" class="footer-nav__btn">Cookie-Einstellungen</button></li>
                 <li>

@@ -183,7 +183,7 @@
                 <div class="cookie-banner__content">
                     <p>
                         Wir verwenden Google Fonts, um die Gestaltung unserer Website zu verbessern. Mit Ihrer Zustimmung laden wir diese Schriften extern nach. 
-                        Weitere Informationen finden Sie in unserer <a href="<?= url('impressum') ?>#datenschutz" class="cookie-banner__link">Datenschutzerklärung</a>.
+                        Weitere Informationen finden Sie in unserer <a href="<?= url('datenschutz') ?>" class="cookie-banner__link">Datenschutzerklärung</a>.
                     </p>
                 </div>
                 <div class="cookie-banner__actions">
@@ -228,8 +228,8 @@
                 </div>
             </div>
             <div class="modal__footer">
-                <button type="button" id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Einstellungen zurücksetzen</button>
-                <button type="button" id="save-cookie-settings" class="btn btn--primary">Einstellungen speichern</button>
+                <button type="button" id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Zurücksetzen</button>
+                <button type="button" id="save-cookie-settings" class="btn btn--primary">Speichern</button>
             </div>
         </div>
     </div>

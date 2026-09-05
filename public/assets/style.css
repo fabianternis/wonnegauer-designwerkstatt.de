@@ -674,6 +674,8 @@ p {
 /* Disable hover effects on legal and static informational cards */
 .page-impressum .card,
 .page-impressum .card:hover,
+.page-datenschutz .card,
+.page-datenschutz .card:hover,
 .page-kontakt .card,
 .page-kontakt .card:hover {
     transform: none !important;

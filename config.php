@@ -165,6 +165,11 @@ return [
             'description' => 'Impressum der Wonnegauer Designwerkstatt – Angaben gemäß § 5 TMG.',
             'view'        => 'impressum',
         ],
+        'datenschutz' => [
+            'title'       => 'Datenschutz',
+            'description' => 'Datenschutzerklärung der Wonnegauer Designwerkstatt – Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.',
+            'view'        => 'datenschutz',
+        ],
     ],
 
     'nav' => ['aktuell', 'termine', 'kunst', 'kultur', 'design', 'wir', 'links', 'kontakt'],

@@ -179,6 +179,9 @@
     if (openSettings) openSettings.addEventListener('click', openModal);
     if (footerSettings) footerSettings.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
     if (impressumBtn) impressumBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    document.querySelectorAll('.trigger-cookie-settings').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    });
 
     if (bannerClose) {
         bannerClose.addEventListener('click', () => {
