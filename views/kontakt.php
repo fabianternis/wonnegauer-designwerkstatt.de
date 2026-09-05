@@ -4,25 +4,6 @@
         <p>Wir freuen uns auf Ihre Nachricht oder Ihren Besuch im Atelier.</p>
     </header>
 
-    <?php if (turnstile_enabled()): ?>
-    <!-- Cloudflare Turnstile Bot- & Scraping-Protection Card -->
-    <div class="turnstile-card card" id="turnstile-verification">
-        <div class="turnstile-card__header">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-right: 8px;">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <h3 style="display: inline; font-size: 1.25rem;">Spam- &amp; Scraping-Schutz</h3>
-        </div>
-        <p style="margin: 0.75rem 0 1rem 0; font-size: 0.95rem; color: var(--clr-muted);">
-            Um unsere Kontaktdaten vor automatisiertem Auslesen und Spam-Harvestern zu schützen, nutzen wir Cloudflare Turnstile.
-        </p>
-        <div class="cf-turnstile" data-sitekey="<?= e(turnstile_site_key()) ?>" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileFallback" data-theme="light"></div>
-        <div id="turnstile-status" class="turnstile-status" style="margin-top: 0.75rem; font-size: 0.9rem;">
-            <span class="status-indicator">●</span> <span class="status-text">Menschliche Interaktion wird verifiziert...</span>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <div class="grid">
         <article class="card">
             <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">Wonnegauer Designwerkstatt</h3>
@@ -47,6 +28,7 @@
         </article>
     </div>
 
+    <?php if (contact_form_enabled()): ?>
     <!-- Quick Message Form (Turnstile Protected) -->
     <section class="card" style="margin-top: var(--space-xl);" id="kontaktformular">
         <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">Nachricht schreiben</h3>
@@ -67,10 +49,17 @@
                 <textarea id="form-message" name="message" rows="5" required class="form-control" placeholder="Ihre Mitteilung an Wolfgang &amp; Brigitte Ternis..."></textarea>
             </div>
             
+            <?php if (turnstile_enabled()): ?>
+            <div class="turnstile-wrapper" style="margin-top: 1.25rem;">
+                <div class="cf-turnstile" data-sitekey="<?= e(turnstile_site_key()) ?>" data-theme="light"></div>
+            </div>
+            <?php endif; ?>
+
             <div style="margin-top: 1.25rem;">
                 <button type="submit" id="contact-submit-btn" class="btn btn--primary">Nachricht vorbereiten</button>
             </div>
             <div id="form-feedback" class="form-feedback" style="display:none; margin-top: 1rem;"></div>
         </form>
     </section>
+    <?php endif; ?>
 </div>

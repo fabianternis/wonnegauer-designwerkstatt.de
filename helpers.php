@@ -101,6 +101,13 @@ function turnstile_enabled(): bool {
 }
 
 /**
+ * Checks if the contact form on /kontakt is enabled.
+ */
+function contact_form_enabled(): bool {
+    return (bool) config('contact_form_enabled', true);
+}
+
+/**
  * Returns the Cloudflare Turnstile site key.
  */
 function turnstile_site_key(): string {

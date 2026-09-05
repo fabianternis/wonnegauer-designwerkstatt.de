@@ -5,6 +5,8 @@ return [
     'base_url'         => env('BASE_URL', ''),
     'canonical_domain' => env('CANONICAL_DOMAIN', 'https://www.wonnegauer-designwerkstatt.de'),
 
+    'contact_form_enabled' => (bool) env('CONTACT_FORM_ENABLED', true),
+
     'turnstile' => [
         'enabled'    => (bool) env('TURNSTILE_ENABLED', true),
         'site_key'   => (string) env('TURNSTILE_SITE_KEY', '1x00000000000000000000AA'),

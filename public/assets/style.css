@@ -2037,45 +2037,8 @@ body.lightbox-open {
     transition: var(--transition);
 }
 
-.turnstile-card {
-    border-left: 4px solid var(--clr-text);
-    background: #fafafa;
-    padding: var(--space-md);
-    margin-bottom: var(--space-lg);
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.turnstile-card.is-verified {
-    border-left-color: #2e7d32;
-    background: #f1f8e9;
-}
-
-.turnstile-card__header {
-    display: flex;
-    align-items: center;
-}
-
-.turnstile-status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.status-indicator {
-    color: #f57c00;
-    font-size: 1.1rem;
-    animation: pulse-status 1.5s infinite;
-}
-
-.turnstile-card.is-verified .status-indicator {
-    color: #2e7d32;
-    animation: none;
-}
-
-@keyframes pulse-status {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.9); }
+.turnstile-wrapper {
+    margin: 1.25rem 0;
 }
 
 /* Contact Form */

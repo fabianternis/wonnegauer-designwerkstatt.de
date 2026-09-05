@@ -445,35 +445,10 @@
         });
     });
 
-    // Turnstile Callbacks (Global)
-    window.onTurnstileSuccess = (token) => {
-        const statusEl = document.getElementById('turnstile-status');
-        const card = document.getElementById('turnstile-verification');
-        if (statusEl) {
-            statusEl.innerHTML = '<span style="color: #2e7d32; font-weight: 600;">✓ Verifiziert: Menschlicher Besucher erkannt. Schutz aktiv.</span>';
-        }
-        if (card) {
-            card.classList.add('is-verified');
-        }
-        protectedContacts.forEach(hydrateContact);
-        window.dispatchEvent(new CustomEvent('turnstile-verified', { detail: { token } }));
-    };
-
-    window.onTurnstileFallback = () => {
-        const statusEl = document.getElementById('turnstile-status');
-        if (statusEl) {
-            statusEl.innerHTML = '<span style="color: var(--clr-muted);">Schutz bereitgestellt.</span>';
-        }
-        protectedContacts.forEach(hydrateContact);
-    };
-
-    // Fallback if Turnstile script is blocked by extensions/adblockers
+    // Automatically hydrate contacts after brief delay for smooth user experience
     setTimeout(() => {
-        const statusEl = document.getElementById('turnstile-status');
-        if (statusEl && !document.querySelector('.turnstile-card.is-verified')) {
-            window.onTurnstileFallback();
-        }
-    }, 3500);
+        protectedContacts.forEach(hydrateContact);
+    }, 1500);
 
     // ── Quick Message Form Handling ────────────────────────────
     const contactForm = document.getElementById('contact-form');
@@ -498,6 +473,17 @@
                 return;
             }
 
+            // Check if Turnstile is present in form and whether challenge token is present
+            const turnstileInput = contactForm.querySelector('[name="cf-turnstile-response"]');
+            if (turnstileInput && !turnstileInput.value) {
+                if (feedback) {
+                    feedback.style.display = 'block';
+                    feedback.style.color = '#c62828';
+                    feedback.textContent = 'Bitte bestätigen Sie den Spam-Schutz (Turnstile).';
+                }
+                return;
+            }
+
             const recipient = atob('bGV0dHJlLWJ3bUB0LW9ubGluZS5kZQ=='); // lettre-bwm@t-online.de
             const subject = encodeURIComponent(`Kontaktanfrage via Website von ${name}`);
             const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`);
@@ -510,7 +496,7 @@
 
             setTimeout(() => {
                 window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-            }, 600);
+            }, 500);
         });
     }
 })();

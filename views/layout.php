@@ -236,7 +236,7 @@
         </div>
     </div>
 
-    <?php if (turnstile_enabled() && ($page['slug'] ?? '') === 'kontakt'): ?>
+    <?php if (turnstile_enabled() && contact_form_enabled() && ($page['slug'] ?? '') === 'kontakt'): ?>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <?php endif; ?>
     <script src="<?= url('assets/nav.js') ?>"></script>
