@@ -1,8 +1,17 @@
 <?php
 
 return [
-    'site_name' => 'Wonnegauer Designwerkstatt',
-    'base_url'  => '',
+    'site_name'        => env('SITE_NAME', 'Wonnegauer Designwerkstatt'),
+    'base_url'         => env('BASE_URL', ''),
+    'canonical_domain' => env('CANONICAL_DOMAIN', 'https://www.wonnegauer-designwerkstatt.de'),
+
+    'contact_form_enabled' => (bool) env('CONTACT_FORM_ENABLED', true),
+
+    'turnstile' => [
+        'enabled'    => (bool) env('TURNSTILE_ENABLED', true),
+        'site_key'   => (string) env('TURNSTILE_SITE_KEY', '1x00000000000000000000AA'),
+        'secret_key' => (string) env('TURNSTILE_SECRET_KEY', '1x0000000000000000000000000000000AA'),
+    ],
 
     'pages' => [
         'index' => [
@@ -164,6 +173,11 @@ return [
             'title'       => 'Impressum',
             'description' => 'Impressum der Wonnegauer Designwerkstatt – Angaben gemäß § 5 TMG.',
             'view'        => 'impressum',
+        ],
+        'datenschutz' => [
+            'title'       => 'Datenschutz',
+            'description' => 'Datenschutzerklärung der Wonnegauer Designwerkstatt – Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.',
+            'view'        => 'datenschutz',
         ],
     ],
 

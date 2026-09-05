@@ -3,7 +3,7 @@
         <nav class="footer-nav" aria-label="Footer-Navigation">
             <ul>
                 <li><a href="<?= url('impressum') ?>">Impressum</a></li>
-                <li><a href="<?= url('impressum') ?>#datenschutz">Datenschutz</a></li>
+                <li><a href="<?= url('datenschutz') ?>">Datenschutz</a></li>
                 <li><a href="<?= url('kontakt') ?>">Kontakt</a></li>
                 <li><button type="button" id="open-cookie-settings" class="footer-nav__btn">Cookie-Einstellungen</button></li>
                 <li>
@@ -18,7 +18,7 @@
             </ul>
         </nav>
         
-        <p class="site-footer__contact">Plenzer 6, 67592 Flörsheim-Dalsheim · Telefon: <a href="tel:+4962435649" style="text-decoration: underline;">06243 / 56 49</a></p>
+        <p class="site-footer__contact">Plenzer 6, 67592 Flörsheim-Dalsheim · Telefon: <?= protected_phone('06243 / 56 49', '+4962435649', null, '', 'text-decoration: underline;') ?></p>
         <p style="margin-top: 1rem;">Webdesign und Webentwicklung: <a href="https://xpsystems.eu" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">xpsystems.eu</a> &amp; <a href="https://ternis-edv.de" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">ternis-edv.de</a> (<a href="https://ternis.dev" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">ternis.dev</a>)</p>
         
         <p class="site-footer__copy">&copy; <?= date('Y') ?> <?= htmlspecialchars($config['site_name']) ?> · Alle Rechte vorbehalten</p>

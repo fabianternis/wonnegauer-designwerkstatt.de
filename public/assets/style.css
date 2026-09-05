@@ -674,6 +674,8 @@ p {
 /* Disable hover effects on legal and static informational cards */
 .page-impressum .card,
 .page-impressum .card:hover,
+.page-datenschutz .card,
+.page-datenschutz .card:hover,
 .page-kontakt .card,
 .page-kontakt .card:hover {
     transform: none !important;
@@ -2021,5 +2023,55 @@ body.lightbox-open {
         opacity: 0.7 !important;
     }
 }
+
+/* ── Anti-Scraping Contact Protection & Turnstile ───────────── */
+.c-rev {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
+}
+
+.protected-contact {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.turnstile-wrapper {
+    margin: 1.25rem 0;
+}
+
+/* Contact Form */
+.contact-form .form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.contact-form .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: #fff;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.contact-form .form-control:focus {
+    outline: none;
+    border-color: var(--clr-text);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+    max-width: 100%;
+}
+
 
 

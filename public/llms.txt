@@ -16,8 +16,7 @@ Die Wonnegauer Designwerkstatt ist ein kreatives Atelier und Kulturprojekt von B
 
 ## Standort & Kontakt
 - **Adresse**: Plenzer 6, 67592 Flörsheim-Dalsheim, Deutschland
-- **Telefon**: +49 (0) 6243 5649
-- **E-Mail**: lettre-bwm@t-online.de / designwerkstatt@ternis.eu
+- **Kontakt**: Kontaktaufnahme telefonisch oder per E-Mail über die offizielle Kontaktseite: https://www.wonnegauer-designwerkstatt.de/kontakt
 - **Website**: https://www.wonnegauer-designwerkstatt.de
 
 ## Navigation & Seiten
@@ -30,4 +29,5 @@ Die Wonnegauer Designwerkstatt ist ein kreatives Atelier und Kulturprojekt von B
 - [Wir](https://www.wonnegauer-designwerkstatt.de/wir): Werdegang und Vita von Brigitte und Wolfgang Ternis
 - [Links](https://www.wonnegauer-designwerkstatt.de/links): Regionale Partner, Tourismus- und Kulturlinks
 - [Kontakt](https://www.wonnegauer-designwerkstatt.de/kontakt): Adresse, Kontaktaufnahme und Ansprechpartner
-- [Impressum](https://www.wonnegauer-designwerkstatt.de/impressum): Rechtliche Angaben und Datenschutzerklärung
+- [Impressum](https://www.wonnegauer-designwerkstatt.de/impressum): Rechtliche Angaben und Impressum
+- [Datenschutz](https://www.wonnegauer-designwerkstatt.de/datenschutz): Datenschutzerklärung und Informationen zur Datenverarbeitung nach DSGVO

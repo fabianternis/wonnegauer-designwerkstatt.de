@@ -179,6 +179,9 @@
     if (openSettings) openSettings.addEventListener('click', openModal);
     if (footerSettings) footerSettings.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
     if (impressumBtn) impressumBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    document.querySelectorAll('.trigger-cookie-settings').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    });
 
     if (bannerClose) {
         bannerClose.addEventListener('click', () => {
@@ -397,6 +400,103 @@
         printBtn.addEventListener('click', (e) => {
             e.preventDefault();
             window.print();
+        });
+    }
+
+    // ── Anti-Scraping Contact Hydration ─────────────────────────
+    const hydrateContact = (el) => {
+        if (!el || el.dataset.hydrated === 'true') return;
+
+        const type = el.dataset.type;
+        try {
+            if (type === 'email') {
+                const u = el.dataset.u ? atob(el.dataset.u) : '';
+                const d = el.dataset.d ? atob(el.dataset.d) : '';
+                if (u && d) {
+                    const email = `${u}@${d}`;
+                    el.href = `mailto:${email}`;
+                    const label = el.dataset.label ? atob(el.dataset.label) : email;
+                    el.textContent = label;
+                    el.dataset.hydrated = 'true';
+                }
+            } else if (type === 'phone') {
+                const tel = el.dataset.tel ? atob(el.dataset.tel) : '';
+                if (tel) {
+                    el.href = `tel:${tel}`;
+                    const label = el.dataset.label ? atob(el.dataset.label) : tel;
+                    el.textContent = label;
+                    el.dataset.hydrated = 'true';
+                }
+            }
+        } catch (e) {
+            console.error('Contact decode error', e);
+        }
+    };
+
+    const protectedContacts = document.querySelectorAll('.protected-contact');
+    protectedContacts.forEach((el) => {
+        el.addEventListener('pointerover', () => hydrateContact(el), { once: true });
+        el.addEventListener('focus', () => hydrateContact(el), { once: true });
+        el.addEventListener('touchstart', () => hydrateContact(el), { passive: true, once: true });
+        el.addEventListener('click', () => {
+            if (el.dataset.hydrated !== 'true') {
+                hydrateContact(el);
+            }
+        });
+    });
+
+    // Automatically hydrate contacts after brief delay for smooth user experience
+    setTimeout(() => {
+        protectedContacts.forEach(hydrateContact);
+    }, 1500);
+
+    // ── Quick Message Form Handling ────────────────────────────
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameEl = document.getElementById('form-name');
+            const emailEl = document.getElementById('form-email');
+            const msgEl = document.getElementById('form-message');
+            const feedback = document.getElementById('form-feedback');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const email = emailEl ? emailEl.value.trim() : '';
+            const message = msgEl ? msgEl.value.trim() : '';
+
+            if (!name || !email || !message) {
+                if (feedback) {
+                    feedback.style.display = 'block';
+                    feedback.style.color = '#c62828';
+                    feedback.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+                }
+                return;
+            }
+
+            // Check if Turnstile is present in form and whether challenge token is present
+            const turnstileInput = contactForm.querySelector('[name="cf-turnstile-response"]');
+            if (turnstileInput && !turnstileInput.value) {
+                if (feedback) {
+                    feedback.style.display = 'block';
+                    feedback.style.color = '#c62828';
+                    feedback.textContent = 'Bitte bestätigen Sie den Spam-Schutz (Turnstile).';
+                }
+                return;
+            }
+
+            const recipient = atob('bGV0dHJlLWJ3bUB0LW9ubGluZS5kZQ=='); // lettre-bwm@t-online.de
+            const subject = encodeURIComponent(`Kontaktanfrage via Website von ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`);
+
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.style.color = '#2e7d32';
+                feedback.textContent = 'Vielen Dank! Ihr E-Mail-Programm wird geöffnet, um die Nachricht zu senden.';
+            }
+
+            setTimeout(() => {
+                window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            }, 500);
         });
     }
 })();

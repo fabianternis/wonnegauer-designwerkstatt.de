@@ -66,9 +66,11 @@
                 "description": "Wonnegauer Designwerkstatt – Brigitte und Wolfgang Ternis aus Flörsheim-Dalsheim. Kunst, Kultur, Design und Gästeführungen in Rheinhessen.",
                 "url": "https://www.wonnegauer-designwerkstatt.de",
                 "logo": "https://www.wonnegauer-designwerkstatt.de/assets/img/logo1.jpg",
-                "image": "https://www.wonnegauer-designwerkstatt.de/assets/img/banners/index.jpg",
-                "telephone": "+49 6243 5649",
-                "email": "lettre-bwm@t-online.de",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "customer service",
+                    "url": "https://www.wonnegauer-designwerkstatt.de/kontakt"
+                },
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Plenzer 6",
@@ -183,7 +185,7 @@
                 <div class="cookie-banner__content">
                     <p>
                         Wir verwenden Google Fonts, um die Gestaltung unserer Website zu verbessern. Mit Ihrer Zustimmung laden wir diese Schriften extern nach. 
-                        Weitere Informationen finden Sie in unserer <a href="<?= url('impressum') ?>#datenschutz" class="cookie-banner__link">Datenschutzerklärung</a>.
+                        Weitere Informationen finden Sie in unserer <a href="<?= url('datenschutz') ?>" class="cookie-banner__link">Datenschutzerklärung</a>.
                     </p>
                 </div>
                 <div class="cookie-banner__actions">
@@ -228,12 +230,15 @@
                 </div>
             </div>
             <div class="modal__footer">
-                <button type="button" id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Einstellungen zurücksetzen</button>
-                <button type="button" id="save-cookie-settings" class="btn btn--primary">Einstellungen speichern</button>
+                <button type="button" id="reset-cookie-settings" class="btn btn--secondary" style="margin-right: auto;">Zurücksetzen</button>
+                <button type="button" id="save-cookie-settings" class="btn btn--primary">Speichern</button>
             </div>
         </div>
     </div>
 
+    <?php if (turnstile_enabled() && contact_form_enabled() && ($page['slug'] ?? '') === 'kontakt'): ?>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <?php endif; ?>
     <script src="<?= url('assets/nav.js') ?>"></script>
 </body>
 </html>
