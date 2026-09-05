@@ -13,7 +13,7 @@
                 67592 Flörsheim-Dalsheim<br>
                 <br>
                 Telefon: <a href="tel:+4962435649" style="text-decoration: underline; font-weight: 600;">06243 / 56 49</a><br>
-                E-Mail: <a href="mailto:wdw@xpsystems.de" style="text-decoration: underline; font-weight: 600;">wdw@xpsystems.de</a><br>
+                E-Mail: <a href="mailto:wdw@ternis.dev" style="text-decoration: underline; font-weight: 600;">wdw@ternis.dev</a><br>
                 Legal-Kontakt: <a href="mailto:rechtliches@ternismail.de" style="text-decoration: underline; font-weight: 600;">rechtliches@ternismail.de</a><br>
                 Web: <a href="https://www.wonnegauer-designwerkstatt.de" style="text-decoration: underline; font-weight: 600;">www.wonnegauer-designwerkstatt.de</a>
             </address>
